@@ -35,6 +35,8 @@ From the build/ directory:-
 ```
 npm install                     -- installs the dependencies in the package.json as local node modules
 sudo npm install -g grunt-cli   -- install the grunt tool as a global tool
+cd elements-toolkit
+npm install
 ```
 
 #Run Grunt
