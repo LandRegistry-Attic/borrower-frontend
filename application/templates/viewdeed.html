@@ -63,8 +63,11 @@
         <h3 class="heading-medium">Effective date and time</h3>
         <p>{{ deed_data.deed.effective_clause|safe }}</p>
 
-        <p class="awaiting-information">[Effective date and time will be shown here]</p>
-
+        {% if deed_data.deed.effective_date %}
+          <b class="bold-small">Made effective on: {{ deed_data.deed.effective_date }}
+        {% else %}
+          <p class="awaiting-information">[Effective date will be shown here]</p>
+        {% endif %}
         <h3 class="heading-medium">Borrower's digital signature(s)</h3>
         {% for borrower in deed_data.deed.borrowers %}
           {% if borrower.signature %}
