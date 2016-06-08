@@ -67,10 +67,10 @@ source test.sh
 
 See, the following link for information on how to run the acceptance tests:-
 
-[Acceptance Tests](https://github.com/LandRegistry/dm-acceptance-tests)
+[Acceptance Tests](https://192.168.249.38/digital-mortgage/acceptance-tests)
 
 ## Frontend
 
-[Frontend build readme](https://github.com/landregistry/dm-borrower-frontend/build/readme.md)
+[Frontend build readme](https://192.168.249.38/digital-mortgage/borrower-frontend/build/readme.md)
 
 

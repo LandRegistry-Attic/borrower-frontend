@@ -2,14 +2,13 @@
 class borrower_frontend (
     $port = '9030',
     $host = '0.0.0.0',
-    $source = 'git://github.com/LandRegistry/dm-borrower-frontend',
-  $branch_or_revision = 'US20-borrower-frontend',
-  $subdomain = 'dm-borrower-frontend',
+    $source = 'git@192.168.249.38:digital-mortgage/borrower-frontend.git',
+    $branch_or_revision = 'develop',
+    $subdomain = 'dm-borrower-frontend',
     $domain = undef,
     $owner = 'vagrant',
-  $group = 'vagrant',
-  $deed_api_address = 'http://deedapi.dev.service.gov.uk'
-
+    $group = 'vagrant',
+    $deed_api_address = 'http://deedapi.dev.service.gov.uk'
 ) {
   require ::standard_env
 
