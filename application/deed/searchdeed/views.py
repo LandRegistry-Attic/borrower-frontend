@@ -206,6 +206,10 @@ def validate_borrower(borrower_token, dob):
 def do_search_deed_search():
     deed_data = lookup_deed(session['deed_token'])
     if deed_data is not None:
+        if 'effective_date' in deed_data["deed"]:
+            temp = datetime.datetime.strptime(deed_data["deed"]["effective_date"], "%Y-%m-%d %H:%M:%S")
+            deed_data["deed"]["effective_date"] = temp.strftime("%d/%m/%Y")
+
         deed_data["deed"]["property_address"] = format_address_string(deed_data["deed"]["property_address"])
         if deed_signed():
             response = render_template('viewdeed.html', deed_data=deed_data, signed=True)
