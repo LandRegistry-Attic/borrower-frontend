@@ -37,6 +37,11 @@ def show_network_agreement():
         return render_template("borrower-naa.html")
 
 
+@borrower_landing.route('/confirm-naa', methods=['GET'])
+def show_network_agreement():
+        return render_template("confirm-borrower-naa.html")
+
+
 @borrower_landing.route('/verify', methods=['POST'])
 def verify_identity():
     if 'Pid' in request.headers:
