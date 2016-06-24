@@ -37,8 +37,25 @@ def show_network_agreement():
         return render_template("borrower-naa.html")
 
 
-@borrower_landing.route('/confirm-naa', methods=['GET'])
+@borrower_landing.route('/confirm-naa', methods=['GET', 'POST'])
 def confirm_network_agreement():
+        form = request.form
+
+        if 'validate' in form:
+            form.error = validate_naa(form)
+            if form.error is None:
+                dob = form["dob-day"] + "/" + form["dob-month"] + "/" + form["dob-year"]
+                result = validate_borrower(form['borrower_token'], dob)
+                if result is not None:
+                    session['deed_token'] = result['deed_token']
+                    session['phone_number'] = result['phone_number']
+                    session['borrower_token'] = form['borrower_token']
+                    return redirect('/how-to-proceed', code=307)
+                else:
+                    session['error'] = "True"
+                    return redirect('/borrower-reference', code=307)
+
+        return render_template('enterdob.html', form=form)
         return render_template("confirm-borrower-naa.html")
 
 
@@ -68,3 +85,16 @@ def verify_error():
 def get_borrower_details(verify_pid):
     deed_api_client = getattr(borrower_landing, 'deed_api_client')
     return deed_api_client.get_borrower_details_by_verify_pid(verify_pid)
+
+
+def validate_naa(form):
+    error = None
+    try:
+
+        if dob_date >= present:
+            raise Exception("Date cannot be in the future")
+
+    except:
+        error = "You must agree to these Terms and Conditions to proceed"
+
+    return error

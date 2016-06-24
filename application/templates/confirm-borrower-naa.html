@@ -13,14 +13,23 @@
         in our Signature Network Access Agreement.</p>
 
       <a href="/borrower-naa" target="_blank"><p>Click here to read the Signature Network Access Agreement</a>
-        (opens in a new tab)</p>
+      (opens in a new tab)</p>
     </div>
 
+    <form>
+      <input id="validate" type="hidden" name="validate" class="form-control" type="text" value="True">
+      <fieldset>
+        {% if form.error %}
+          Hello World
+        {% endif %}
+        <label class="block-label" for="checkbox-agree-naa">
+          <input id="checkbox-agree-naa" name="agree-naa" type="checkbox">
+          I have read and accept the terms of Land Registry’s Signature Network Access Agreement.
+        </label>
 
-    <label class="form-checkbox">
-      <input id="checkbox-agree-naa" name="agree-naa" type="checkbox">
-      I have read and accept the terms of Land Registry’s Signature Network Access Agreement.
-    </label>
+      </fieldset>
+    </form>
+
 
     <div class="text">
       <p>
