@@ -41,8 +41,7 @@ def show_network_agreement():
 def confirm_network_agreement():
         form = request.form
         if 'validate' in form:
-            # form.error = validate_naa(form)
-            form.error = None
+            form.error = validate_naa(form)
             if form.error is None:
                 return redirect('/mortgage-deed', code=307)
             else:
@@ -80,7 +79,8 @@ def get_borrower_details(verify_pid):
 
 def validate_naa(form):
     error = None
-    if form.agree-naa == off:
+    agreed_naa = form["agree-naa"]
+    if agreed_naa == False:
         error = "You must agree to these Terms and Conditions to proceed"
     else:
         error = None
