@@ -80,7 +80,7 @@ def get_borrower_details(verify_pid):
 
 def validate_naa(form):
     error = None
-    if form:
+    if form.agree-naa == off:
         error = "You must agree to these Terms and Conditions to proceed"
     else:
         error = None
