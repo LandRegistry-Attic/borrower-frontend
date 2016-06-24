@@ -41,11 +41,14 @@ def show_network_agreement():
 def confirm_network_agreement():
         form = request.form
         if 'validate' in form:
-            form.error = validate_naa(form)
-            if form.error is None:
+            agreed_naa = form["agree-naa"]
+            if agreed_naa == False:
+                form.error = "You must agree to these Terms and Conditions to proceed"
+            elif agreed_naa == True:
+                form.error = None
                 return redirect('/mortgage-deed', code=307)
-            else:
-                return render_template('confirm-borrower-naa.html', form=form)
+
+            return render_template('confirm-borrower-naa.html', form=form)
         return render_template('confirm-borrower-naa.html', form=form)
 
 
