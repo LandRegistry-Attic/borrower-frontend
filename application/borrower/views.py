@@ -39,6 +39,10 @@ def show_network_agreement():
 
 @borrower_landing.route('/confirm-naa', methods=['GET', 'POST'])
 def confirm_network_agreement():
+
+        if request.method == "GET":
+            return render_template('confirm-borrower-naa.html')
+        else:
         form = request.form
         if 'validate' in form:
             agreed_naa = form["agree-naa"]
@@ -47,7 +51,6 @@ def confirm_network_agreement():
             elif agreed_naa == True:
                 form.error = None
                 return redirect('/mortgage-deed', code=307)
-
             return render_template('confirm-borrower-naa.html', form=form)
         return render_template('confirm-borrower-naa.html', form=form)
 
