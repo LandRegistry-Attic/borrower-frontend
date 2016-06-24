@@ -19,17 +19,16 @@
     <form>
       <input id="validate" type="hidden" name="validate" class="form-control" type="text" value="True">
       <fieldset>
-        {% if form.error %}
-          Hello World
-        {% endif %}
         <label class="block-label" for="checkbox-agree-naa">
           <input id="checkbox-agree-naa" name="agree-naa" type="checkbox">
           I have read and accept the terms of Land Registry’s Signature Network Access Agreement.
         </label>
 
-      </fieldset>
-    </form>
 
+      </fieldset>
+
+
+    Error here: {{ form.error }}
 
     <div class="text">
       <p>
@@ -37,7 +36,7 @@
       </p>
     </div>
 
-
+  </form>
   </main>
 
 {% endblock %}
