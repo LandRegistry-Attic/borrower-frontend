@@ -38,7 +38,7 @@ def show_network_agreement():
 
 
 @borrower_landing.route('/confirm-naa', methods=['GET'])
-def show_network_agreement():
+def confirm_network_agreement():
         return render_template("confirm-borrower-naa.html")
 
 
