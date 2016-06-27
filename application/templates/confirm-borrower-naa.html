@@ -15,7 +15,14 @@
     </div>
 
     {% if error %}
-    {{ error }}
+      <div class="error-summary" role="group" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+
+        <h1 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+          {{ error }}
+        </h1>
+
+      </div>
+
     {% endif %}
 
     <form action="/confirm-naa" method="POST">
@@ -26,7 +33,7 @@
           I have read and accept the terms of Land Registry’s Signature Network Access Agreement.
         </label>
       </fieldset>
-
+      
       <div class="text">
         <p>
           <input class="button" type="submit" value="Continue">
