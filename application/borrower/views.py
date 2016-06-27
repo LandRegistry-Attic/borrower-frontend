@@ -42,7 +42,8 @@ def confirm_network_agreement():
 
         if request.method == "GET":
             return render_template('confirm-borrower-naa.html')
-        else:
+        elif request.method == "POST":
+            print("HELLO POST METHOD@!!!!!")
             form = request.form
             if 'validate' in form:
                 agreed_naa = form["agree-naa"]

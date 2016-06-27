@@ -14,7 +14,9 @@
       (opens in a new tab)</p>
     </div>
 
-    <form>
+    <div class="text-danger">Please correct the error below.</div>
+
+    <form action="/confirm-naa" method="POST">
       <input id="validate" type="hidden" name="validate" class="form-control" type="text" value="True">
       <fieldset>
         <label class="block-label" for="checkbox-agree-naa">
@@ -23,15 +25,15 @@
         </label>
       </fieldset>
 
-    Error here: {{ form.error }}
+      <div class="text">
+        <p>
+          <input class="button" type="submit" value="Continue">
+        </p>
+      </div>
 
-    <div class="text">
-      <p>
-        <input class="button" type="submit" value="Continue">
-      </p>
-    </div>
+    </form>
 
-  </form>
+
   </main>
 
 {% endblock %}
