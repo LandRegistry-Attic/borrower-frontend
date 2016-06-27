@@ -46,15 +46,17 @@ def confirm_network_agreement():
             print("HELLO POST METHOD@!!!!!")
             form = request.form
             if 'validate' in form:
+                print("I am in validation")
                 agreed_naa = form["agree-naa"]
-                if agreed_naa is False:
-                    form.error = "You must agree to these Terms and Conditions to proceed"
-                    return render_template('confirm-borrower-naa.html', form=form)
-                elif agreed_naa is True:
-                    form.error = None
-                    return redirect('/mortgage-deed', code=307)
-                return render_template('confirm-borrower-naa.html', form=form)
-            return render_template('confirm-borrower-naa.html', form=form)
+                print ("agree naa is " + str(agreed_naa))
+                if agreed_naa == "off":
+                    error = "You must agree to these Terms and Conditions to proceed"
+                    return render_template('confirm-borrower-naa.html', error=error)
+                elif agreed_naa == "on":
+                    error = None
+                    return redirect('/mortgage-deed', code=302)
+
+            return render_template('confirm-borrower-naa.html')
 
 
 @borrower_landing.route('/verify', methods=['POST'])
