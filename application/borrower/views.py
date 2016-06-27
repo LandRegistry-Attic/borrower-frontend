@@ -85,14 +85,3 @@ def verify_error():
 def get_borrower_details(verify_pid):
     deed_api_client = getattr(borrower_landing, 'deed_api_client')
     return deed_api_client.get_borrower_details_by_verify_pid(verify_pid)
-
-
-def validate_naa(form):
-    error = None
-    agreed_naa = form["agree-naa"]
-    if agreed_naa == False:
-        error = "You must agree to these Terms and Conditions to proceed"
-    else:
-        error = None
-
-    return error
