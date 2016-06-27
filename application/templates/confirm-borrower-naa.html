@@ -14,7 +14,9 @@
       (opens in a new tab)</p>
     </div>
 
+    {% if error %}
     <div class="text-danger">Please correct the error below.</div>
+    {% endif %}
 
     <form action="/confirm-naa" method="POST">
       <input id="validate" type="hidden" name="validate" class="form-control" type="text" value="True">
