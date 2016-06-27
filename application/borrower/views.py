@@ -50,7 +50,7 @@ def confirm_network_agreement():
                 try:
                     agreed_naa = form["agree-naa"]
                 except:
-                    pass
+                    agreed_naa = None
                 if agreed_naa is None:
                     error = "You must agree to these Terms and Conditions to proceed"
                     return render_template('confirm-borrower-naa.html', error=error, code=307)
