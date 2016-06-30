@@ -4,8 +4,8 @@
   "author": "Land Registry Charges team",
   "summary": "Install the dm-borrower-frontend.",
   "license": "MIT",
-  "source": "https://github.com/LandRegistry/dm-borrower-frontend",
-  "project_page": "https://github.com/LandRegistry/dm-borrower-frontend",
-  "issues_url": "https://github.com/LandRegistry/dm-borrower-frontend",
+  "source": "https://192.168.249.38/digital-mortgage/borrower-frontend",
+  "project_page": "https://192.168.249.38/digital-mortgage/borrower-frontend",
+  "issues_url": "https://192.168.249.38/digital-mortgage/borrower-frontend",
   "dependencies": [{"name": "puppetlabs/vcsrepo"}]
 }

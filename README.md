@@ -45,7 +45,7 @@ Optional: export variable for deed-api
 
 ## Run the app
 ```
-python run.py runserver -host 0.0.0.0
+python run.py runserver --host 0.0.0.0
 ```
 > optional ```--port 9000``` where 9000 is the number of a port you can supply to start the server on.
 
@@ -67,10 +67,10 @@ source test.sh
 
 See, the following link for information on how to run the acceptance tests:-
 
-[Acceptance Tests](https://github.com/LandRegistry/dm-acceptance-tests)
+[Acceptance Tests](https://192.168.249.38/digital-mortgage/acceptance-tests)
 
 ## Frontend
 
-[Frontend build readme](https://github.com/landregistry/dm-borrower-frontend/build/readme.md)
+[Frontend build readme](https://192.168.249.38/digital-mortgage/borrower-frontend/build/readme.md)
 
 
