@@ -32,11 +32,6 @@ def identity_verified():
         return render_template("identity-verified.html")
 
 
-@borrower_landing.route('/borrower-naa', methods=['GET'])
-def show_network_agreement():
-        return render_template("borrower-naa.html")
-
-
 @borrower_landing.route('/confirm-naa', methods=['GET', 'POST'])
 def confirm_network_agreement():
 
