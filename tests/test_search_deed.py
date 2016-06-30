@@ -164,3 +164,13 @@ class TestSearchDeed(unittest.TestCase):
         res = client.get('/confirm-mortgage-is-signed')
 
         self.assertEqual(res.status_code, 200)
+
+    @with_context
+    @with_client
+    def test_naa_page_shown(self, client):
+        with client.session_transaction() as sess:
+            sess['deed_token'] = '063604'
+
+        res = client.get('/confirm-naa')
+
+        self.assertEqual(res.status_code, 200)
