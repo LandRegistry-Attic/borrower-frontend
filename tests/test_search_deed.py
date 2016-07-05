@@ -1,7 +1,30 @@
 from tests.helpers import with_client, setUpApp, with_context
 import unittest
 from application.deed.searchdeed.views import validate_dob
+from application.borrower.views import confirm_network_agreement
 from datetime import date
+from unittest.mock import patch
+
+
+class TestAgreementNaa(unittest.TestCase):
+
+    @patch('application.borrower.views.render_template')
+    @patch('application.borrower.views.request')
+    def test_confirm_network_agreement_get(self, mock_request, mock_render):
+        mock_request.method = "GET"
+        confirm_network_agreement()
+        mock_render.assert_called_with('confirm-borrower-naa.html')
+
+    @patch('application.borrower.views.redirect')
+    @patch('application.borrower.views.render_template')
+    @patch('application.borrower.views.request')
+    def test_confirm_network_agreement_post(self, mock_request, mock_render, mock_redirect):
+        mock_request.method = "POST"
+        mock_request.form.return_val = "agree-naa"
+        status_code = confirm_network_agreement()
+        mock_redirect.assert_called_with('/mortgage-deed')
+
+        self.assertEqual(status_code, 302)
 
 
 class TestSearchDeed(unittest.TestCase):
@@ -13,6 +36,7 @@ class TestSearchDeed(unittest.TestCase):
     def test_search_deed_post(self, client):
         with client.session_transaction() as sess:
             sess['deed_token'] = '063604'
+            sess['agreement_naa'] = 'Checked'
 
         res = client.get('/mortgage-deed')
 
@@ -23,6 +47,7 @@ class TestSearchDeed(unittest.TestCase):
     def test_search_deed_post_invalid_reference(self, client):
         with client.session_transaction() as sess:
             sess['deed_token'] = '063604'
+            sess['agreement_naa'] = 'Checked'
 
         res = client.get('/mortgage-deed')
 

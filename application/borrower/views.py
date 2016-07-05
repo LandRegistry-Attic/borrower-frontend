@@ -34,25 +34,15 @@ def identity_verified():
 
 @borrower_landing.route('/confirm-naa', methods=['GET', 'POST'])
 def confirm_network_agreement():
-
-        if request.method == "GET":
-            return render_template('confirm-borrower-naa.html')
-        elif request.method == "POST":
-            form = request.form
-            if 'validate' in form:
-                try:
-                    agreed_naa = form["agree-naa"]
-                except:
-                    agreed_naa = None
-                if agreed_naa is None:
-                    error = "You must agree to these Terms and Conditions to proceed"
-                    return render_template('confirm-borrower-naa.html', error=error, code=307)
-                elif agreed_naa == "on":
-                    print("agree naa is " + str(agreed_naa))
-                    error = None
-                    return redirect('/mortgage-deed', code=302)
-
-            return render_template('confirm-borrower-naa.html')
+    if request.method == "GET":
+        return render_template('confirm-borrower-naa.html')
+    elif request.method == "POST":
+        if 'agree-naa' in request.form:
+            session['agreement_naa'] = "Checked"
+            return redirect('/mortgage-deed', code=302)
+        else:
+            error = "You must agree to these Terms and Conditions to proceed"
+            return render_template('confirm-borrower-naa.html', error=error, code=307)
 
 
 @borrower_landing.route('/verify', methods=['POST'])
