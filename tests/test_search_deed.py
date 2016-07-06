@@ -17,17 +17,19 @@ class TestAgreementNaa(unittest.TestCase):
     @patch('application.borrower.views.session')
     @patch('application.borrower.views.redirect')
     @patch('application.borrower.views.render_template')
+    @patch('application.borrower.views.request.form')
     @patch('application.borrower.views.request')
-    def test_confirmed_network_agreement_post(self, mock_request, mock_render, mock_redirect, mock_session):
+    def test_confirmed_network_agreement_post(self, mock_request, mock_form, mock_render, mock_redirect, mock_session):
         mock_request.method = "POST"
         error = "You must agree to these Terms and Conditions to proceed"
         confirm_network_agreement()
         mock_render.assert_called_with('confirm-borrower-naa.html', error=error, code=307)
 
         mock_request.method = "POST"
-        mock_request.form["agree-naa"].return_value = "on"
+        mock_form.return_value = ([('validate', 'True'), ('agree-naa', 'on')])
         mock_session['agreement_naa'] = 'blah'
         confirm_network_agreement()
+
         mock_redirect.assert_called_with('/mortgage-deed', code=302)
 
 
