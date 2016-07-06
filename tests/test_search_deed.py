@@ -7,7 +7,6 @@ from unittest.mock import patch
 
 
 class TestAgreementNaa(unittest.TestCase):
-
     @patch('application.borrower.views.render_template')
     @patch('application.borrower.views.request')
     def test_confirm_network_agreement_get(self, mock_request, mock_render):
@@ -15,16 +14,21 @@ class TestAgreementNaa(unittest.TestCase):
         confirm_network_agreement()
         mock_render.assert_called_with('confirm-borrower-naa.html')
 
+    @patch('application.borrower.views.session')
     @patch('application.borrower.views.redirect')
     @patch('application.borrower.views.render_template')
     @patch('application.borrower.views.request')
-    def test_confirm_network_agreement_post(self, mock_request, mock_render, mock_redirect):
+    def test_confirmed_network_agreement_post(self, mock_request, mock_render, mock_redirect, mock_session):
         mock_request.method = "POST"
-        mock_request.form.return_val = "agree-naa"
-        status_code = confirm_network_agreement()
-        mock_redirect.assert_called_with('/mortgage-deed')
+        error = "You must agree to these Terms and Conditions to proceed"
+        confirm_network_agreement()
+        mock_render.assert_called_with('confirm-borrower-naa.html', error=error, code=307)
 
-        self.assertEqual(status_code, 302)
+        mock_request.method = "POST"
+        mock_request.form["agree-naa"].return_value = "on"
+        mock_session['agreement_naa'] = 'blah'
+        confirm_network_agreement()
+        mock_redirect.assert_called_with('/mortgage-deed', code=302)
 
 
 class TestSearchDeed(unittest.TestCase):

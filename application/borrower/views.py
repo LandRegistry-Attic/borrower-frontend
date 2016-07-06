@@ -37,6 +37,7 @@ def confirm_network_agreement():
     if request.method == "GET":
         return render_template('confirm-borrower-naa.html')
     elif request.method == "POST":
+        print ("Request Form", request.form)
         if 'agree-naa' in request.form:
             session['agreement_naa'] = "Checked"
             return redirect('/mortgage-deed', code=302)
