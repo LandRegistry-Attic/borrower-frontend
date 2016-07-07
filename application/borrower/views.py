@@ -37,9 +37,6 @@ def identity_verified():
 
 @borrower_landing.route('/verify', methods=['POST'])
 def verify_identity():
-    print("*************")
-    print (request.headers.get('Verify-response-status'))
-    print("*************")
     if 'Pid' in request.headers:
         verify_pid = request.headers.get('Pid')
         result = get_borrower_details(verify_pid)
