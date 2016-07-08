@@ -37,12 +37,13 @@ def confirm_network_agreement():
     if request.method == "GET":
         return render_template('confirm-borrower-naa.html')
     elif request.method == "POST":
-        if 'agree-naa' in request.form:
-            session['agreement_naa'] = "Checked"
+        if 'accept-naa' in request.form:
+            session['agreement_naa'] = "accepted"
             return redirect('/mortgage-deed', code=302)
         else:
+            session['agreement_naa'] = "declined"
             error = "You must agree to these Terms and Conditions to proceed"
-            return render_template('confirm-borrower-naa.html', error=error, code=307)
+            return render_template('howtoproceed.html', error=error, code=307)
 
 
 @borrower_landing.route('/verify', methods=['POST'])

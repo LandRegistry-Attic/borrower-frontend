@@ -10,24 +10,6 @@
       <p>Before you can sign your mortgage deed, you will need to agree to Land Registry’s terms and conditions set out
         in our Signature Network Access Agreement. This document is shown below:</p>
 
-    {% if error %}
-      <div class="error-summary" role="group" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
-
-        <h1 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
-          {{ error }}
-        </h1>
-        <p>
-          Please agree to the Terms and Conditions by ticking the box below
-        </p>
-
-        <ul class="error-summary-list">
-          <li><a href="#checkbox-agree-naa">Agree to the Terms and Conditions</a></li>
-        </ul>
-
-      </div>
-
-    {% endif %}
-
     <h2 class="heading-large">Signature Network Access Agreement</h2>
 
 
@@ -143,28 +125,15 @@
 
     <form action="/confirm-naa" method="POST">
       <input id="validate" type="hidden" name="validate" class="form-control" type="text" value="True">
-      <fieldset>
-        {% if error %}
-          <div class="form-group error">
-        {% endif %}
-        <label class="block-label" for="checkbox-agree-naa">
-          <input id="checkbox-agree-naa" name="agree-naa" type="checkbox">
-          I have read and accepted the terms of Land Registry’s Signature Network Access Agreement.
-        </label>
-        {% if error %}
-          </div>
-        {% endif %}
 
-      </fieldset>
-      &NonBreakingSpace;
       <div class="text">
         <p>
-          <input class="button" type="submit" value="Continue">
+          <input class="button" name="decline-naa" type="submit" value="Decline">
+          <input class="button" name="accept-naa" type="submit" value="Accept">
         </p>
       </div>
 
     </form>
-
 
   </main>
 
