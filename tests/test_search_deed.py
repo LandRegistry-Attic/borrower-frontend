@@ -1,7 +1,7 @@
 from flask import session
 from tests.helpers import with_client, setUpApp, with_context
 import unittest
-from application.deed.searchdeed.views import validate_dob, search_deed_search, do_search_deed_search
+from application.deed.searchdeed.views import validate_dob, search_deed_search
 from application.borrower.views import confirm_network_agreement
 from datetime import date
 from unittest.mock import patch
