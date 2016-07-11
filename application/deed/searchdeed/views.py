@@ -51,9 +51,10 @@ def search_deed_search():
     if 'deed_token' not in session:
         return redirect('/session-ended', code=302)
 
-    # TODO - results in method not allowed.
+    # TODO - Is the error needed
     if ('agreement_naa' not in session) or (session['agreement_naa'] != 'accepted'):
-        return redirect('/how-to-proceed', code=307)
+        error = "You must agree to the Terms and Conditions to proceed"
+        return render_template('howtoproceed.html', error=error, code=307)
 
     response = do_search_deed_search()
     return response, status.HTTP_200_OK
