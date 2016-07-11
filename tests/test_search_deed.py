@@ -1,3 +1,4 @@
+from flask import session
 from tests.helpers import with_client, setUpApp, with_context
 import unittest
 from application.deed.searchdeed.views import validate_dob
@@ -5,8 +6,15 @@ from application.borrower.views import confirm_network_agreement
 from datetime import date
 from unittest.mock import patch
 
+def test_request_auth_code(self, client):
+    with client.session_transaction() as sess:
+        sess['deed_token'] = '063604'
+
 
 class TestAgreementNaa(unittest.TestCase):
+    def setUp(self):
+        setUpApp(self)
+
     @patch('application.borrower.views.render_template')
     @patch('application.borrower.views.request')
     def test_confirm_network_agreement_get(self, mock_request, mock_render):
@@ -14,22 +22,32 @@ class TestAgreementNaa(unittest.TestCase):
         confirm_network_agreement()
         mock_render.assert_called_with('confirm-borrower-naa.html')
 
-    @patch('application.borrower.views.session')
+    @with_context
     @patch('application.borrower.views.redirect')
-    @patch('application.borrower.views.render_template')
-    @patch('application.borrower.views.request.form')
     @patch('application.borrower.views.request')
-    def test_confirmed_network_agreement_post(self, mock_request, mock_form, mock_render, mock_redirect, mock_session):
+    def test_confirmed_network_agreement_no_request_form(self, mock_request, mock_redirect):
         mock_request.method = "POST"
-        error = "You must agree to these Terms and Conditions to proceed"
         confirm_network_agreement()
-        mock_render.assert_called_with('confirm-borrower-naa.html', error=error, code=307)
+        mock_redirect.assert_called_with('/how-to-proceed', code=307)
 
+    @with_context
+    @patch('application.borrower.views.redirect')
+    @patch('application.borrower.views.request')
+    def test_confirmed_network_agreement_declined(self, mock_request, mock_redirect):
         mock_request.method = "POST"
-        mock_form.return_value = ([('validate', 'True'), ('agree-naa', 'on')])
-        mock_session['agreement_naa'] = 'blah'
+        mock_request.form = {'validate': 'True', 'decline-naa': 'Decline'}
         confirm_network_agreement()
+        self.assertEqual(session['agreement_naa'],  "declined")
+        mock_redirect.assert_called_with('/how-to-proceed', code=307)
 
+    @with_context
+    @patch('application.borrower.views.redirect')
+    @patch('application.borrower.views.request')
+    def test_confirmed_network_agreement_accepted(self, mock_request, mock_redirect):
+        mock_request.method = "POST"
+        mock_request.form = {'validate': 'True', 'accept-naa': 'Accept'}
+        confirm_network_agreement()
+        self.assertEqual(session['agreement_naa'],  "accepted")
         mock_redirect.assert_called_with('/mortgage-deed', code=302)
 
 
@@ -42,7 +60,7 @@ class TestSearchDeed(unittest.TestCase):
     def test_search_deed_post(self, client):
         with client.session_transaction() as sess:
             sess['deed_token'] = '063604'
-            sess['agreement_naa'] = 'Checked'
+            sess['agreement_naa'] = 'accepted'
 
         res = client.get('/mortgage-deed')
 
@@ -53,7 +71,7 @@ class TestSearchDeed(unittest.TestCase):
     def test_search_deed_post_invalid_reference(self, client):
         with client.session_transaction() as sess:
             sess['deed_token'] = '063604'
-            sess['agreement_naa'] = 'Checked'
+            sess['agreement_naa'] = 'accepted'
 
         res = client.get('/mortgage-deed')
 
