@@ -1,7 +1,7 @@
 from flask import session
 from tests.helpers import with_client, setUpApp, with_context
 import unittest
-from application.deed.searchdeed.views import validate_dob
+from application.deed.searchdeed.views import validate_dob, search_deed_search, do_search_deed_search
 from application.borrower.views import confirm_network_agreement
 from datetime import date
 from unittest.mock import patch
@@ -45,6 +45,32 @@ class TestAgreementNaa(unittest.TestCase):
         confirm_network_agreement()
         self.assertEqual(session['agreement_naa'],  "accepted")
         mock_redirect.assert_called_with('/mortgage-deed', code=302)
+
+    @with_context
+    @patch('application.deed.searchdeed.views.redirect')
+    def test_search_deed_search_deed_token(self, mock_redirect):
+        search_deed_search()
+        mock_redirect.assert_called_with('/session-ended', code=302)
+
+    @with_context
+    @patch('application.deed.searchdeed.views.redirect')
+    def test_search_deed_search_no_agreement(self, mock_redirect):
+        session['deed_token'] = 'test'
+        search_deed_search()
+        mock_redirect.assert_called_with('/how-to-proceed', code=307)
+
+        session['agreement_naa'] = 'declined'
+        search_deed_search()
+        mock_redirect.assert_called_with('/how-to-proceed', code=307)
+
+    @with_context
+    @patch('application.deed.searchdeed.views.redirect')
+    @patch('application.deed.searchdeed.views.do_search_deed_search')
+    def test_search_deed_search_success(self, mock_search, mock_redirect):
+        session['deed_token'] = 'test'
+        session['agreement_naa'] = 'accepted'
+        mock_search.return_value = 'ok'
+        self.assertEqual(search_deed_search(), ('ok', 200))
 
 
 class TestSearchDeed(unittest.TestCase):
