@@ -42,8 +42,7 @@ def confirm_network_agreement():
             return redirect('/mortgage-deed', code=302)
         else:
             session['agreement_naa'] = "declined"
-            error = "You must agree to these Terms and Conditions to proceed"
-            return render_template('howtoproceed.html', error=error, code=307)
+            return redirect('/how-to-proceed', code=307)
 
 
 @borrower_landing.route('/verify', methods=['POST'])
