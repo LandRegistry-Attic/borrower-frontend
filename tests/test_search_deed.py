@@ -6,10 +6,6 @@ from application.borrower.views import confirm_network_agreement
 from datetime import date
 from unittest.mock import patch
 
-def test_request_auth_code(self, client):
-    with client.session_transaction() as sess:
-        sess['deed_token'] = '063604'
-
 
 class TestAgreementNaa(unittest.TestCase):
     def setUp(self):
