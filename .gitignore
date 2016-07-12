@@ -19,3 +19,4 @@ htmlcov/
 /build/elements-toolkit/govuk_modules
 /build/govuk_modules/
 /build/node_modules/
+*.iml

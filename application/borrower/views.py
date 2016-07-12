@@ -6,7 +6,7 @@ borrower_landing = Blueprint('borrower_landing', __name__,
                              static_folder='static')
 
 
-@borrower_landing.route('/how-to-proceed', methods=['POST'])
+@borrower_landing.route('/how-to-proceed', methods=['POST', 'GET'])
 def verified():
     return render_template('howtoproceed.html')
 
@@ -30,6 +30,19 @@ def identity_verified():
         return Response('Unauthenticated', 401, {'WWW-Authenticate': 'Basic realm="Authentication Required"'})
     else:
         return render_template("identity-verified.html")
+
+
+@borrower_landing.route('/confirm-naa', methods=['GET', 'POST'])
+def confirm_network_agreement():
+    if request.method == "GET":
+        return render_template('confirm-borrower-naa.html')
+    elif request.method == "POST":
+        if 'accept-naa' in request.form:
+            session['agreement_naa'] = "accepted"
+            return redirect('/mortgage-deed', code=302)
+        else:
+            session['agreement_naa'] = "declined"
+            return redirect('/how-to-proceed', code=307)
 
 
 @borrower_landing.route('/verify', methods=['POST'])
