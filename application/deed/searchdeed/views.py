@@ -31,13 +31,14 @@ def enter_dob():
 
     if 'validate' in form:
         form.error = validate_dob(form)
+        borrower_token = form['borrower_token'].upper()
         if form.error is None:
             dob = form["dob-day"] + "/" + form["dob-month"] + "/" + form["dob-year"]
-            result = validate_borrower(form['borrower_token'], dob)
+            result = validate_borrower(borrower_token, dob)
             if result is not None:
                 session['deed_token'] = result['deed_token']
                 session['phone_number'] = result['phone_number']
-                session['borrower_token'] = form['borrower_token']
+                session['borrower_token'] = borrower_token
                 return redirect('/how-to-proceed', code=307)
             else:
                 session['error'] = "True"
