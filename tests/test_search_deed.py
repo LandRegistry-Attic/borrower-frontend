@@ -105,13 +105,13 @@ class TestSearchDeed(unittest.TestCase):
         with client.session_transaction() as sess:
             sess['deed_token'] = '063604'
 
-        res = client.post('/date-of-birth', data={'borrower_token': '38',
+        res = client.post('/date-of-birth', data={'borrower_token': 'vvAAA',
                                                   'dob-day': '01',
                                                   'dob-month': '10',
                                                   'dob-year': '1976',
                                                   'dob': '01/11/1975',
                                                   'validate': 'True'})
-
+        self.assertEqual(session['borrower_token'], 'VVAAA')
         self.assertEqual(res.status_code, 307)
 
     @with_context
@@ -180,7 +180,7 @@ class TestSearchDeed(unittest.TestCase):
     def test_authenticate_code(self, client):
         with client.session_transaction() as sess:
             sess['deed_token'] = '063604'
-            sess['borrower_token'] = 'A2C5v6'
+            sess['borrower_token'] = 'A2C5G6'
 
         res = client.post('/enter-authentication-code', data={'auth_code': 'AAA123'})
 
@@ -191,7 +191,7 @@ class TestSearchDeed(unittest.TestCase):
     def test_show_confirming_deed_page_check(self, client):
         with client.session_transaction() as sess:
             sess['deed_token'] = '063604'
-            sess['borrower_token'] = 'A2C5v6'
+            sess['borrower_token'] = 'A2C5V6'
 
         res = client.post('/confirming-mortgage-deed', data={'auth_code': 'AAA123'})
 
