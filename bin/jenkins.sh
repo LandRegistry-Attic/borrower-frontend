@@ -12,7 +12,7 @@ pip install -r requirements_test.txt
 
 mkdir ../logs
 
-./test.sh
+./unit_test.sh
 
 test_pass=$?
 
