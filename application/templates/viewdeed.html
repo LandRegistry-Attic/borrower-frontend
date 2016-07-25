@@ -71,12 +71,12 @@
         <h3 class="heading-medium">Borrower's digital signature(s)</h3>
         {% for borrower in deed_data.deed.borrowers %}
           {% if borrower.signature %}
-            <p id="signature{{ loop.index }}">Confirmed by
+            <p id="signature{{ loop.index }}">Signed by
               <b class="bold-small"> {{ borrower.forename }}
                 {{ borrower.middle_name }}{% if borrower.middle_name %} {% endif %}{{ borrower.surname }} </b>
             </p>
           {% else %}
-            <p class="awaiting-information" id="signature{{ loop.index }}">[Awaiting confirmation
+            <p class="awaiting-information" id="signature{{ loop.index }}">[Awaiting signature
               from {{ borrower.forename }}
               {{ borrower.middle_name }}{% if borrower.middle_name %} {% endif %}{{ borrower.surname }}]
             </p>
@@ -102,9 +102,9 @@
               <input class="button" type="submit" value="Continue">
             </form>
           {% else %}
-            <p>If you’re ready to confirm your mortgage, we’ll send you an authentication code which you’ll need to
+            <p>If you’re ready to sign your mortgage, we’ll send you an authentication code which you’ll need to
               enter on the next screen</p>
-            <p>If you do not wish to confirm the mortgage deed (for instance if you think there is a mistake or you
+            <p>If you do not wish to sign the mortgage deed (for instance if you think there is a mistake or you
               want further explanation) you should contact your conveyancer.</p>
             <h2 class="heading-medium">Receiving your authentication code</h2>
             <p>
