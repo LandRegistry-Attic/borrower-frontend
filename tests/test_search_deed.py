@@ -193,7 +193,7 @@ class TestSearchDeed(unittest.TestCase):
             sess['deed_token'] = '063604'
             sess['borrower_token'] = 'A2C5V6'
 
-        res = client.post('/confirming-mortgage-deed', data={'auth_code': 'AAA123'})
+        res = client.post('/signing-mortgage-deed', data={'auth_code': 'AAA123'})
 
         self.assertEqual(res.status_code, 200)
 
