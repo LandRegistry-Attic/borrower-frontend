@@ -73,7 +73,7 @@ def verify_identity():
                 LOGGER.warn("verify-error-unknown")
                 return redirect(url_for('borrower_landing.verify_error'), code=302)
         else:
-            # No PID and No Verify-response-status
+            # No PID and No Verify-response-status - This should never happen
             LOGGER.error("no-pid-no-status")
             return redirect('/server-error', code=302)
 
