@@ -73,14 +73,14 @@ def show_authentication_code_page():
     return render_template('authentication-code.html')
 
 
-@searchdeed.route('/confirming-mortgage-deed', methods=['POST'])
+@searchdeed.route('/signing-mortgage-deed', methods=['POST'])
 def show_confirming_deed_page():
     auth_code = request.form['auth_code']
 
     if auth_code is None or auth_code == '':
         return render_template('authentication-code.html', error=True)
 
-    return render_template('confirming-mortgage-deed.html', auth_code=request.form['auth_code'])
+    return render_template('signing-mortgage-deed.html', auth_code=request.form['auth_code'])
 
 
 @searchdeed.route('/verify-auth-code', methods=['POST'])
