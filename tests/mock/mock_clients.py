@@ -56,3 +56,13 @@ class DeedApiMockClient:
             status_code = status.HTTP_200_OK
 
         return Response
+
+    @staticmethod
+    def get_borrower_details_by_verify_pid(verify_pid):
+        if verify_pid == '111111':
+            deed_token = 'some_deed_token'
+            phone_number = 'some_phone_number'
+            borrower_token = 'some_borrower_token'
+            return {"deed_token": deed_token, "phone_number": phone_number, "borrower_token": borrower_token}
+        else:
+            return None
