@@ -79,12 +79,6 @@
 
           <h1 class="heading-xlarge">Sign your mortgage deed</h1>
 
-          {% if session['code-sent'] %}
-            <p class="panel-indent">
-              Your new authentication code has been sent.
-            </p> <br/>
-          {% endif %}
-
           <p>
             We have just sent your authentication code by text message to your mobile
             number ending <b class="bold-small">{{ session.phone_number }}</b>
@@ -106,6 +100,10 @@
             </script>
 
             <div class="form-group">
+              <em>
+                Warning: By entering your authentication code and clicking Sign Mortgage you 
+                will be applying your digital signature to the mortgage.
+              <em>
               <label class="form-label-bold" for="auth_code">
                 Enter your authentication code
                 <span class="form-hint">For example, c6e78a</span>

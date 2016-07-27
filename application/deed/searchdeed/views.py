@@ -68,7 +68,6 @@ def show_authentication_code_page():
         return render_template('authentication-code.html', error=True)
 
     send_auth_code()
-    session['code-sent'] = True
 
     return render_template('authentication-code.html')
 
