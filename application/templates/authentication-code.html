@@ -44,6 +44,18 @@
             your area.
           </p>
 
+          <div class="notice">
+              <i class="icon icon-important">
+                <span class="visuallyhidden">Warning</span>
+              </i>
+              <p>
+              <strong class="bold-small">
+                Warning: By entering your authentication code and clicking Sign mortgage you
+                will be applying your digital signature to the mortgage.
+              </strong>
+              </p>
+          </div>
+
           <form id="confirming-deed-form" class="form" method="post" action="{{url_for('searchdeed.verify_auth_code_no_js') }}">
 
             <script>
