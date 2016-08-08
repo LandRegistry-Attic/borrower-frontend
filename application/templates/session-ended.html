@@ -5,11 +5,15 @@
     <div id="content">
       <div class="inner-block">
         <h1 class="heading-xlarge">Your session has ended</h1>
-        <p class="text">Your session has been ended by the service or has
-          timed out because you haven’t done anything for 20 minutes. We’ve
-          deleted all the details you’ve entered to protect your privacy.</p>
-        <p class="text">You’ll need to <a href="{{ url_for('borrower_landing.home') }}">start
-          again</a>.</p>
+        <p class="text">This is because:</p>
+          <ul class="list list-bullet">
+            <li>You have already successfully signed your mortgage deed</li>
+          </ul>
+          <ol><p class="text">or</p></ol>
+          <ul class="list list-bullet">
+            <li>There has been no activity for the past 20 minutes and you will need to <a href="{{ url_for('borrower_landing.home') }}">start
+            again</a></li>
+          </ul>
       </div>
     </div>
   </main>
