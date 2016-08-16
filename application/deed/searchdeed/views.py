@@ -215,7 +215,7 @@ def do_search_deed_search():
             deed_data["deed"]["effective_date"] = temp.strftime("%d/%m/%Y")
 
         # Akuma Check
-        Akuma.do_check(deed_data, "borrower view", session['borrower_token'])
+        Akuma.do_check(deed_data, "borrower view", session['borrower_token'], session['deed_token'])
 
         deed_data["deed"]["property_address"] = format_address_string(deed_data["deed"]["property_address"])
         if deed_signed():
