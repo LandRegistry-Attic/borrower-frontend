@@ -13,7 +13,6 @@ class Akuma:
         akuma_payload['borrower_token'] = borrower_token
         akuma_payload['deed_token'] = str(deed_token)
 
-
         payload = {
             "service": "digital mortgage",
             "activity": check_type,
