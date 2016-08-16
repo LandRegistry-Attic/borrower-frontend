@@ -83,6 +83,7 @@ class TestSearchDeed(unittest.TestCase):
         with client.session_transaction() as sess:
             sess['deed_token'] = '063604'
             sess['agreement_naa'] = 'accepted'
+            sess['borrower_token'] = 'AABB1232'
 
         res = client.get('/mortgage-deed')
 
@@ -94,6 +95,7 @@ class TestSearchDeed(unittest.TestCase):
         with client.session_transaction() as sess:
             sess['deed_token'] = '063604'
             sess['agreement_naa'] = 'accepted'
+            sess['borrower_token'] = 'AABB1232'
 
         res = client.get('/mortgage-deed')
 
