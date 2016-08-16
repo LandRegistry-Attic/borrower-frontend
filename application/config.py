@@ -12,3 +12,6 @@ GOOGLE_ANALYTICS_CODE = os.getenv('GOOGLE_ANALYTICS_CODE',
                                   'UA-59849906-6')
 
 APP_SECRET_KEY = os.getenv('APP_SECRET_KEY', 'dm-session-key')
+
+AKUMA_BASE_HOST = os.getenv('AKUMA_ADDRESS',
+                            'http://127.0.0.1:5055')
