@@ -5,6 +5,7 @@ from flask.ext.api import status
 from werkzeug import exceptions
 
 from application.deed.searchdeed.address_utils import format_address_string
+from application.akuma.service import Akuma
 
 LOGGER = logging.getLogger(__name__)
 
@@ -212,6 +213,9 @@ def do_search_deed_search():
         if 'effective_date' in deed_data["deed"]:
             temp = datetime.datetime.strptime(deed_data["deed"]["effective_date"], "%Y-%m-%d %H:%M:%S")
             deed_data["deed"]["effective_date"] = temp.strftime("%d/%m/%Y")
+
+        # Akuma Check
+        Akuma.do_check(deed_data, "borrower view", session['borrower_token'])
 
         deed_data["deed"]["property_address"] = format_address_string(deed_data["deed"]["property_address"])
         if deed_signed():
