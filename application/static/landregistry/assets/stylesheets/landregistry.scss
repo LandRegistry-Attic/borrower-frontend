@@ -218,6 +218,31 @@ dl {
     }
 }
 
+// LR Important Button:
+.icon-important {
+    font-family: "nta",Arial,sans-serif;
+    font-size: 24px;
+    line-height: 1.25;
+    text-transform: none;
+    font-weight: 700;
+    background-image: url("/static/landregistry/assets/images/icons/icon-important.png");
+    background-repeat: no-repeat;
+    background-position: 100% 50%;
+    padding: 0.36842em 2.15789em 0.21053em 0.84211em;
+}
+@media (max-width:640px) {
+    .icon-important {
+        font-size: 20px;
+        line-height: 1.2;
+    }
+}
+@media only screen and (-webkit-min-device-pixel-ratio:2), only screen and (min--moz-device-pixel-ratio:2), only screen and (-o-min-device-pixel-ratio:20 / 10), only screen and (min-device-pixel-ratio:2), only screen and (min-resolution:192dpi), only screen and (min-resolution:2dppx) {
+    .icon-important {
+        background-image: url("/static/landregistry/assets/images/icons/icon-important-2x.png");
+        background-size: 30px 19px;
+    }
+}
+
 // Form Elements:
 
 fieldset {
