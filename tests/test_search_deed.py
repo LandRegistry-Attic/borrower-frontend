@@ -79,11 +79,17 @@ class TestSearchDeed(unittest.TestCase):
 
     @with_context
     @with_client
-    def test_search_deed_post(self, client):
+    @patch('application.akuma.service.Akuma.do_check')
+    def test_search_deed_post(self, client, mock_akuma):
         with client.session_transaction() as sess:
             sess['deed_token'] = '063604'
             sess['agreement_naa'] = 'accepted'
             sess['borrower_token'] = 'AABB1232'
+
+        mock_akuma.return_value = {
+            "result": "A",
+            "id": "2b9115b2-d956-11e5-942f-08002719cd16"
+        }
 
         res = client.get('/mortgage-deed')
 
@@ -91,11 +97,17 @@ class TestSearchDeed(unittest.TestCase):
 
     @with_context
     @with_client
-    def test_search_deed_post_invalid_reference(self, client):
+    @patch('application.akuma.service.Akuma.do_check')
+    def test_search_deed_post_invalid_reference(self, client, mock_akuma):
         with client.session_transaction() as sess:
             sess['deed_token'] = '063604'
             sess['agreement_naa'] = 'accepted'
             sess['borrower_token'] = 'AABB1232'
+
+        mock_akuma.return_value = {
+            "result": "A",
+            "id": "2b9115b2-d956-11e5-942f-08002719cd16"
+        }
 
         res = client.get('/mortgage-deed')
 
