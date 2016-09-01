@@ -9,6 +9,20 @@
 
       <h1 class="heading-xlarge">Your mortgage deed</h1>
 
+      <div class="text">
+        <div class="notice">
+          <i class="icon icon-important">
+            <span class="visuallyhidden">Warning</span>
+          </i>
+          <strong class="bold-small">
+            This is an important legal document.
+            YOUR HOME MAY BE REPOSSESSED IF YOU DO NOT KEEP UP REPAYMENTS ON YOUR MORTGAGE.
+            You should consider taking independent legal advice from a conveyancer or other legal advisor before you
+            sign this mortgage.
+          </strong>
+        </div>
+      </div>
+      <br>
       <article class="text deed-document-bounds">
         <h2 class="heading-large">Digital Mortgage Deed</h2>
         <h3 class="heading-medium">Property</h3>
@@ -28,7 +42,7 @@
         <p itemscope itemtype="http://schema.org/Corporation">
           <span itemprop="name">{{ deed_data.deed.lender.name }}</span>
           <br>
-            <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress" class="address-inline">
+          <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress" class="address-inline">
             <span itemprop="streetAddress">{{ deed_data.deed.lender.address }}</span>
             </span>
         </p>
