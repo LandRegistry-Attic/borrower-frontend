@@ -15,6 +15,8 @@ ENV DEED_API_ADDRESS http://deed-api:8080
 ENV GOOGLE_ANALYTICS_CODE UA-59849906-6
 ENV APP_SECRET_KEY dm-session-key
 
+RUN mkdir /logs
+
 WORKDIR /src
 
 # ----
