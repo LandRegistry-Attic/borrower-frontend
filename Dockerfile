@@ -14,6 +14,7 @@ ENV DEBUG True
 ENV DEED_API_ADDRESS http://deed-api:8080
 ENV GOOGLE_ANALYTICS_CODE UA-59849906-6
 ENV APP_SECRET_KEY dm-session-key
+ENV AKUMA_ADDRESS 'http://cf-api-stub:8080'
 
 RUN mkdir /logs
 
