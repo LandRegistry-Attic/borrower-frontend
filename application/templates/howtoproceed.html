@@ -29,10 +29,18 @@
           </div>
           <div class="verified-bullets">
             <h3 class="heading-small">Agree to the Terms and Conditions</h3>
-            <p>You will need to agree to Land Registry’s terms and conditions set out in our
-              Signature Network Access Agreement.</p>
+            <form action="/confirm-naa" method="POST">
+              <input id="validate" type="hidden" name="validate" class="form-control" type="text" value="True">
+              <div class="text">
+                <p>
+                  <label class="block-label" for="terms">
+      <input id="terms" name="accept-naa" type="checkbox" value="Accept">
+      I agree to the terms and conditions set out in the <a href="naa">Network Access Agreement</a>
+    </label>
+    </p>
+    </div>
+  <br>
           </div>
-        </li>
         <li>
           <div class="icon-stack verified-bullets-fa">
             <i class="icon-circle icon-stack-base"></i>
@@ -70,8 +78,13 @@
     </div>
     <div class="text">
       <p>
-        <a href="/confirm-naa" class="button">Continue</a>
+              <input class="button"  type="submit" >
+
+
+        </form>
+
       </p>
     </div>
+
   </main>
 {% endblock %}

@@ -13,6 +13,11 @@ borrower_landing = Blueprint('borrower_landing', __name__,
 def verified():
     return render_template('howtoproceed.html')
 
+@borrower_landing.route('/borrow-naa', methods=['POST', 'GET'])
+def borrow_naa():
+    return render_template('confirm-borrower-naa.html')
+
+
 
 @borrower_landing.route('/')
 def home():
@@ -34,11 +39,10 @@ def identity_verified():
     else:
         return render_template("identity-verified.html")
 
-
 @borrower_landing.route('/confirm-naa', methods=['GET', 'POST'])
 def confirm_network_agreement():
     if request.method == "GET":
-        return render_template('confirm-borrower-naa.html')
+        return render_template('howtoproceed.html')
     elif request.method == "POST":
         if 'accept-naa' in request.form:
             session['agreement_naa'] = "accepted"
@@ -46,7 +50,6 @@ def confirm_network_agreement():
         else:
             session['agreement_naa'] = "declined"
             return redirect('/how-to-proceed', code=307)
-
 
 @borrower_landing.route('/verify', methods=['POST'])
 def verify_identity():
