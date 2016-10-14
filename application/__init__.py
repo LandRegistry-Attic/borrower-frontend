@@ -13,6 +13,7 @@ from .deed.searchdeed.views import searchdeed
 from .borrower.views import borrower_landing
 
 
+
 logging_config.setup_logging()
 LOGGER = logging.getLogger(__name__)
 LOGGER.info("Starting the server")

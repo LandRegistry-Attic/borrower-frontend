@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, Response, request, session, redirect, url_for
 from application import config
+from application.service.deed_api import implementation
 import logging
 
 LOGGER = logging.getLogger(__name__)
@@ -11,7 +12,7 @@ borrower_landing = Blueprint('borrower_landing', __name__,
 
 @borrower_landing.route('/how-to-proceed', methods=['POST', 'GET'])
 def verified():
-    return render_template('howtoproceed.html')
+        return render_template('howtoproceed.html')
 
 @borrower_landing.route('/borrow-naa', methods=['POST', 'GET'])
 def borrow_naa():
@@ -46,6 +47,9 @@ def confirm_network_agreement():
     elif request.method == "POST":
         if 'accept-naa' in request.form:
             session['agreement_naa'] = "accepted"
+            borrower_id= session['borrower_id']
+            result= implementation.send_naa(borrower_id)
+            print(result)
             return redirect('/mortgage-deed', code=302)
         else:
             session['agreement_naa'] = "declined"

@@ -40,7 +40,8 @@ def enter_dob():
                 session['deed_token'] = result['deed_token']
                 session['phone_number'] = result['phone_number']
                 session['borrower_token'] = borrower_token
-                return redirect('/how-to-proceed', code=307)
+                session['borrower_id'] = result['borrower_id']
+                return redirect('/how-to-proceed')
             else:
                 session['error'] = "True"
                 return redirect('/borrower-reference', code=307)
