@@ -29,7 +29,7 @@
         <div class="verified-bullets">
           <h3 class="heading-small">Agree to the Terms and Conditions</h3>
           <input id="validate" type="hidden" name="validate" class="form-control" type="text" value="True">
-          <div class="text" id="naa-box">
+          <div class="text" id="naa-box" >
             <p>
               <form action="/confirm-naa" method="POST">
                 <label class="block-label" for="terms">
@@ -86,17 +86,7 @@
           </div>
 
         </main>
-        <script type=text/javascript>
-        document.getElementById('check-checkbox').disabled = true;
-
-        function myFunction(status) {
-          if ($('#accept-naa').is(':checked')) {
-            document.getElementById('check-checkbox').disabled = false;
-          }
-          else {
-            document.getElementById('check-checkbox').disabled = true;
-          }}
-          </script>
+        <script src="static/landregistry/assets/javascript/accept-naa.js"></script>
 
 
           {% endblock %}
