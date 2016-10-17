@@ -127,7 +127,7 @@ class TestSearchDeed(unittest.TestCase):
                                                   'dob': '01/11/1975',
                                                   'validate': 'True'})
         self.assertEqual(session['borrower_token'], 'VVAAA')
-        self.assertEqual(res.status_code, 302)
+        self.assertEqual(res.status_code, 307)
 
     @with_context
     @with_client
