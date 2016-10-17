@@ -1,9 +1,19 @@
-document.getElementById('check-checkbox').disabled = true;
+(function() {
+  var $submit = $('#submit');
+  var $naa = $('#accept-naa');
 
-function myFunction(status) {
-  if ($('#accept-naa').is(':checked')) {
-    document.getElementById('check-checkbox').disabled = false;
+  function updateButton() {
+    if($naa.is(':checked')) {
+      $submit.removeAttr('disabled');
+    } else {
+      $submit.attr('disabled', true);
+    }
   }
-  else {
-    document.getElementById('check-checkbox').disabled = true;
-  }};
+
+  $naa.on('change', updateButton);
+
+  $(document).ready(function() {
+    updateButton();
+  });
+
+})();

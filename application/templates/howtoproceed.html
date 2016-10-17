@@ -1,92 +1,95 @@
 {% extends "base/lr_base_layout.html" %}
 
 {% block content %}
-<head>
-  <link href="/static/landregistry/assets/stylesheets/application.css" media="screen" rel="stylesheet"
-  type="text/css">
-</head>
+    <head>
+        <link href="/static/landregistry/assets/stylesheets/application.css" media="screen" rel="stylesheet"
+              type="text/css">
+    </head>
 
 
-<main id="content" role="main">
+    <main id="content" role="main">
 
-  {{ super() }}
+        {{ super() }}
 
-  <h1 class="heading-xlarge">
-    Sign your mortgage deed
-  </h1>
-  <div class="text verified-container">
-    <p class="lede">
-      Now that you’ve confirmed your identity you can sign your mortgage deed. You should:
-    </p>
-  </div>
-  <div class="text verified-container" id="verified-container">
-    <ol class="list-plain">
-      <li>
-        <div class="icon-stack verified-bullets-fa">
-          <i class="icon-circle icon-stack-base"></i>
-          <span class="icon-stack verfied-bullet-numbers-fa">1</span>
+        <h1 class="heading-xlarge">
+            Sign your mortgage deed
+        </h1>
+        <div class="text verified-container">
+            <p class="lede">
+                Now that you’ve confirmed your identity you can sign your mortgage deed. You should:
+            </p>
         </div>
-        <div class="verified-bullets">
-          <h3 class="heading-small">Agree to the Terms and Conditions</h3>
-          <input id="validate" type="hidden" name="validate" class="form-control" type="text" value="True">
-          <div class="text" id="naa-box" >
-            <p>
-              <form action="/confirm-naa" method="POST">
-                <label class="block-label" for="terms">
-                  <input id="accept-naa" name="accept-naa" class="accept-naa" type="checkbox" onclick="myFunction()" value="Accept">
-                  I agree to the terms and conditions set out in the <a href="naa">Network Access Agreement</a>
-                </label>
-              </p>
-            </div>
-            <br>
-          </div>
-          <li>
-            <div class="icon-stack verified-bullets-fa">
-              <i class="icon-circle icon-stack-base"></i>
-              <span class="icon-stack verfied-bullet-numbers-fa">2</span>
-            </div>
-            <div class="verified-bullets">
-              <h3 class="heading-small">Read your mortgage deed carefully</h3>
-              <p>You’ll need to check the details of your mortgage deed and read through the legal clauses.
-                If you spot any mistakes you should let the conveyancer know.</p>
-              </div>
-            </li>
-            <li>
-              <div class="icon-stack verified-bullets-fa">
-                <i class="icon-circle icon-stack-base"></i>
-                <span class="icon-stack verfied-bullet-numbers-fa">3</span>
-              </div>
-              <div class="verified-bullets">
-                <h3 class="heading-small">Confirm your mortgage deed is correct</h3>
-                <p>If you are happy there are no mistakes, then you will need to request an authentication code to be sent
-                  to your mobile phone in order to sign the deed.</p>
-                </div>
-              </li>
-              <li>
-                <div class="icon-stack verified-bullets-fa">
-                  <i class="icon-circle icon-stack-base"></i>
-                  <span class="icon-stack verfied-bullet-numbers-fa">4</span>
-                </div>
-                <div class="verified-bullets">
-                  <h3 class="heading-small">Sign your mortgage deed</h3>
-                  <p>Enter your authentication code to sign the deed. Doing so means that you don't need to sign a paper document,
-                    or get your signature witnessed.</p>
-                  </div>
-                </li>
-              </ol>
+
+        <form action="/confirm-naa" method="POST">
+
+            <div class="text verified-container" id="verified-container">
+                <ol class="list-plain">
+                    <li>
+                        <div class="icon-stack verified-bullets-fa">
+                            <i class="icon-circle icon-stack-base"></i>
+                            <span class="icon-stack verfied-bullet-numbers-fa">1</span>
+                        </div>
+                        <div class="verified-bullets">
+                            <h3 class="heading-small">Agree to the Terms and Conditions</h3>
+                            <input id="validate" type="hidden" name="validate" class="form-control" type="text"
+                                   value="True">
+                            <div class="text" id="naa-box">
+                                <label class="block-label" for="accept-naa">
+                                    <input id="accept-naa" name="accept-naa" class="accept-naa" type="checkbox"
+                                           value="Accept">
+                                    I agree to the terms and conditions set out in the <a href="naa">Network Access
+                                    Agreement</a>
+                                </label>
+                                <br>
+                            </div>
+                        </div>
+                    <li>
+                        <div class="icon-stack verified-bullets-fa">
+                            <i class="icon-circle icon-stack-base"></i>
+                            <span class="icon-stack verfied-bullet-numbers-fa">2</span>
+                        </div>
+                        <div class="verified-bullets">
+                            <h3 class="heading-small">Read your mortgage deed carefully</h3>
+                            <p>You’ll need to check the details of your mortgage deed and read through the legal
+                                clauses.
+                                If you spot any mistakes you should let the conveyancer know.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-stack verified-bullets-fa">
+                            <i class="icon-circle icon-stack-base"></i>
+                            <span class="icon-stack verfied-bullet-numbers-fa">3</span>
+                        </div>
+                        <div class="verified-bullets">
+                            <h3 class="heading-small">Confirm your mortgage deed is correct</h3>
+                            <p>If you are happy there are no mistakes, then you will need to request an authentication
+                                code to be sent
+                                to your mobile phone in order to sign the deed.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-stack verified-bullets-fa">
+                            <i class="icon-circle icon-stack-base"></i>
+                            <span class="icon-stack verfied-bullet-numbers-fa">4</span>
+                        </div>
+                        <div class="verified-bullets">
+                            <h3 class="heading-small">Sign your mortgage deed</h3>
+                            <p>Enter your authentication code to sign the deed. Doing so means that you don't need to
+                                sign a paper document,
+                                or get your signature witnessed.</p>
+                        </div>
+                    </li>
+                </ol>
             </div>
             <div class="text">
-              <p>
-                <input class="button" id="check-checkbox" type="submit">
+                <input class="button" id="submit" type="submit">
+            </div>
+        </form>
 
+    </main>
+{% endblock %}
 
-              </form>
-
-            </p>
-          </div>
-
-        </main>
-        <script src="static/landregistry/assets/javascript/accept-naa.js"></script>
-
-
-          {% endblock %}
+{% block body_end %}
+    {{ super() }}
+    <script src="static/landregistry/assets/javascript/accept-naa.js"></script>
+{% endblock %}
