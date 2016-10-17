@@ -16,7 +16,7 @@ class TestAgreementNaa(unittest.TestCase):
     def test_confirm_network_agreement_get(self, mock_request, mock_render):
         mock_request.method = "GET"
         confirm_network_agreement()
-        mock_render.assert_called_with('confirm-borrower-naa.html')
+        mock_render.assert_called_with('howtoproceed.html')
 
     @with_context
     @patch('application.borrower.views.redirect')
@@ -42,6 +42,7 @@ class TestAgreementNaa(unittest.TestCase):
     def test_confirmed_network_agreement_accepted(self, mock_request, mock_redirect):
         mock_request.method = "POST"
         mock_request.form = {'validate': 'True', 'accept-naa': 'Accept'}
+        session['borrower_id'] = 00000
         confirm_network_agreement()
         self.assertEqual(session['agreement_naa'],  "accepted")
         mock_redirect.assert_called_with('/mortgage-deed', code=302)
@@ -126,7 +127,7 @@ class TestSearchDeed(unittest.TestCase):
                                                   'dob': '01/11/1975',
                                                   'validate': 'True'})
         self.assertEqual(session['borrower_token'], 'VVAAA')
-        self.assertEqual(res.status_code, 307)
+        self.assertEqual(res.status_code, 302)
 
     @with_context
     @with_client
