@@ -19,10 +19,11 @@ def get_deed(deed_reference):  # pragma: no cover
 
     return data
 
+
 def send_naa(borrower_id):
     resp = requests.post(config.DEED_API_BASE_HOST + '/naa/accept/' +
-                        str(borrower_id),
-                        headers=webseal_headers)
+                         str(borrower_id),
+                         headers=webseal_headers)
     return resp
 
 
