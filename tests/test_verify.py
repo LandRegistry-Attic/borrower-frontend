@@ -105,3 +105,6 @@ class TestVerify(unittest.TestCase):
         res = client.post(url_for('borrower_landing.verify_identity'), follow_redirects=False)
         self.assertEqual(urlparse(res.location).path, '/server-error')
         self.assertEqual(res.status_code, 302)
+
+
+        #
