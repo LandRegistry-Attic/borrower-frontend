@@ -3,9 +3,21 @@
 {% block content %}
 
 
+
 <main id="content" role="main">
 
   {{ super() }}
+
+
+{% if session['agreement_naa']== 'declined' %}
+<div class="error-summary" role="group" aria-labelledby="error-summary-heading-example-1" >
+
+<h1 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+Please agree to Land Registry's terms and conditions for this service </h1>
+<p>
+By using the checkbox bellow.</p>
+</div>
+  {% endif %}
 
   <h1 class="heading-xlarge">
     Sign your mortgage deed
@@ -29,7 +41,7 @@
             <p>
               <form action="/confirm-naa" method="POST">
                 <label class="block-label" for="terms">
-                  <input id="accept-naa" name="accept-naa" class="accept-naa" type="checkbox" onclick="myFunction()" value="Accept">
+                  <input id="accept-naa" name="accept-naa" class="accept-naa" type="checkbox" value="Accept">
 I agree to the terms and conditions set out in the <a href="borrow-naa">Network Access Agreement</a>
                 </label>
               </p>
@@ -73,14 +85,16 @@ I agree to the terms and conditions set out in the <a href="borrow-naa">Network 
             </div>
             <div class="text">
               <p>
-                <input class="button" id="check-checkbox" type="submit" value="Submit">
+                <input onload="disable" class="button" id="submit" type="submit" value="Submit">
               </form>
 
             </p>
           </div>
 
         </main>
+
         <script src="static/landregistry/assets/javascript/accept-naa.js"></script>
+
 
 
           {% endblock %}

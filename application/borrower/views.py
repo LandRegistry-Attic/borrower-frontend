@@ -57,6 +57,7 @@ def confirm_network_agreement():
             return redirect('/how-to-proceed', code=307)
 
 
+
 @borrower_landing.route('/verify', methods=['POST'])
 def verify_identity():
     if 'Pid' in request.headers:
