@@ -1,8 +1,7 @@
 from tests.helpers import with_client, setUpApp, with_context
 import unittest
 from lxml.html import document_fromstring
-import mock
-import requests
+
 
 class TestHealth(unittest.TestCase):
     def setUp(self):

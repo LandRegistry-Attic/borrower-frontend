@@ -50,6 +50,7 @@ def get_borrower_details_by_verify_pid(verify_pid):  # pragma: no cover
     else:
         return None
 
+
 def check_health():
     service_response = requests.get(config.DEED_API_BASE_HOST + '/health/service-check')
 
