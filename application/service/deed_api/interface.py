@@ -16,3 +16,6 @@ class DeedApiInterface(object):  # pragma: no cover
 
     def get_borrower_details_by_verify_pid(self, verify_pid):
         return self.implementation.get_borrower_details_by_verify_pid(verify_pid)
+
+    def check_service_health(self):
+        return self.implementation.check_health(params)
