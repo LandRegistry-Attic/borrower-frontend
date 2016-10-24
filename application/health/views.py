@@ -49,7 +49,7 @@ def service_check_routes():
 
     # If a 500 error is reported, it will be far easier to determine the cause by
     # throwing an exception, rather than by getting an "unexpected error" output
-    except (requests.exceptions.RequestException, ValueError, TypeError) as e:
+    except Exception as e:
         # A RequestException resolves the error that occurs when a connection cant be established
         # and the ValueError/TypeError exception may occur if the dict string / object is malformed
         status_code = 500
