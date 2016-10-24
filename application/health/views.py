@@ -3,6 +3,7 @@ import requests
 from application import config
 import logging
 from application.service.deed_api import interface
+from application.service.deed_api import implementation
 
 LOGGER = logging.getLogger(__name__)
 
@@ -36,7 +37,7 @@ def service_check_routes():
     try:
         # Create the interface that allows us to call the deed api's health route
         # and retrieve the response
-        deed_api = interface.DeedApiInterface()
+        deed_api = interface.DeedApiInterface(implementation)
         service_response = deed_api.check_service_health()
         status_code = service_response.status_code
         service_list = service_response.json()
