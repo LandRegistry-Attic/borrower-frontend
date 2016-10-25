@@ -22,11 +22,10 @@ def service_check_routes():
     # Attempt to connect to deed-api which will attempt to connect to all
     # other services that are related to it.
     service_response = ""
-    status_code = 500
     service_list = ""
 
     service_dict = {
-        "status_code": status_code,
+        "status_code": 500,
         "service_from": "borrower frontend",
         "service_to": "deed-api",
         "service_message": "Successfully connected"
@@ -50,13 +49,11 @@ def service_check_routes():
     except Exception as e:
         # A RequestException resolves the error that occurs when a connection cant be established
         # and the ValueError/TypeError exception may occur if the dict string / object is malformed
-        status_code = 500
         LOGGER.error('An exception has occurred in the service-check route: %s', (e,), exc_info=True)
 
-    if status_code != 200:
         # We either have a differing status code, add an error for this service
         # This would imply that we were not able to connect to deed-api
-        service_dict["status_code"] = status_code
+        service_dict["status_code"] = 500
         service_dict["service_message"] = "Error: Could not connect"
 
         service_list = {
