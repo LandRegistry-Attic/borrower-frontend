@@ -20,7 +20,6 @@ def service_check_routes():
 
     # Attempt to connect to deed-api which will attempt to connect to all
     # other services that are related to it.
-    service_response = ""
     service_list = ""
 
     service_dict = {
@@ -35,7 +34,7 @@ def service_check_routes():
         # and retrieve the response
         deed_interface = make_deed_api_client()
         service_response = deed_interface.check_service_health()
-        
+
         status_code = service_response.status_code
         service_list = service_response.json()
 
