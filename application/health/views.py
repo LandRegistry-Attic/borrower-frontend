@@ -1,7 +1,6 @@
 from flask import Blueprint, render_template, jsonify
 import logging
-from application.service.deed_api import interface
-from application.service.deed_api import implementation
+from application.service.deed_api import make_deed_api_client
 
 LOGGER = logging.getLogger(__name__)
 
@@ -34,8 +33,9 @@ def service_check_routes():
     try:
         # Create the interface that allows us to call the deed api's health route
         # and retrieve the response
-        deed_api = interface.DeedApiInterface(implementation)
-        service_response = deed_api.check_service_health()
+        deed_interface = make_deed_api_client()
+        service_response = deed_interface.check_service_health()
+        
         status_code = service_response.status_code
         service_list = service_response.json()
 
