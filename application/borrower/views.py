@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, Response, request, session, redire
 from application import config
 from application.service.deed_api import implementation
 import logging
+from flask.ext.api import status
 
 LOGGER = logging.getLogger(__name__)
 
@@ -50,8 +51,11 @@ def confirm_network_agreement():
             session['agreement_naa'] = "accepted"
             borrower_id = session['borrower_id']
             result = implementation.send_naa(borrower_id)
-            print(result)
-            return redirect('/mortgage-deed', code=302)
+            if result.status_code == 500:
+                return redirect ('/server-error')
+            elif result.status_code == 200:
+                print(result)
+                return redirect('/mortgage-deed', code=302)
         else:
             session['agreement_naa'] = "declined"
             return redirect('/how-to-proceed', code=307)
