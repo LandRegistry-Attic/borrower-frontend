@@ -51,7 +51,7 @@ def service_check_routes():
         # A RequestException resolves the error that occurs when a connection cant be established
         # and the ValueError/TypeError exception may occur if the dict string / object is malformed
         status_code = 500
-        LOGGER.error('An exception has occurred in the service-check endpoint: %s', (e,), exc_info=True)
+        LOGGER.error('An exception has occurred in the service-check route: %s', (e,), exc_info=True)
 
     if status_code != 200:
         # We either have a differing status code, add an error for this service
