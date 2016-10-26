@@ -1,8 +1,7 @@
 from flask import Blueprint, render_template, Response, request, session, redirect, url_for
 from application import config
-from application.service.deed_api import implementation
+from application.service.deed_api import make_deed_api_client
 import logging
-from flask.ext.api import status
 
 LOGGER = logging.getLogger(__name__)
 
@@ -10,6 +9,7 @@ borrower_landing = Blueprint('borrower_landing', __name__,
                              template_folder='/templates',
                              static_folder='static')
 
+interface = make_deed_api_client()
 
 @borrower_landing.route('/how-to-proceed', methods=['POST', 'GET'])
 def verified():
@@ -50,16 +50,18 @@ def confirm_network_agreement():
         if 'accept-naa' in request.form:
             session['agreement_naa'] = "accepted"
             borrower_id = session['borrower_id']
-            result = implementation.send_naa(borrower_id)
+            interface = make_deed_api_client()
+            import pdb; pdb.set_trace()
+            result = interface.send_naa(borrower_id)
+            import pdb; pdb.set_trace()
             if result.status_code == 500:
-                return redirect ('/server-error')
+                return redirect('/server-error')
             elif result.status_code == 200:
                 print(result)
                 return redirect('/mortgage-deed', code=302)
         else:
             session['agreement_naa'] = "declined"
             return redirect('/how-to-proceed', code=307)
-
 
 
 @borrower_landing.route('/verify', methods=['POST'])

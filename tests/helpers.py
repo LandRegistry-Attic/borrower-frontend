@@ -31,3 +31,8 @@ def setUpApp(self):
     self.app = manager.app
     self.manager = manager
     self.app.config['TESTING'] = True
+
+class MockDeedClass:
+    def send_naa(self, borrower_id):
+        response.status_code = 200
+        return response

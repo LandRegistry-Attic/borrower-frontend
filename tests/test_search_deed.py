@@ -1,20 +1,23 @@
 from flask import session
-from tests.helpers import with_client, setUpApp, with_context
+from tests.helpers import with_client, setUpApp, with_context, MockDeedClass
 import unittest
 from application.deed.searchdeed.views import validate_dob, search_deed_search
 from application.borrower.views import confirm_network_agreement
 from datetime import date
-from unittest.mock import patch
+from unittest.mock import patch, Mock
+from flask.ext.api import status
 
 
 class TestAgreementNaa(unittest.TestCase):
     def setUp(self):
         setUpApp(self)
 
+    @patch('application.service.deed_api.interface.DeedApiInterface.send_naa')
     @patch('application.borrower.views.render_template')
     @patch('application.borrower.views.request')
-    def test_confirm_network_agreement_get(self, mock_request, mock_render):
+    def test_confirm_network_agreement_get(self, mock_request, mock_render, mock_sign):
         mock_request.method = "GET"
+        mock_sign.status_code = 200
         confirm_network_agreement()
         mock_render.assert_called_with('howtoproceed.html')
 
@@ -37,12 +40,14 @@ class TestAgreementNaa(unittest.TestCase):
         mock_redirect.assert_called_with('/how-to-proceed', code=307)
 
     @with_context
+    @patch('application.borrower.views.make_deed_api_client', autospec=False)
     @patch('application.borrower.views.redirect')
     @patch('application.borrower.views.request')
-    def test_confirmed_network_agreement_accepted(self, mock_request, mock_redirect):
+    def test_confirmed_network_agreement_accepted(self, mock_request, mock_redirect, mock_sign):
         mock_request.method = "POST"
         mock_request.form = {'validate': 'True', 'accept-naa': 'Accept'}
         session['borrower_id'] = 00000
+        mock_sign = MockDeedClass()
         confirm_network_agreement()
         self.assertEqual(session['agreement_naa'],  "accepted")
         mock_redirect.assert_called_with('/mortgage-deed', code=302)
