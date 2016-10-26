@@ -47,7 +47,7 @@ class TestAgreementNaa(unittest.TestCase):
         mock_request.method = "POST"
         mock_request.form = {'validate': 'True', 'accept-naa': 'Accept'}
         session['borrower_id'] = 00000
-        mock_sign = MockDeedClass()
+        mock_sign.return_value = MockDeedClass()
         confirm_network_agreement()
         self.assertEqual(session['agreement_naa'],  "accepted")
         mock_redirect.assert_called_with('/mortgage-deed', code=302)

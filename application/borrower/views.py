@@ -51,9 +51,7 @@ def confirm_network_agreement():
             session['agreement_naa'] = "accepted"
             borrower_id = session['borrower_id']
             interface = make_deed_api_client()
-            import pdb; pdb.set_trace()
             result = interface.send_naa(borrower_id)
-            import pdb; pdb.set_trace()
             if result.status_code == 500:
                 return redirect('/server-error')
             elif result.status_code == 200:
