@@ -19,3 +19,6 @@ class DeedApiInterface(object):  # pragma: no cover
 
     def check_service_health(self):
         return self.implementation.check_health()
+
+    def send_naa(self, borrower_id):
+        return self.implementation.send_naa(borrower_id)

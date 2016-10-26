@@ -35,8 +35,9 @@ class DeedApiMockClient:
     def validate_borrower(payload):
         deed_token = "aaaaaaa"
         phone_number = "4999"
+        borrower_id = 0000
 
-        return {"deed_token": deed_token, "phone_number": phone_number}
+        return {"deed_token": deed_token, "phone_number": phone_number, "borrower_id": borrower_id}
 
     @staticmethod
     def add_borrower_signature(deed_reference, borrower_token):
