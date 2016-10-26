@@ -14,8 +14,9 @@ class TestHealthRoutes(unittest.TestCase):
         self.assertEqual(test_health_check.status_code, 200)
 
         # Assert that there is a minimum of 5 service responses
-        # Which are: register/title adapter, esec-client, postgres and deed-api
-        self.assertEqual(True, True) if len(test_health_list["services"]) >= 5 else self.assertEqual(False, True)
+        # Which are: register/title adapter, esec-client, postgres
+        # (Borrower FE to Deed-API is added after this call in BFE route)
+        self.assertEqual(True, True) if len(test_health_list["services"]) >= 4 else self.assertEqual(False, True)
 
         # Assert that there is only one "services" tag; which is essentially a tag
         # that has an array of services as a value
