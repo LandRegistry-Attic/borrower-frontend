@@ -10,7 +10,10 @@ borrower_landing = Blueprint('borrower_landing', __name__,
                              static_folder='static')
 
 interface = make_deed_api_client()
+<<<<<<< HEAD
 
+=======
+>>>>>>> develop
 
 @borrower_landing.route('/how-to-proceed', methods=['POST', 'GET'])
 def verified():
