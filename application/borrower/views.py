@@ -54,10 +54,10 @@ def confirm_network_agreement():
             interface = make_deed_api_client()
             result = interface.send_naa(borrower_id)
             if result.status_code == 500:
-                LOGGER.warning("error")
+                LOGGER.warning("error- status code has returned as 500 and the audit has not been created")
                 return redirect('/server-error')
             elif result.status_code == 200:
-                LOGGER.info("success")
+                LOGGER.info("success- status code has returned as 200 and the audit has been created")
                 return redirect('/mortgage-deed', code=302)
         else:
             session['agreement_naa'] = "declined"
