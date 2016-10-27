@@ -53,7 +53,6 @@ def confirm_network_agreement():
             borrower_id = session['borrower_id']
             interface = make_deed_api_client()
             result = interface.send_naa(borrower_id)
-            print(result)
             if result.status_code == 500:
                 LOGGER.warning("error")
                 return redirect('/server-error')
