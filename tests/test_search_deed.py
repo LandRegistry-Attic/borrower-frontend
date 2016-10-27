@@ -4,8 +4,7 @@ import unittest
 from application.deed.searchdeed.views import validate_dob, search_deed_search
 from application.borrower.views import confirm_network_agreement
 from datetime import date
-from unittest.mock import patch, Mock
-from flask.ext.api import status
+from unittest.mock import patch
 
 
 class TestAgreementNaa(unittest.TestCase):
