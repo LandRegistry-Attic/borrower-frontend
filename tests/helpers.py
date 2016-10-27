@@ -31,3 +31,11 @@ def setUpApp(self):
     self.app = manager.app
     self.manager = manager
     self.app.config['TESTING'] = True
+
+class TestResponse:
+    status_code = 200
+
+class MockDeedClass:
+    def send_naa(self, borrower_id):
+        response = TestResponse()
+        return response
