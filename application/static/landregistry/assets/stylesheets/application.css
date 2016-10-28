@@ -1,16 +1,4 @@
-@-ms-viewport {
-  width: device-width; }
-@-o-viewport {
-  width: device-width; }
-@-ms-viewport {
-  width: device-width; }
-@-o-viewport {
-  width: device-width; }
-@-ms-viewport {
-  width: device-width; }
-@-o-viewport {
-  width: device-width; }
-.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .definition-tabular:after, .definition-tabular-bold:after, .definition-tabular-1-3:after, .definition-tabular-1-3-bold:after, .definition-inline:after {
+.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .definition-tabular:after, .definition-tabular-bold:after, .definition-tabular-1-3:after, .definition-tabular-1-3-bold:after, .definition-inline:after, .notice:after {
   content: "";
   display: block;
   clear: both; }
@@ -28,47 +16,17 @@
 .grid-row, #global-breadcrumb {
   margin: 0 -15px; }
 
-@-ms-viewport {
-  width: device-width; }
-@-o-viewport {
-  width: device-width; }
-.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .definition-tabular:after, .definition-tabular-bold:after, .definition-tabular-1-3:after, .definition-tabular-1-3-bold:after, .definition-inline:after {
+.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .definition-tabular:after, .definition-tabular-bold:after, .definition-tabular-1-3:after, .definition-tabular-1-3-bold:after, .definition-inline:after, .notice:after {
   content: "";
   display: block;
   clear: both; }
 
-@font-face {
-  font-family: GDS-Logo;
-  src: local("HelveticaNeue"), local("Helvetica Neue"), local("Arial"), local("Helvetica"); }
-@-ms-viewport {
-  width: device-width; }
-@-o-viewport {
-  width: device-width; }
-@font-face {
-  font-family: GDS-Logo;
-  src: local("HelveticaNeue"), local("Helvetica Neue"), local("Arial"), local("Helvetica"); }
-@-ms-viewport {
-  width: device-width; }
-@-o-viewport {
-  width: device-width; }
-@-ms-viewport {
-  width: device-width; }
-@-o-viewport {
-  width: device-width; }
-.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .definition-tabular:after, .definition-tabular-bold:after, .definition-tabular-1-3:after, .definition-tabular-1-3-bold:after, .definition-inline:after {
+.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .definition-tabular:after, .definition-tabular-bold:after, .definition-tabular-1-3:after, .definition-tabular-1-3-bold:after, .definition-inline:after, .notice:after {
   content: "";
   display: block;
   clear: both; }
 
-@-ms-viewport {
-  width: device-width; }
-@-o-viewport {
-  width: device-width; }
-@-ms-viewport {
-  width: device-width; }
-@-o-viewport {
-  width: device-width; }
-.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .definition-tabular:after, .definition-tabular-bold:after, .definition-tabular-1-3:after, .definition-tabular-1-3-bold:after, .definition-inline:after {
+.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .definition-tabular:after, .definition-tabular-bold:after, .definition-tabular-1-3:after, .definition-tabular-1-3-bold:after, .definition-inline:after, .notice:after {
   content: "";
   display: block;
   clear: both; }
@@ -86,19 +44,11 @@
 .grid-row, #global-breadcrumb {
   margin: 0 -15px; }
 
-@-ms-viewport {
-  width: device-width; }
-@-o-viewport {
-  width: device-width; }
-.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .definition-tabular:after, .definition-tabular-bold:after, .definition-tabular-1-3:after, .definition-tabular-1-3-bold:after, .definition-inline:after {
+.grid-row:after, #global-breadcrumb:after, #content:after, fieldset:after, .form-group:after, .form-block:after, .panel-indent:after, .definition-tabular:after, .definition-tabular-bold:after, .definition-tabular-1-3:after, .definition-tabular-1-3-bold:after, .definition-inline:after, .notice:after {
   content: "";
   display: block;
   clear: both; }
 
-@-ms-viewport {
-  width: device-width; }
-@-o-viewport {
-  width: device-width; }
 .example-highlight-grid .grid-row {
   background: #bfc1c3; }
 .example-highlight-grid .column-highlight {
@@ -312,6 +262,7 @@ main {
     line-height: 1.11111;
     font-weight: 400;
     text-transform: none;
+    display: block;
     padding-top: 8px;
     padding-bottom: 7px;
     display: block;
@@ -347,6 +298,7 @@ main {
     line-height: 1.2;
     font-weight: 400;
     text-transform: none;
+    display: block;
     padding-top: 9px;
     padding-bottom: 6px;
     display: block;
@@ -413,7 +365,8 @@ p {
       line-height: 1.25; } }
 
 .text {
-  max-width: 30em; }
+  max-width: 30em;}
+
 
 .text-secondary {
   color: #6f777b; }
@@ -426,7 +379,7 @@ p {
   color: #4c2c92; }
 
 .link:hover {
-  color: #2e8aca; }
+  color: #2b8cc4; }
 
 .link:active {
   color: #005ea5; }
@@ -504,12 +457,13 @@ hr {
       padding-bottom: 90px; } }
 
 .phase-banner {
-  padding: 10px 0 8px 0;
+  padding: 10px 0 8px;
   border-bottom: 1px solid #bfc1c3; }
   @media (min-width: 641px) {
     .phase-banner {
       padding-bottom: 10px; } }
   .phase-banner p {
+    display: table;
     margin: 0;
     color: #000;
     font-family: "nta", Arial, sans-serif;
@@ -524,7 +478,6 @@ hr {
   .phase-banner .phase-tag {
     display: -moz-inline-stack;
     display: inline-block;
-    vertical-align: top;
     margin: 0 8px 0 0;
     padding: 2px 5px 0;
     font-family: "nta", Arial, sans-serif;
@@ -539,16 +492,11 @@ hr {
     background-color: #d53880; }
     @media (min-width: 641px) {
       .phase-banner .phase-tag {
-        vertical-align: baseline; } }
-    @media (min-width: 641px) {
-      .phase-banner .phase-tag {
         font-size: 16px;
         line-height: 1.25; } }
   .phase-banner span {
-    vertical-align: top; }
-    @media (min-width: 641px) {
-      .phase-banner span {
-        vertical-align: baseline; } }
+    display: table-cell;
+    vertical-align: baseline; }
 
 .column-quarter {
   padding: 0 15px;
@@ -942,7 +890,7 @@ details {
     position: relative;
     margin-bottom: 0.26316em; }
     details summary:hover {
-      color: #2e8aca; }
+      color: #2b8cc4; }
     details summary:focus {
       outline: 3px solid #ffbf47; }
   details .summary {
@@ -973,7 +921,7 @@ details {
   position: relative;
   display: -moz-inline-stack;
   display: inline-block;
-  padding: 0.3em 0.6em 0.2em 0.6em;
+  padding: .526315em .789473em .263157em;
   border: none;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
@@ -1317,12 +1265,13 @@ details {
       margin-right: 0; }
 
 .alpha-banner {
-  padding: 10px 0 8px 0;
+  padding: 10px 0 8px;
   border-bottom: 1px solid #bfc1c3; }
   @media (min-width: 641px) {
     .alpha-banner {
       padding-bottom: 10px; } }
   .alpha-banner p {
+    display: table;
     margin: 0;
     color: #000;
     font-family: "nta", Arial, sans-serif;
@@ -1337,7 +1286,6 @@ details {
   .alpha-banner .phase-tag {
     display: -moz-inline-stack;
     display: inline-block;
-    vertical-align: top;
     margin: 0 8px 0 0;
     padding: 2px 5px 0;
     font-family: "nta", Arial, sans-serif;
@@ -1352,21 +1300,15 @@ details {
     background-color: #d53880; }
     @media (min-width: 641px) {
       .alpha-banner .phase-tag {
-        vertical-align: baseline; } }
-    @media (min-width: 641px) {
-      .alpha-banner .phase-tag {
         font-size: 16px;
         line-height: 1.25; } }
   .alpha-banner span {
-    vertical-align: top; }
-    @media (min-width: 641px) {
-      .alpha-banner span {
-        vertical-align: baseline; } }
+    display: table-cell;
+    vertical-align: baseline; }
 
 .alpha-tag {
   display: -moz-inline-stack;
   display: inline-block;
-  vertical-align: top;
   margin: 0 8px 0 0;
   padding: 2px 5px 0;
   font-family: "nta", Arial, sans-serif;
@@ -1381,19 +1323,17 @@ details {
   background-color: #d53880; }
   @media (min-width: 641px) {
     .alpha-tag {
-      vertical-align: baseline; } }
-  @media (min-width: 641px) {
-    .alpha-tag {
       font-size: 16px;
       line-height: 1.25; } }
 
 .beta-banner {
-  padding: 10px 0 8px 0;
+  padding: 10px 0 8px;
   border-bottom: 1px solid #bfc1c3; }
   @media (min-width: 641px) {
     .beta-banner {
       padding-bottom: 10px; } }
   .beta-banner p {
+    display: table;
     margin: 0;
     color: #000;
     font-family: "nta", Arial, sans-serif;
@@ -1408,7 +1348,6 @@ details {
   .beta-banner .phase-tag {
     display: -moz-inline-stack;
     display: inline-block;
-    vertical-align: top;
     margin: 0 8px 0 0;
     padding: 2px 5px 0;
     font-family: "nta", Arial, sans-serif;
@@ -1423,21 +1362,15 @@ details {
     background-color: #f47738; }
     @media (min-width: 641px) {
       .beta-banner .phase-tag {
-        vertical-align: baseline; } }
-    @media (min-width: 641px) {
-      .beta-banner .phase-tag {
         font-size: 16px;
         line-height: 1.25; } }
   .beta-banner span {
-    vertical-align: top; }
-    @media (min-width: 641px) {
-      .beta-banner span {
-        vertical-align: baseline; } }
+    display: table-cell;
+    vertical-align: baseline; }
 
 .beta-tag {
   display: -moz-inline-stack;
   display: inline-block;
-  vertical-align: top;
   margin: 0 8px 0 0;
   padding: 2px 5px 0;
   font-family: "nta", Arial, sans-serif;
@@ -1450,9 +1383,6 @@ details {
   text-decoration: none;
   color: #fff;
   background-color: #f47738; }
-  @media (min-width: 641px) {
-    .beta-tag {
-      vertical-align: baseline; } }
   @media (min-width: 641px) {
     .beta-tag {
       font-size: 16px;
@@ -1600,6 +1530,31 @@ dl {
   .button-get-started {
     background-image: url("/static/landregistry/assets/images/icons/icon-pointer-2x.png");
     background-size: 30px 19px; } }
+.icon {
+  display: inline-block; }
+
+.icon-important {
+  width: 35px;
+  height: 35px;
+  background-image: url("/static/landregistry/assets/images/icons/icon-important.png");
+  background-repeat: no-repeat; }
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 20 / 10), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+  .icon-important {
+    background-image: url("/static/landregistry/assets/images/icons/icon-important-2x.png");
+    background-size: 100%; } }
+.notice {
+  position: relative; }
+  .notice .icon {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -17px; }
+  .notice strong {
+    display: block;
+    padding-left: 65px;
+    margin-left: -15px; }
+
 fieldset {
   width: 100%;
   float: left;

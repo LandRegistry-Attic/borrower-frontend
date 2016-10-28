@@ -5,6 +5,7 @@ from flask.ext.api import status
 from werkzeug import exceptions
 
 from application.deed.searchdeed.address_utils import format_address_string
+from application.akuma.service import Akuma
 
 LOGGER = logging.getLogger(__name__)
 
@@ -31,13 +32,15 @@ def enter_dob():
 
     if 'validate' in form:
         form.error = validate_dob(form)
+        borrower_token = form['borrower_token'].upper()
         if form.error is None:
             dob = form["dob-day"] + "/" + form["dob-month"] + "/" + form["dob-year"]
-            result = validate_borrower(form['borrower_token'], dob)
+            result = validate_borrower(borrower_token, dob)
             if result is not None:
                 session['deed_token'] = result['deed_token']
                 session['phone_number'] = result['phone_number']
-                session['borrower_token'] = form['borrower_token']
+                session['borrower_token'] = borrower_token
+                session['borrower_id'] = result['borrower_id']
                 return redirect('/how-to-proceed', code=307)
             else:
                 session['error'] = "True"
@@ -67,19 +70,18 @@ def show_authentication_code_page():
         return render_template('authentication-code.html', error=True)
 
     send_auth_code()
-    session['code-sent'] = True
 
     return render_template('authentication-code.html')
 
 
-@searchdeed.route('/confirming-mortgage-deed', methods=['POST'])
+@searchdeed.route('/signing-mortgage-deed', methods=['POST'])
 def show_confirming_deed_page():
     auth_code = request.form['auth_code']
 
     if auth_code is None or auth_code == '':
         return render_template('authentication-code.html', error=True)
 
-    return render_template('confirming-mortgage-deed.html', auth_code=request.form['auth_code'])
+    return render_template('signing-mortgage-deed.html', auth_code=request.form['auth_code'])
 
 
 @searchdeed.route('/verify-auth-code', methods=['POST'])
@@ -212,6 +214,9 @@ def do_search_deed_search():
         if 'effective_date' in deed_data["deed"]:
             temp = datetime.datetime.strptime(deed_data["deed"]["effective_date"], "%Y-%m-%d %H:%M:%S")
             deed_data["deed"]["effective_date"] = temp.strftime("%d/%m/%Y")
+
+        # Akuma Check
+        Akuma.do_check(deed_data, "borrower view", session['borrower_token'], session['deed_token'])
 
         deed_data["deed"]["property_address"] = format_address_string(deed_data["deed"]["property_address"])
         if deed_signed():

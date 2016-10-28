@@ -20,6 +20,13 @@ def get_deed(deed_reference):  # pragma: no cover
     return data
 
 
+def send_naa(borrower_id):
+    resp = requests.post(config.DEED_API_BASE_HOST + '/naa/accept/' +
+                         str(borrower_id),
+                         headers=webseal_headers)
+    return resp
+
+
 def validate_borrower(payload):  # pragma: no cover
     resp = requests.post(config.DEED_API_BASE_HOST +
                          '/borrower/validate', json=payload,
@@ -49,3 +56,9 @@ def get_borrower_details_by_verify_pid(verify_pid):  # pragma: no cover
         return response.json()
     else:
         return None
+
+
+def check_health():
+    service_response = requests.get(config.DEED_API_BASE_HOST + '/health/service-check')
+
+    return service_response

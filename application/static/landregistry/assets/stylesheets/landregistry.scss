@@ -192,7 +192,6 @@ dl {
   }
 }
 
-
 // LR Get Started Button:
 .button-get-started {
     font-family: "nta",Arial,sans-serif;
@@ -216,6 +215,43 @@ dl {
         background-image: url("/static/landregistry/assets/images/icons/icon-pointer-2x.png");
         background-size: 30px 19px;
     }
+}
+
+.icon {
+    display: inline-block;
+}
+
+// LR Important Button:
+.icon-important {
+    width: 35px;
+    height: 35px;
+    background-image: url("/static/landregistry/assets/images/icons/icon-important.png");
+    background-repeat: no-repeat;
+}
+@media only screen and (-webkit-min-device-pixel-ratio:2), only screen and (min--moz-device-pixel-ratio:2), only screen and (-o-min-device-pixel-ratio:20 / 10), only screen and (min-device-pixel-ratio:2), only screen and (min-resolution:192dpi), only screen and (min-resolution:2dppx) {
+    .icon-important {
+        background-image: url("/static/landregistry/assets/images/icons/icon-important-2x.png");
+        background-size: 100%;
+    }
+}
+
+// Notice, text with an icon to the left
+.notice {
+  @extend %contain-floats;
+  position: relative;
+
+  .icon {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -17px; // Half the height of the important icon
+  }
+
+  strong {
+    display: block;
+    padding-left: (35 + 30) + px;
+    margin-left: -$gutter-half;
+  }
 }
 
 // Form Elements:
@@ -366,4 +402,3 @@ fieldset {
         width: 100%;
     }
 }
-
