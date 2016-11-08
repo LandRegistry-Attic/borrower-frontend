@@ -64,6 +64,7 @@ class DeedApiMockClient:
             deed_token = 'some_deed_token'
             phone_number = 'some_phone_number'
             borrower_token = 'some_borrower_token'
-            return {"deed_token": deed_token, "phone_number": phone_number, "borrower_token": borrower_token}
+            borrower_id = 0000
+            return {"deed_token": deed_token, "phone_number": phone_number, "borrower_token": borrower_token, "borrower_id": borrower_id}
         else:
             return None
