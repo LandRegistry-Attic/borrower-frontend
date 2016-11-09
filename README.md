@@ -60,7 +60,7 @@ pip install -r requirements_test.txt
 Run unit tests and provide coverage report
 
 ```
-source test.sh
+source unit_test.sh
 ```
 
 ## Acceptance tests
@@ -72,5 +72,3 @@ See, the following link for information on how to run the acceptance tests:-
 ## Frontend
 
 [Frontend build readme](https://192.168.249.38/digital-mortgage/borrower-frontend/build/readme.md)
-
-
