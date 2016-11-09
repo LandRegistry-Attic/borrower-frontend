@@ -158,8 +158,11 @@ def send_auth_code():
 
 @searchdeed.route('/finished', methods=['GET', 'POST'])
 def show_final_page():
+    check_all_signed()
+    signed = session.get('signed', '')
     borrowers = session.get('no_of_borrowers', '')
     session.clear()
+    session['signed'] = signed
     session['no_of_borrowers'] = borrowers
     return render_template('finished.html')
 
@@ -250,6 +253,17 @@ def deed_signed():
         for borrower in deed_data['deed']['borrowers']:
             if 'signature' in borrower and borrower['token'] == session.get('borrower_token'):
                 return True
+
+
+def check_all_signed():
+    deed_data = lookup_deed(session['deed_token'])
+    signitures = 0
+    if deed_data is not None:
+        print (deed_data)
+        for borrower in deed_data['deed']['borrowers']:
+            if 'signature' in borrower:
+                signitures += 1
+        session['signed'] = signitures
 
 
 # counts the number of borrowers and returns
