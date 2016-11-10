@@ -262,7 +262,6 @@ def check_all_signed():
     deed_data = lookup_deed(session['deed_token'])
     signitures = 0
     if deed_data is not None:
-        print (deed_data)
         for borrower in deed_data['deed']['borrowers']:
             if 'signature' in borrower:
                 signitures += 1
