@@ -22,8 +22,9 @@
             if they haven't already done this
           </li>
           {% endif %}
-            {% if session['signed'] == session['no_of_borrowers'] %}
-            {% else %}
+            {% if session['signed'] == True %}
+
+            {% elif session['signed'] == False %}
           <li>
             Once all borrowers have signed the mortgage deed, the conveyancer will be notified so that they can continue
             to do the legal work needed for your mortgage

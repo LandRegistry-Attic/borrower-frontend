@@ -260,12 +260,16 @@ def deed_signed():
 
 def check_all_signed():
     deed_data = lookup_deed(session['deed_token'])
+    borrowers = session.get('no_of_borrowers', '')
     signitures = 0
     if deed_data is not None:
         for borrower in deed_data['deed']['borrowers']:
             if 'signature' in borrower:
                 signitures += 1
-        session['signed'] = signitures
+        if signitures == borrowers:
+            session['signed'] = True
+        else:
+            session['signed'] = False
 
 
 # counts the number of borrowers and returns
