@@ -161,7 +161,7 @@ def show_final_page():
     if 'deed_token' not in session:
         return redirect('/session-ended', code=302)
     else:
-        check_all_signed()
+        session['signed'] = check_all_signed()
         signed = session.get('signed', '')
         borrowers = session.get('no_of_borrowers', '')
         session.clear()
@@ -265,7 +265,7 @@ def check_all_signed():
         for borrower in deed_data['deed']['borrowers']:
             if 'signature' in borrower:
                 signatures += 1
-        session['signed'] = signatures == borrowers
+        return signatures == borrowers
 
 
 # counts the number of borrowers and returns
