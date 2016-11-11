@@ -225,11 +225,10 @@ def do_search_deed_search():
 
         # Akuma Check
         Akuma.do_check(deed_data, "borrower view", session['borrower_token'], session['deed_token'])
-
         deed_data["deed"]["property_address"] = format_address_string(deed_data["deed"]["property_address"])
 
-        borrower_no = no_of_borrowers()
-        session['no_of_borrowers'] = borrower_no
+        session['no_of_borrowers'] = no_of_borrowers()
+
         if deed_signed():
             response = render_template('viewdeed.html', deed_data=deed_data, signed=True)
         else:
@@ -260,16 +259,13 @@ def deed_signed():
 
 def check_all_signed():
     deed_data = lookup_deed(session['deed_token'])
-    borrowers = session.get('no_of_borrowers', '')
-    signitures = 0
+    borrowers = no_of_borrowers()
+    signatures = 0
     if deed_data is not None:
         for borrower in deed_data['deed']['borrowers']:
             if 'signature' in borrower:
-                signitures += 1
-        if signitures == borrowers:
-            session['signed'] = True
-        else:
-            session['signed'] = False
+                signatures += 1
+        session['signed'] = signatures == borrowers
 
 
 # counts the number of borrowers and returns
@@ -279,4 +275,4 @@ def no_of_borrowers():
     if deed_data is not None:
         for borrower in deed_data['deed']['borrowers']:
             borrower_count += 1
-        return(borrower_count)
+    return(borrower_count)

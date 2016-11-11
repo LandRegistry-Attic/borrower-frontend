@@ -15,21 +15,19 @@
 
         <h2 class="heading-medium">What happens next?</h2>
         <ul class="list-bullet">
-        {% if session['no_of_borrowers'] == 1 %}
-          {% else %}
+          {% if session['no_of_borrowers'] != 1 %}
           <li>
             If you are borrowing money with other people, they will need to sign the mortgage deed
             if they haven't already done this
           </li>
           {% endif %}
-            {% if session['signed'] == True %}
 
-            {% elif session['signed'] == False %}
+          {% if session['signed'] == False %}
           <li>
             Once all borrowers have signed the mortgage deed, the conveyancer will be notified so that they can continue
             to do the legal work needed for your mortgage
           </li>
-            {% endif %}
+          {% endif %}
           <li>
             Land Registry will update your title register to include the new mortgage when requested by the conveyancer
           </li>
