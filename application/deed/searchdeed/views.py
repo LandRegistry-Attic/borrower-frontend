@@ -103,8 +103,7 @@ def verify_auth_code(auth_code=None):
                 {'error': True, 'redirect': 'enter-authentication-code?error=True'})
         elif response.status_code == status.HTTP_503_SERVICE_UNAVAILABLE \
                 or response.status_code == status.HTTP_500_INTERNAL_SERVER_ERROR:
-            return_val = jsonify(
-                {'error': True, 'redirect': 'service-unavailable/deed-not-confirmed'})
+            raise Exception('verify_auth_code has failed with status code: %s' % str(response.status_code))
         else:
             return_val = jsonify({'error': False})
 
@@ -177,7 +176,7 @@ def session_ended():
 
 @searchdeed.route('/service-unavailable/deed-not-confirmed')
 def show_internal_server_error_page():
-    return render_template('deed-not-confirmed.html')
+    raise Exception('confirming-deed.js cannot confirm that the deed has been signed')
 
 
 @searchdeed.errorhandler(status.HTTP_503_SERVICE_UNAVAILABLE)
