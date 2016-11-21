@@ -103,8 +103,7 @@ def verify_auth_code(auth_code=None):
                 {'error': True, 'redirect': 'enter-authentication-code?error=True'})
         elif response.status_code == status.HTTP_503_SERVICE_UNAVAILABLE \
                 or response.status_code == status.HTTP_500_INTERNAL_SERVER_ERROR:
-            return_val = jsonify(
-                {'error': True, 'redirect': 'service-unavailable/deed-not-confirmed'})
+            raise Exception('verify_auth_code has failed with status code: %s' % str(response.status_code))
         else:
             return_val = jsonify({'error': False})
 
@@ -158,8 +157,16 @@ def send_auth_code():
 
 @searchdeed.route('/finished', methods=['GET', 'POST'])
 def show_final_page():
-    session.clear()
-    return render_template('finished.html')
+    if 'deed_token' not in session:
+        return redirect('/session-ended', code=302)
+    else:
+        session['signed'] = check_all_signed()
+        signed = session.get('signed', '')
+        borrowers = session.get('no_of_borrowers', '')
+        session.clear()
+        session['signed'] = signed
+        session['no_of_borrowers'] = borrowers
+        return render_template('finished.html')
 
 
 @searchdeed.route('/session-ended', methods=['GET'])
@@ -169,7 +176,7 @@ def session_ended():
 
 @searchdeed.route('/service-unavailable/deed-not-confirmed')
 def show_internal_server_error_page():
-    return render_template('deed-not-confirmed.html')
+    raise Exception('confirming-deed.js cannot confirm that the deed has been signed')
 
 
 @searchdeed.errorhandler(status.HTTP_503_SERVICE_UNAVAILABLE)
@@ -217,8 +224,10 @@ def do_search_deed_search():
 
         # Akuma Check
         Akuma.do_check(deed_data, "borrower view", session['borrower_token'], session['deed_token'])
-
         deed_data["deed"]["property_address"] = format_address_string(deed_data["deed"]["property_address"])
+
+        session['no_of_borrowers'] = no_of_borrowers()
+
         if deed_signed():
             response = render_template('viewdeed.html', deed_data=deed_data, signed=True)
         else:
@@ -245,3 +254,24 @@ def deed_signed():
         for borrower in deed_data['deed']['borrowers']:
             if 'signature' in borrower and borrower['token'] == session.get('borrower_token'):
                 return True
+
+
+def check_all_signed():
+    deed_data = lookup_deed(session['deed_token'])
+    borrowers = no_of_borrowers()
+    signatures = 0
+    if deed_data is not None:
+        for borrower in deed_data['deed']['borrowers']:
+            if 'signature' in borrower:
+                signatures += 1
+        return signatures == borrowers
+
+
+# counts the number of borrowers and returns
+def no_of_borrowers():
+    deed_data = lookup_deed(session['deed_token'])
+    borrower_count = 0
+    if deed_data is not None:
+        for borrower in deed_data['deed']['borrowers']:
+            borrower_count += 1
+    return(borrower_count)

@@ -2,6 +2,7 @@
 
 {% block content %}
 
+
   <main id="content" role="main">
     {{ super() }}
 
@@ -18,7 +19,7 @@
             This is an important legal document.
             YOUR HOME MAY BE REPOSSESSED IF YOU DO NOT KEEP UP REPAYMENTS ON YOUR MORTGAGE.
             You should consider taking independent legal advice from a conveyancer or other legal advisor before you
-            sign this mortgage.
+            sign this mortgage deed.
           </strong>
         </div>
       </div>
@@ -50,8 +51,11 @@
         <dl class="definition-inline">
           <dd>{{ deed_data.deed.lender.registration }}</dd>
         </dl>
-
+           {% if session['no_of_borrowers'] ==1 %}
         <h3 class="heading-medium">Borrower</h3>
+        {% else %}
+        <h3 class="heading-medium">Borrowers</h3>
+        {% endif %}
 
         <ul>
           {% for borrower in deed_data.deed.borrowers %}
@@ -61,7 +65,6 @@
             </li>
           {% endfor %}
         </ul>
-
         <h3 class="heading-medium">Charging clause</h3>
         <p>{{ deed_data.deed.charge_clause.description }}</p>
 
@@ -82,7 +85,11 @@
         {% else %}
           <p class="awaiting-information">[Effective date will be shown here]</p>
         {% endif %}
-        <h3 class="heading-medium">Borrower's digital signature(s)</h3>
+         {% if session['no_of_borrowers'] ==1 %}
+        <h3 class="heading-medium">Borrower's digital signature</h3>
+        {% else %}
+        <h3 class="heading-medium">Borrower's digital signatures</h3>
+        {% endif %}
         {% for borrower in deed_data.deed.borrowers %}
           {% if borrower.signature %}
             <p id="signature{{ loop.index }}">Signed by
@@ -101,6 +108,9 @@
           <h3 class="visuallyhidden">Form of digital mortgage deed filed at HM Land Registry under reference</h3>
           {% if deed_data.deed.society_ref %}
             <p>{{ deed_data.deed.society_ref }}</p>
+          {% endif %}
+          {% if deed_data.deed.reference_details %}
+            <p>{{ deed_data.deed.reference_details.lender_reference_name }}: {{ deed_data.deed.reference_details.lender_reference_value }}</p>
           {% endif %}
           <p>{{ deed_data.deed.md_ref }}</p>
         </div>

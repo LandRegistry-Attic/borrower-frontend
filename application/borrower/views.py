@@ -73,6 +73,7 @@ def verify_identity():
             session['deed_token'] = result['deed_token']
             session['phone_number'] = result['phone_number']
             session['borrower_token'] = result['borrower_token']
+            session['borrower_id'] = result['borrower_id']
         else:
             # Verify has worked, a match was made, but PID cannot now be found. Application fault.
             LOGGER.error("verify-PID-not-found")
