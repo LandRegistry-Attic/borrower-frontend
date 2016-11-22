@@ -82,8 +82,7 @@
         <p>{{ deed_data.deed.effective_clause|safe }}</p>
 
         {% if deed_data.deed.effective_date %}
-        Made effective on:  <b class="bold-small"> {{ deed_data.deed.effective_date }}
-             at   {{ deed_data.deed.effective_time }}</b>
+        Made effective on:  <b class="bold-small"> {{ deed_data.deed.effective_date }}</b>
         {% else %}
           <p class="awaiting-information">[Effective date will be shown here]</p>
         {% endif %}
