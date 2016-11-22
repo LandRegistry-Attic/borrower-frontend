@@ -88,7 +88,7 @@
          {% if session['no_of_borrowers'] ==1 %}
         <h3 class="heading-medium">Borrower's digital signature</h3>
         {% else %}
-        <h3 class="heading-medium">Borrower's digital signatures</h3>
+        <h3 class="heading-medium">Borrowers' digital signatures</h3>
         {% endif %}
         {% for borrower in deed_data.deed.borrowers %}
           {% if borrower.signature %}
