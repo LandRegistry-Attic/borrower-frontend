@@ -28,9 +28,11 @@
         <h2 class="heading-large">Example Mortgage Deed</h2>
         <h3 class="heading-medium">Property</h3>
         <div class="deed-address-list ">
+          <ul>
           {% for address_line in deed_data.deed.property_address %}
-            <li>{{ address_line }}</li>
+              <li>{{ address_line }}</li>
           {% endfor %}
+          </ul>
         </div>
 
         <dl class="definition-inline">
@@ -48,9 +50,8 @@
             </span>
         </p>
 
-        <dl class="definition-inline">
-          <dd>{{ deed_data.deed.lender.registration }}</dd>
-        </dl>
+       <p>{{ deed_data.deed.lender.registration }}</p>
+
            {% if session['no_of_borrowers'] ==1 %}
         <h3 class="heading-medium">Borrower</h3>
         {% else %}
@@ -81,7 +82,7 @@
         <p>{{ deed_data.deed.effective_clause|safe }}</p>
 
         {% if deed_data.deed.effective_date %}
-          <b class="bold-small">Made effective on: {{ deed_data.deed.effective_date }}
+        Made effective on:  <b class="bold-small"> {{ deed_data.deed.effective_date }}</b>
         {% else %}
           <p class="awaiting-information">[Effective date will be shown here]</p>
         {% endif %}
