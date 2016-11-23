@@ -160,13 +160,7 @@ def show_final_page():
     if 'deed_token' not in session:
         return redirect('/session-ended', code=302)
     else:
-        session['signed'] = check_all_signed()
-        signed = session.get('signed', '')
-        borrowers = session.get('no_of_borrowers', '')
-        session.clear()
-        session['signed'] = signed
-        session['no_of_borrowers'] = borrowers
-        return render_template('finished.html')
+        return render_template('finished.html', all_signed=check_all_signed())
 
 
 @searchdeed.route('/session-ended', methods=['GET'])

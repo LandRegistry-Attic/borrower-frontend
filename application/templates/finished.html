@@ -15,10 +15,16 @@
 
         <h2 class="heading-medium">What happens next?</h2>
         <ul class="list-bullet">
-          {% if session['no_of_borrowers'] != 1 %}
+          {% if all_signed %}
           <li>
-            If you are borrowing money with other people, they will need to sign the mortgage deed
-            if they haven't already done this
+              The conveyancer will be notified so that they can continue to do the legal work needed for your mortgage
+          </li>
+          {% else %}
+          <li>
+              As you are borrowing money with other people, they will also need to sign the mortgage deed
+          </li>
+          <li>
+              Once all borrowers have signed the mortgage deed, the conveyancer will be notified so that they can continue to do the legal work needed for your mortgage
           </li>
           {% endif %}
 
