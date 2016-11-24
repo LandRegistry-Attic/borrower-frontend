@@ -252,5 +252,3 @@ def deed_signed():
         for borrower in deed_data['deed']['borrowers']:
             if 'signature' in borrower and borrower['token'] == session.get('borrower_token'):
                 return True
-
-

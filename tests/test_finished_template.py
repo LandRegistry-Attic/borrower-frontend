@@ -2,7 +2,6 @@ import unittest
 from flask import render_template
 
 from tests.helpers import with_client, setUpApp, with_context
-from application.deed.searchdeed.views import check_all_signed, no_of_borrowers
 
 
 class TestFinishedTemplate(unittest.TestCase):

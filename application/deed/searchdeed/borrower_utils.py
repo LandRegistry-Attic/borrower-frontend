@@ -1,4 +1,3 @@
-
 # True if all borrowers have signed.
 def check_all_signed(deed_data):
     borrowers = no_of_borrowers(deed_data)
