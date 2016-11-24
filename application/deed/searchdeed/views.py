@@ -164,6 +164,7 @@ def show_final_page():
         return redirect('/session-ended', code=302)
     else:
         deed_data = lookup_deed(session['deed_token'])
+        session.clear()
         return render_template('finished.html', all_signed=check_all_signed(deed_data))
 
 
