@@ -5,7 +5,10 @@ from flask.ext.api import status
 from werkzeug import exceptions
 
 from application.deed.searchdeed.address_utils import format_address_string
+from application.deed.searchdeed.borrower_utils import check_all_signed
 from application.akuma.service import Akuma
+from application.deed.searchdeed.borrower_utils import no_of_borrowers
+
 
 LOGGER = logging.getLogger(__name__)
 
@@ -160,13 +163,9 @@ def show_final_page():
     if 'deed_token' not in session:
         return redirect('/session-ended', code=302)
     else:
-        session['signed'] = check_all_signed()
-        signed = session.get('signed', '')
-        borrowers = session.get('no_of_borrowers', '')
+        deed_data = lookup_deed(session['deed_token'])
         session.clear()
-        session['signed'] = signed
-        session['no_of_borrowers'] = borrowers
-        return render_template('finished.html')
+        return render_template('finished.html', all_signed=check_all_signed(deed_data))
 
 
 @searchdeed.route('/session-ended', methods=['GET'])
@@ -226,7 +225,7 @@ def do_search_deed_search():
         Akuma.do_check(deed_data, "borrower view", session['borrower_token'], session['deed_token'])
         deed_data["deed"]["property_address"] = format_address_string(deed_data["deed"]["property_address"])
 
-        session['no_of_borrowers'] = no_of_borrowers()
+        session['no_of_borrowers'] = no_of_borrowers(deed_data)
 
         if deed_signed():
             response = render_template('viewdeed.html', deed_data=deed_data, signed=True)
@@ -254,24 +253,3 @@ def deed_signed():
         for borrower in deed_data['deed']['borrowers']:
             if 'signature' in borrower and borrower['token'] == session.get('borrower_token'):
                 return True
-
-
-def check_all_signed():
-    deed_data = lookup_deed(session['deed_token'])
-    borrowers = no_of_borrowers()
-    signatures = 0
-    if deed_data is not None:
-        for borrower in deed_data['deed']['borrowers']:
-            if 'signature' in borrower:
-                signatures += 1
-        return signatures == borrowers
-
-
-# counts the number of borrowers and returns
-def no_of_borrowers():
-    deed_data = lookup_deed(session['deed_token'])
-    borrower_count = 0
-    if deed_data is not None:
-        for borrower in deed_data['deed']['borrowers']:
-            borrower_count += 1
-    return(borrower_count)
