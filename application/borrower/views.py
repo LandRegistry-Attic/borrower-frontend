@@ -14,7 +14,7 @@ interface = make_deed_api_client()
 
 @borrower_landing.route('/how-to-proceed', methods=['POST', 'GET'])
 def verified():
-        return render_template('howtoproceed.html')
+        return render_template('howtoproceed.html', conveyancer='Enact Conveyancing LTD')
 
 
 @borrower_landing.route('/borrow-naa', methods=['POST', 'GET'])
@@ -61,7 +61,7 @@ def confirm_network_agreement():
                 return redirect('/mortgage-deed', code=302)
         else:
             session['agreement_naa'] = "declined"
-            return redirect('/how-to-proceed', code=307)
+            return redirect('/how-to-proceed', code=307, conveyancer='Enact Conveyancing LTD')
 
 
 @borrower_landing.route('/verify', methods=['POST'])
