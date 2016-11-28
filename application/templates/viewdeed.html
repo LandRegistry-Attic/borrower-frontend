@@ -123,7 +123,7 @@
           {% if signed %}
             <form method="post" action="{{ url_for('searchdeed.show_final_page') }}">
               <p>If you are happy with the details shown on your mortgage deed above, please continue.</p>
-              <p>If something is wrong you should contact the conveyancer.</p>
+              <p>If something is wrong you should contact {{ conveyancer }}.</p>
               <input class="button" type="submit" value="Continue">
             </form>
           {% else %}

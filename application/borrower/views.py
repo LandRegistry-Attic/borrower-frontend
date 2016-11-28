@@ -11,10 +11,10 @@ borrower_landing = Blueprint('borrower_landing', __name__,
 
 interface = make_deed_api_client()
 
-
 @borrower_landing.route('/how-to-proceed', methods=['POST', 'GET'])
 def verified():
-        return render_template('howtoproceed.html', conveyancer='Enact Conveyancing LTD')
+    conveyancer = interface.get_conveyancer_for_deed(session['deed_token'])
+    return render_template('howtoproceed.html', conveyancer=conveyancer)
 
 
 @borrower_landing.route('/borrow-naa', methods=['POST', 'GET'])
@@ -126,3 +126,4 @@ def user_feedback():
 def get_borrower_details(verify_pid):
     deed_api_client = getattr(borrower_landing, 'deed_api_client')
     return deed_api_client.get_borrower_details_by_verify_pid(verify_pid)
+

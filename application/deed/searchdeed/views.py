@@ -16,6 +16,11 @@ searchdeed = Blueprint('searchdeed', __name__,
                        template_folder='/templates',
                        static_folder='static')
 
+def get_conveyancer_for_deed(deed_token):
+    deed_api_client = getattr(searchdeed, 'deed_api_client')
+    conveyancer = deed_api_client.get_conveyancer_for_deed(deed_token)
+    return conveyancer
+
 
 @searchdeed.route('/borrower-reference', methods=['GET', 'POST'])
 def search_deed_main():
@@ -70,11 +75,12 @@ def show_authentication_code_page():
         return redirect('/session-ended', code=302)
 
     if request.args.get('error', False):
-        return render_template('authentication-code.html', error=True, conveyancer='Enact Conveyancing LTD')
+        return render_template('authentication-code.html', error=True,
+                               conveyancer=get_conveyancer_for_deed(session['deed_token']))
 
     send_auth_code()
 
-    return render_template('authentication-code.html', conveyancer='Enact Conveyancing LTD')
+    return render_template('authentication-code.html', conveyancer=get_conveyancer_for_deed(session['deed_token']))
 
 
 @searchdeed.route('/signing-mortgage-deed', methods=['POST'])
@@ -82,7 +88,8 @@ def show_confirming_deed_page():
     auth_code = request.form['auth_code']
 
     if auth_code is None or auth_code == '':
-        return render_template('authentication-code.html', error=True, conveyancer='Enact Conveyancing LTD')
+        return render_template('authentication-code.html', error=True,
+                               conveyancer=get_conveyancer_for_deed(session['deed_token']))
 
     return render_template('signing-mortgage-deed.html', auth_code=request.form['auth_code'])
 
@@ -163,10 +170,11 @@ def show_final_page():
     if 'deed_token' not in session:
         return redirect('/session-ended', code=302)
     else:
-        deed_data = lookup_deed(session['deed_token'])
+        deed_token = session['deed_token']
+        deed_data = lookup_deed(deed_token)
         session.clear()
         return render_template('finished.html', all_signed=check_all_signed(deed_data),
-                               conveyancer='Enact Conveyancing LTD')
+                               conveyancer=get_conveyancer_for_deed(deed_token))
 
 
 @searchdeed.route('/session-ended', methods=['GET'])
@@ -230,10 +238,10 @@ def do_search_deed_search():
 
         if deed_signed():
             response = render_template('viewdeed.html', deed_data=deed_data, signed=True,
-                                       conveyancer='Enact Conveyancing LTD')
+                                       conveyancer=get_conveyancer_for_deed(session['deed_token']))
         else:
             response = render_template('viewdeed.html', deed_data=deed_data, signed=False,
-                                       conveyancer='Enact Conveyancing LTD')
+                                       conveyancer=get_conveyancer_for_deed(session['deed_token']))
     else:
         return render_template('searchdeed.html', error=True)
 
