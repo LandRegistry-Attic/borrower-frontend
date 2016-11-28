@@ -62,3 +62,16 @@ def check_health():
     service_response = requests.get(config.DEED_API_BASE_HOST + '/health/service-check')
 
     return service_response
+
+
+def get_conveyancer_for_deed(deed_reference):  # pragma: no cover
+    data = None
+    resp = requests.get(config.DEED_API_BASE_HOST + '/deed-conveyancer/' +
+                        str(deed_reference),
+                        headers=webseal_headers)
+
+    if resp.status_code == status.HTTP_200_OK:
+        data = resp.json()
+
+    return data
+
