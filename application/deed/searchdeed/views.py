@@ -44,10 +44,10 @@ def enter_dob():
                 session['phone_number'] = result['phone_number']
                 session['borrower_token'] = borrower_token
                 session['borrower_id'] = result['borrower_id']
-                return redirect('/how-to-proceed', code=307)
+                return redirect('/how-to-proceed', code=307, conveyancer='Enact Conveyancing LTD')
             else:
                 session['error'] = "True"
-                return redirect('/borrower-reference', code=307)
+                return redirect('/borrower-reference', code=307, conveyancer='Enact Conveyancing LTD')
 
     return render_template('enterdob.html', form=form)
 
@@ -58,7 +58,7 @@ def search_deed_search():
         return redirect('/session-ended', code=302)
 
     if ('agreement_naa' not in session) or (session['agreement_naa'] != 'accepted'):
-        return redirect('/how-to-proceed', code=307)
+        return redirect('/how-to-proceed', code=307, conveyancer='Enact Conveyancing LTD')
 
     response = do_search_deed_search()
     return response, status.HTTP_200_OK
@@ -70,11 +70,11 @@ def show_authentication_code_page():
         return redirect('/session-ended', code=302)
 
     if request.args.get('error', False):
-        return render_template('authentication-code.html', error=True)
+        return render_template('authentication-code.html', error=True, conveyancer='Enact Conveyancing LTD')
 
     send_auth_code()
 
-    return render_template('authentication-code.html')
+    return render_template('authentication-code.html', conveyancer='Enact Conveyancing LTD')
 
 
 @searchdeed.route('/signing-mortgage-deed', methods=['POST'])
@@ -82,7 +82,7 @@ def show_confirming_deed_page():
     auth_code = request.form['auth_code']
 
     if auth_code is None or auth_code == '':
-        return render_template('authentication-code.html', error=True)
+        return render_template('authentication-code.html', error=True, conveyancer='Enact Conveyancing LTD')
 
     return render_template('signing-mortgage-deed.html', auth_code=request.form['auth_code'])
 
@@ -130,7 +130,7 @@ def verify_auth_code_no_js():
     response = verify_auth_code(auth_code)
 
     if response.status_code == status.HTTP_401_UNAUTHORIZED:
-        return_val = redirect(url_for('authentication-code.html', error=True))
+        return_val = redirect(url_for('authentication-code.html', error=True, conveyancer='Enact Conveyancing LTD'))
     elif response.status_code == status.HTTP_503_SERVICE_UNAVAILABLE \
             or response.status_code == status.HTTP_500_INTERNAL_SERVER_ERROR:
         return_val = redirect(url_for('searchdeed.show_internal_server_error_page'))
@@ -165,7 +165,8 @@ def show_final_page():
     else:
         deed_data = lookup_deed(session['deed_token'])
         session.clear()
-        return render_template('finished.html', all_signed=check_all_signed(deed_data))
+        return render_template('finished.html', all_signed=check_all_signed(deed_data),
+                               conveyancer='Enact Conveyancing LTD')
 
 
 @searchdeed.route('/session-ended', methods=['GET'])
@@ -228,9 +229,11 @@ def do_search_deed_search():
         session['no_of_borrowers'] = no_of_borrowers(deed_data)
 
         if deed_signed():
-            response = render_template('viewdeed.html', deed_data=deed_data, signed=True)
+            response = render_template('viewdeed.html', deed_data=deed_data, signed=True,
+                                       conveyancer='Enact Conveyancing LTD')
         else:
-            response = render_template('viewdeed.html', deed_data=deed_data, signed=False)
+            response = render_template('viewdeed.html', deed_data=deed_data, signed=False,
+                                       conveyancer='Enact Conveyancing LTD')
     else:
         return render_template('searchdeed.html', error=True)
 
