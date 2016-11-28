@@ -24,5 +24,4 @@ class DeedApiInterface(object):  # pragma: no cover
         return self.implementation.send_naa(borrower_id)
 
     def get_conveyancer_for_deed(self, deed_token):
-        return 'Enact Conveyancing LTD'
-        # return self.implementation.get_conveyancer_for_deed(deed_token)['conveyancer_name']
+        return self.implementation.get_conveyancer_for_deed(deed_token)['result']
