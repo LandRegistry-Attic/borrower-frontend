@@ -61,7 +61,7 @@ def confirm_network_agreement():
                 return redirect('/mortgage-deed', code=302)
         else:
             session['agreement_naa'] = "declined"
-            return redirect('/how-to-proceed', code=307, conveyancer='Enact Conveyancing LTD')
+            return redirect('/how-to-proceed', code=307)
 
 
 @borrower_landing.route('/verify', methods=['POST'])

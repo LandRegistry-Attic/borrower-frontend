@@ -44,10 +44,10 @@ def enter_dob():
                 session['phone_number'] = result['phone_number']
                 session['borrower_token'] = borrower_token
                 session['borrower_id'] = result['borrower_id']
-                return redirect('/how-to-proceed', code=307, conveyancer='Enact Conveyancing LTD')
+                return redirect('/how-to-proceed', code=307)
             else:
                 session['error'] = "True"
-                return redirect('/borrower-reference', code=307, conveyancer='Enact Conveyancing LTD')
+                return redirect('/borrower-reference', code=307)
 
     return render_template('enterdob.html', form=form)
 
@@ -58,7 +58,7 @@ def search_deed_search():
         return redirect('/session-ended', code=302)
 
     if ('agreement_naa' not in session) or (session['agreement_naa'] != 'accepted'):
-        return redirect('/how-to-proceed', code=307, conveyancer='Enact Conveyancing LTD')
+        return redirect('/how-to-proceed', code=307)
 
     response = do_search_deed_search()
     return response, status.HTTP_200_OK
@@ -130,7 +130,7 @@ def verify_auth_code_no_js():
     response = verify_auth_code(auth_code)
 
     if response.status_code == status.HTTP_401_UNAUTHORIZED:
-        return_val = redirect(url_for('authentication-code.html', error=True, conveyancer='Enact Conveyancing LTD'))
+        return_val = redirect(url_for('authentication-code.html', error=True))
     elif response.status_code == status.HTTP_503_SERVICE_UNAVAILABLE \
             or response.status_code == status.HTTP_500_INTERNAL_SERVER_ERROR:
         return_val = redirect(url_for('searchdeed.show_internal_server_error_page'))
