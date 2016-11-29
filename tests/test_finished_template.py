@@ -11,15 +11,15 @@ class TestFinishedTemplate(unittest.TestCase):
     @with_context
     @with_client
     def test_all_signed(self, client):
-        html_string = render_template('finished.html', all_signed=True)
+        html_string = render_template('finished.html', all_signed=True, conveyancer='The conveyancer')
         required_string_1 = "The conveyancer will be notified so that they can continue to do the legal work " \
-            "needed for your mortgage"
+                            "needed for your mortgage"
         self.assertIn(required_string_1, html_string)
 
     @with_context
     @with_client
     def test_with_unsigned_borrower(self, client):
-        html_string = render_template('finished.html', all_signed=False)
+        html_string = render_template('finished.html', all_signed=False, conveyancer='the conveyancer')
         required_string_1 = "As you are borrowing money with other people, they will also need to sign the " \
                             "mortgage deed"
         self.assertIn(required_string_1, html_string)

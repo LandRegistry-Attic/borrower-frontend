@@ -17,29 +17,29 @@
         <ul class="list-bullet">
           {% if all_signed %}
           <li>
-              The conveyancer will be notified so that they can continue to do the legal work needed for your mortgage
+              {{ conveyancer }} will be notified so that they can continue to do the legal work needed for your mortgage
           </li>
           {% else %}
           <li>
               As you are borrowing money with other people, they will also need to sign the mortgage deed
           </li>
           <li>
-              Once all borrowers have signed the mortgage deed, the conveyancer will be notified so that they can continue to do the legal work needed for your mortgage
+              Once all borrowers have signed the mortgage deed, {{ conveyancer }} will be notified so that they can continue to do the legal work needed for your mortgage
           </li>
           {% endif %}
 
           {% if session['signed'] == False %}
           <li>
-            Once all borrowers have signed the mortgage deed, the conveyancer will be notified so that they can continue
+            Once all borrowers have signed the mortgage deed, {{ conveyancer }} will be notified so that they can continue
             to do the legal work needed for your mortgage
           </li>
           {% endif %}
           <li>
-            Land Registry will update your title register to include the new mortgage when requested by the conveyancer
+            Land Registry will update your title register to include the new mortgage when requested by {{ conveyancer }}
           </li>
         </ul>
         <p>
-          The time this takes will vary depending on the arrangements between you and your lender and the conveyancer.
+          The time this takes will vary depending on the arrangements between you and your lender and {{ conveyancer }}.
         </p>
 
         <div class="division-standard-top">
