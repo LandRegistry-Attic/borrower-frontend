@@ -152,8 +152,8 @@ class TestSearchDeed(unittest.TestCase):
 
     @with_context
     @with_client
-    @patch('application.borrower.views.make_deed_api_client', autospec=False)
-    def test_how_to_proceed_page(self, client, mock_client):
+    @patch('application.borrower.views.get_conveyancer_for_deed', autospec=False)
+    def test_how_to_proceed_page(self, client, mock_conveyancer):
         res = client.post('/how-to-proceed')
         self.assertEqual(res.status_code, 200)
 

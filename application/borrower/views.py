@@ -9,11 +9,14 @@ borrower_landing = Blueprint('borrower_landing', __name__,
                              template_folder='/templates',
                              static_folder='static')
 
-interface = make_deed_api_client()
+
+def get_conveyancer_for_deed():
+    interface = make_deed_api_client()
+    return interface.get_conveyancer_for_deed(session['deed_token'])
 
 @borrower_landing.route('/how-to-proceed', methods=['POST', 'GET'])
 def verified():
-    conveyancer = interface.get_conveyancer_for_deed(session['deed_token'])
+    conveyancer = get_conveyancer_for_deed()
     return render_template('howtoproceed.html', conveyancer=conveyancer)
 
 
