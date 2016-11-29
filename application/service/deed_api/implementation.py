@@ -72,4 +72,3 @@ def get_conveyancer_for_deed(deed_reference):  # pragma: no cover
         data = resp.json()
 
     return data
-
