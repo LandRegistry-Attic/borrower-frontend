@@ -16,6 +16,7 @@ searchdeed = Blueprint('searchdeed', __name__,
                        template_folder='/templates',
                        static_folder='static')
 
+
 def get_conveyancer_for_deed(deed_token):
     deed_api_client = getattr(searchdeed, 'deed_api_client')
     conveyancer = deed_api_client.get_conveyancer_for_deed(deed_token)

@@ -14,6 +14,7 @@ def get_conveyancer_for_deed():
     interface = make_deed_api_client()
     return interface.get_conveyancer_for_deed(session['deed_token'])
 
+
 @borrower_landing.route('/how-to-proceed', methods=['POST', 'GET'])
 def verified():
     conveyancer = get_conveyancer_for_deed()
@@ -129,4 +130,3 @@ def user_feedback():
 def get_borrower_details(verify_pid):
     deed_api_client = getattr(borrower_landing, 'deed_api_client')
     return deed_api_client.get_borrower_details_by_verify_pid(verify_pid)
-
