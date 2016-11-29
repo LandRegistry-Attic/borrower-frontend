@@ -9,6 +9,7 @@ from os import path
 def thisDir():
     return path.dirname(path.realpath(__file__))
 
+
 loader = unittest.TestLoader()
 tests = loader.discover('.', pattern="test_*.py")
 

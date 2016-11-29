@@ -28,7 +28,7 @@ def borrow_naa():
 
 @borrower_landing.route('/')
 def home():
-    return render_template("start.html")
+    return render_template("start.html", verify=config.VERIFY)
 
 
 @borrower_landing.route('/start')
@@ -44,7 +44,7 @@ def identity_verified():
     if 'deed_token' not in session:
         return Response('Unauthenticated', 401, {'WWW-Authenticate': 'Basic realm="Authentication Required"'})
     else:
-        return render_template("identity-verified.html")
+        return render_template("howtoproceed.html")
 
 
 @borrower_landing.route('/confirm-naa', methods=['GET', 'POST'])
