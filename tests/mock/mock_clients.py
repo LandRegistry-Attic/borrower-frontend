@@ -31,6 +31,9 @@ class DeedApiMockClient:
 
         return {"deed": deed}
 
+    def get_conveyancer_for_deed(self):
+        return ''
+
     @staticmethod
     def validate_borrower(payload):
         deed_token = "aaaaaaa"
