@@ -28,9 +28,11 @@
         <h2 class="heading-large">Example Mortgage Deed</h2>
         <h3 class="heading-medium">Property</h3>
         <div class="deed-address-list ">
+          <ul>
           {% for address_line in deed_data.deed.property_address %}
-            <li>{{ address_line }}</li>
+              <li>{{ address_line }}</li>
           {% endfor %}
+          </ul>
         </div>
 
         <dl class="definition-inline">
@@ -48,9 +50,8 @@
             </span>
         </p>
 
-        <dl class="definition-inline">
-          <dd>{{ deed_data.deed.lender.registration }}</dd>
-        </dl>
+       <p>{{ deed_data.deed.lender.registration }}</p>
+
            {% if session['no_of_borrowers'] ==1 %}
         <h3 class="heading-medium">Borrower</h3>
         {% else %}
@@ -81,14 +82,14 @@
         <p>{{ deed_data.deed.effective_clause|safe }}</p>
 
         {% if deed_data.deed.effective_date %}
-          <b class="bold-small">Made effective on: {{ deed_data.deed.effective_date }}
+        Made effective on:  <b class="bold-small"> {{ deed_data.deed.effective_date }}</b>
         {% else %}
-          <p class="awaiting-information">[Effective date will be shown here]</p>
+          <p class="awaiting-information">[Effective date and time will be shown here]</p>
         {% endif %}
          {% if session['no_of_borrowers'] ==1 %}
         <h3 class="heading-medium">Borrower's digital signature</h3>
         {% else %}
-        <h3 class="heading-medium">Borrower's digital signatures</h3>
+        <h3 class="heading-medium">Borrowers' digital signatures</h3>
         {% endif %}
         {% for borrower in deed_data.deed.borrowers %}
           {% if borrower.signature %}
@@ -122,14 +123,14 @@
           {% if signed %}
             <form method="post" action="{{ url_for('searchdeed.show_final_page') }}">
               <p>If you are happy with the details shown on your mortgage deed above, please continue.</p>
-              <p>If something is wrong you should contact the conveyancer.</p>
+              <p>If something is wrong you should contact {{ conveyancer }}.</p>
               <input class="button" type="submit" value="Continue">
             </form>
           {% else %}
             <p>If you’re ready to sign your mortgage, we’ll send you an authentication code which you’ll need to
               enter on the next screen.</p>
             <p>If you do not wish to sign the mortgage deed (for instance if you think there is a mistake or you
-              want further explanation) you should contact the conveyancer, or take independent legal advice.</p>
+              want further explanation) you should contact {{ conveyancer }}, or take independent legal advice.</p>
             <h2 class="heading-medium">Receiving your authentication code</h2>
             <p>
               We will be sending your authentication code by text message to your mobile number ending
