@@ -20,12 +20,16 @@
           conveyancer.
         </p>
       </div>
+
+    <h2 class="form-label-bold">What is your borrower reference?</h2>
+
+    {% else %}
+
+    <h1 class="form-label-bold">What is your borrower reference?</h1>
+
     {% endif %}
 
     <form id="search-deed-form" action="/date-of-birth" method="POST">
-      <label class="form-label-bold" for="borrower_token">
-        What is your borrower reference?
-      </label>
         <span class="form-hint">
             For example, 2PB47XAS
         </span>
