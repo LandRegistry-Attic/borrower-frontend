@@ -21,9 +21,17 @@
   </h2>
 
   {% else %}
-  <h1 class="heading-xlarge">
-    Sign your mortgage deed
-  </h1>
+
+    {% if signed %}
+      <h1 class="heading-xlarge">
+        View your mortgage deed
+      </h1>
+    {% else %}
+      <h1 class="heading-xlarge">
+        Sign your mortgage deed
+      </h1>
+    {% endif %}
+
   {% endif %}
 
   <div class="text verified-container">

@@ -124,7 +124,8 @@
             <form method="post" action="{{ url_for('searchdeed.show_final_page') }}">
               <p>If you are happy with the details shown on your mortgage deed above, please continue.</p>
               <p>If something is wrong you should contact {{ deed_data.deed.organisation_name }}.</p>
-              <input class="button" type="submit" value="Continue">
+              <input type="hidden" name="returning_borrower" value="True" readonly>
+              <input class="button" type="submit" value="Exit">
             </form>
           {% else %}
             <p>If you’re ready to sign your mortgage, we’ll send you an authentication code which you’ll need to

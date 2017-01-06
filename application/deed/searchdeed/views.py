@@ -5,7 +5,7 @@ from flask.ext.api import status
 from werkzeug import exceptions
 
 from application.deed.searchdeed.address_utils import format_address_string
-from application.deed.searchdeed.borrower_utils import check_all_signed
+from application.deed.searchdeed.borrower_utils import check_all_signed, get_borrower_name
 from application.akuma.service import Akuma
 from application.deed.searchdeed.borrower_utils import no_of_borrowers
 
@@ -50,7 +50,10 @@ def enter_dob():
                 session['phone_number'] = result['phone_number']
                 session['borrower_token'] = borrower_token
                 session['borrower_id'] = result['borrower_id']
-                return redirect('/how-to-proceed', code=307)
+                if deed_signed():
+                    return redirect('/how-to-proceed', code=307)
+                else:
+                    return redirect('/how-to-proceed', code=307)
             else:
                 session['error'] = "True"
                 return redirect('/borrower-reference', code=307)
@@ -172,10 +175,19 @@ def show_final_page():
         return redirect('/session-ended', code=302)
     else:
         deed_token = session['deed_token']
+        borrower_token = session['borrower_token']
         deed_data = lookup_deed(deed_token)
         session.clear()
-        return render_template('finished.html', all_signed=check_all_signed(deed_data),
-                               conveyancer=get_conveyancer_for_deed(deed_token))
+
+        # If we have a returning borrower, add a variable to show logged out text on final page
+        # else show final page with bullet points showing "what happens next" information.
+        if 'returning_borrower' in request.form:
+            return render_template('finished.html', all_signed=check_all_signed(deed_data),
+                                   conveyancer=get_conveyancer_for_deed(deed_token), returning_borrower=True,
+                                   borrower_name=get_borrower_name(deed_data, borrower_token))
+        else:
+            return render_template('finished.html', all_signed=check_all_signed(deed_data),
+                                   conveyancer=get_conveyancer_for_deed(deed_token), returning_borrower=False)
 
 
 @searchdeed.route('/session-ended', methods=['GET'])
@@ -265,3 +277,4 @@ def deed_signed():
         for borrower in deed_data['deed']['borrowers']:
             if 'signature' in borrower and borrower['token'] == session.get('borrower_token'):
                 return True
+
