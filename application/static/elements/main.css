@@ -1861,3 +1861,12 @@ details .arrow {
     height: 730px;
     border: 0px;
 }
+
+.spacer-40 {
+    clear: both;
+    height: 40px;
+}
+
+.button-float-right{
+    float:right;
+}
