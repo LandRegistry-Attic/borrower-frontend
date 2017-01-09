@@ -23,13 +23,17 @@
   {% else %}
 
     {% if signed %}
+
       <h1 class="heading-xlarge">
         View your mortgage deed
       </h1>
+
     {% else %}
+
       <h1 class="heading-xlarge">
         Sign your mortgage deed
       </h1>
+
     {% endif %}
 
   {% endif %}
@@ -41,8 +45,33 @@
   </div>
     <form action="/confirm-naa" method="POST">
   <div class="text verified-container" id="verified-container">
+
+    {% if signed %}
+
+    <h2 class="heading-small">Agree to the Land Registry's terms and conditions for this service</h2>
+    <input id="validate" type="hidden" name="validate" class="form-control" value="True">
+    <div class="text" id="naa-box" >
+      <p>
+        <label class="block-label" for="accept-naa">
+          <input id="accept-naa" name="accept-naa" class="accept-naa" type="checkbox" value="Accept">
+          I agree to the terms and conditions set out in the <a href="borrow-naa">Network Access Agreement</a>
+        </label>
+        <br>
+      </p>
+    </div>
+    <br>
+
+    <p>
+      <input onload="disable" class="button" id="submit" type="submit" value="Next">
+    </p>
+
+  </div>
+
+    {% else %}
+
     <ol class="list-plain">
       <li>
+
         <div class="icon-stack verified-bullets-fa">
           <i class="icon-circle icon-stack-base"></i>
           <span class="icon-stack verfied-bullet-numbers-fa">1</span>
@@ -99,13 +128,13 @@
             <div class="text">
               <p>
                 <input onload="disable" class="button" id="submit" type="submit" value="Next">
-
-
-            </p>
+              </p>
           </div>
-        </form>
 
-        </main>
+    {% endif %}
+
+        </form>
+      </main>
 
 
 
