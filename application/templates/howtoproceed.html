@@ -62,7 +62,17 @@
     <br>
 
     <p>
+
+      {% if signed %}
+
+      <input onload="disable" class="button" id="submit" type="submit" value="Continue">
+
+      {% else %}
+
       <input onload="disable" class="button" id="submit" type="submit" value="Next">
+
+      {% endif %}
+
     </p>
 
   </div>
