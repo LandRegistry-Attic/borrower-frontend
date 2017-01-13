@@ -16,4 +16,3 @@ def no_of_borrowers(deed_data):
         for borrower in deed_data['deed']['borrowers']:
             borrower_count += 1
     return borrower_count
-
