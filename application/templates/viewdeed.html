@@ -123,8 +123,7 @@
           {% if signed %}
             <form method="post" action="{{ url_for('searchdeed.show_final_page') }}">
               <h2 class="heading-medium">Is this correct?</h2>
-              <p>You may need to contact {{ conveyancer }}. If corrections to your
-              mortgage deed need to be made.</p>
+              <p>You may need to contact {{ conveyancer }}. If corrections to your mortgage deed need to be made.</p>
               <div class="spacer-40"></div>
               <input type="hidden" name="returning_borrower" value="True">
               <input class="button button-float-right" type="submit" value="finish">

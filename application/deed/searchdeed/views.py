@@ -5,7 +5,7 @@ from flask.ext.api import status
 from werkzeug import exceptions
 
 from application.deed.searchdeed.address_utils import format_address_string
-from application.deed.searchdeed.borrower_utils import check_all_signed, get_borrower_name
+from application.deed.searchdeed.borrower_utils import check_all_signed
 from application.akuma.service import Akuma
 from application.deed.searchdeed.borrower_utils import no_of_borrowers
 
@@ -172,7 +172,6 @@ def show_final_page():
         return redirect('/session-ended', code=302)
     else:
         deed_token = session['deed_token']
-        borrower_token = session['borrower_token']
         deed_data = lookup_deed(deed_token)
         session.clear()
 
@@ -180,8 +179,7 @@ def show_final_page():
         # else show final page with bullet points showing "what happens next" information.
         if 'returning_borrower' in request.form:
             return render_template('finished.html', all_signed=check_all_signed(deed_data),
-                                   conveyancer=get_conveyancer_for_deed(deed_token), returning_borrower=True,
-                                   borrower_name=get_borrower_name(deed_data, borrower_token))
+                                   conveyancer=get_conveyancer_for_deed(deed_token), returning_borrower=True)
         else:
             return render_template('finished.html', all_signed=check_all_signed(deed_data),
                                    conveyancer=get_conveyancer_for_deed(deed_token), returning_borrower=False)

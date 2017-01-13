@@ -17,14 +17,3 @@ def no_of_borrowers(deed_data):
             borrower_count += 1
     return borrower_count
 
-
-def get_borrower_name(deed_data, borrower_token):
-    result = ''
-    if deed_data is not None:
-        for borrower in deed_data['deed']['borrowers']:
-            if 'signature' in borrower and borrower['token'] == borrower_token:
-                forename = borrower['forename']
-                middle_name = borrower['middle_name'] if 'middle_name' in borrower else ''
-                surname = borrower['surname']
-                result = forename + ' ' + middle_name + ' ' + surname
-    return result
