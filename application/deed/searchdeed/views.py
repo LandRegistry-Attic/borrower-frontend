@@ -177,12 +177,9 @@ def show_final_page():
 
         # If we have a returning borrower, add a variable to show logged out text on final page
         # else show final page with bullet points showing "what happens next" information.
-        if 'returning_borrower' in request.form:
-            return render_template('finished.html', all_signed=check_all_signed(deed_data),
-                                   conveyancer=get_conveyancer_for_deed(deed_token), returning_borrower=True)
-        else:
-            return render_template('finished.html', all_signed=check_all_signed(deed_data),
-                                   conveyancer=get_conveyancer_for_deed(deed_token), returning_borrower=False)
+        return render_template('finished.html', all_signed=check_all_signed(deed_data),
+                               conveyancer=get_conveyancer_for_deed(deed_token),
+                               returning_borrower='returning_borrower' in request.form)
 
 
 @searchdeed.route('/session-ended', methods=['GET'])
