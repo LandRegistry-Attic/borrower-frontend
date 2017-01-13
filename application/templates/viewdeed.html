@@ -8,17 +8,7 @@
 
     <div class="inner-block">
 
-      {% if signed %}
-
-      <div class="column-two-thirds">
-
       <h1 class="heading-xlarge">Example Mortgage Deed for Test Purposes Only</h1>
-
-      {% else %}
-
-      <h1 class="heading-xlarge">Example Mortgage Deed for Test Purposes Only</h1>
-
-      {% endif %}
 
       <div class="text">
         <div class="notice">
@@ -135,6 +125,9 @@
               <h2 class="heading-medium">Is this correct?</h2>
               <p>You may need to contact {{ conveyancer }}. If corrections to your
               mortgage deed need to be made.</p>
+              <div class="spacer-40"></div>
+              <input type="hidden" name="returning_borrower" value="True">
+              <input class="button button-float-right" type="submit" value="finish">
             </form>
           {% else %}
             <p>If you’re ready to sign your mortgage, we’ll send you an authentication code which you’ll need to
@@ -150,24 +143,6 @@
           {% endif %}
         </div>
       </div>
-
-      {% if signed %}
-
-      <!-- End of two thirds column -->
-      </div>
-
-      <div class="column-one-third">
-
-        <div class="spacer-40"></div>
-
-        <form method="post" action="{{ url_for('searchdeed.show_final_page') }}">
-          <input type="hidden" name="returning_borrower" value="True">
-          <input class="button button-float-right" type="submit" value="Exit">
-        </form>
-
-      </div>
-
-      {% endif %}
 
     <!-- End of inner-block -->
     </div>
