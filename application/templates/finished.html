@@ -10,47 +10,64 @@
         <div class="govuk-box-highlight">
           <p></p>
 
-          <h1 class="bold-large">Thank you for signing your<br> mortgage deed</h1>
+          {% if returning_borrower %}
+            <h1 class="bold-large">Thank you for viewing your mortgage deed, you have successfully signed out.</h1>
+          {% else %}
+            <h1 class="bold-large">Thank you for signing your<br> mortgage deed</h1>
+          {% endif %}
 
           <p></p>
         </div>
 
-        <h2 class="heading-medium">What happens next?</h2>
-        <ul class="list-bullet">
-          {% if all_signed %}
-          <li>
-              {{ conveyancer }} will be notified so that they can continue to do the legal work needed for your mortgage
-          </li>
-          {% else %}
-          <li>
-              As you are borrowing money with other people, they will also need to sign the mortgage deed
-          </li>
-          <li>
-              Once all borrowers have signed the mortgage deed, {{ conveyancer }} will be notified so that they can continue to do the legal work needed for your mortgage
-          </li>
-          {% endif %}
+        {% if returning_borrower %}
 
-          {% if session['signed'] == False %}
-          <li>
-            Once all borrowers have signed the mortgage deed, {{ conveyancer }} will be notified so that they can continue
-            to do the legal work needed for your mortgage
-          </li>
-          {% endif %}
-          <li>
-            Land Registry will update your title register to include the new mortgage when requested by {{ conveyancer }}
-          </li>
-        </ul>
-        <p>
-          If you have any further queries, please contact {{ conveyancer }}.
-        </p>
+          <div class="spacer-40"></div>
+          <a class="division-standard-top" href="/">Didn't want to sign out? Sign in here</a>
 
-        <div class="division-standard-top">
-          <p><a href="/feedback" target="_blank">How could we improve this
-            service?</a></p>
-          <p><a rel="external" href="https://www.gov.uk/government/organisations/land-registry">More about the Land
-            Registry</a>
+          <div class="spacer-40"></div>
+          <a class="division-standard-top" href="http://www.gov.uk">Return to GOV.UK</a>
+
+        {% else %}
+
+          <h2 class="heading-medium">What happens next?</h2>
+          <ul class="list-bullet">
+            {% if all_signed %}
+            <li>
+                {{ conveyancer }} will be notified so that they can continue to do the legal work needed for your mortgage
+            </li>
+            {% else %}
+            <li>
+                As you are borrowing money with other people, they will also need to sign the mortgage deed
+            </li>
+            <li>
+                Once all borrowers have signed the mortgage deed, {{ conveyancer }} will be notified so that they can continue to do the legal work needed for your mortgage
+            </li>
+            {% endif %}
+
+            {% if session['signed'] == False %}
+            <li>
+              Once all borrowers have signed the mortgage deed, {{ conveyancer }} will be notified so that they can continue
+              to do the legal work needed for your mortgage
+            </li>
+            {% endif %}
+            <li>
+              Land Registry will update your title register to include the new mortgage when requested by {{ conveyancer }}
+            </li>
+          </ul>
+          <p>
+            If you have any further queries, please contact {{ conveyancer }}.
           </p>
-        </div>
+
+          <div class="division-standard-top">
+            <p><a href="/feedback" target="_blank">How could we improve this
+              service?</a></p>
+            <p><a rel="external" href="https://www.gov.uk/government/organisations/land-registry">More about the Land
+              Registry</a>
+            </p>
+          </div>
+
+        {% endif %}
+
       </div>
     </div>
   </main>
