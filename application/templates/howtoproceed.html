@@ -40,7 +40,17 @@
 
   <div class="text verified-container">
     <p class="lede">
+
+      {% if signed %}
+
       View your mortgage deed by agreeing Land Registry's terms and conditions for this service.
+
+      {% else %}
+
+      Now that you've confirmed your identity you can sign your mortgage deed. You should:
+
+      {% endif %}
+
     </p>
   </div>
     <form action="/confirm-naa" method="POST">
