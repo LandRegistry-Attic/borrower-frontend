@@ -19,11 +19,11 @@ class TestViewDeedTemplate(unittest.TestCase):
         required_string_1 = "Is this correct?"
         self.assertIn(required_string_1, html_string)
 
-        required_string_2 = "You may need to contact Test Land Registry Devices. " \
-                            "If corrections to your mortgage deed need to be made."
+        required_string_2 = "You may need to contact Test Land Registry Devices " \
+                            "if corrections to your mortgage deed need to be made."
         self.assertIn(required_string_2, html_string)
 
-        required_string_2 = "finished"
+        required_string_2 = "Finish"
         self.assertIn(required_string_2, html_string)
 
         # Signed = False
