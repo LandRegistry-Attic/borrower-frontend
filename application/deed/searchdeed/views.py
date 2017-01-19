@@ -240,7 +240,9 @@ def do_search_deed_search():
         print(res)
 
         if res["result"] == "Z":
-            return render_template('unabletoproceed.html', conveyancer=get_conveyancer_for_deed(session['deed_token']))
+            conveyancer = get_conveyancer_for_deed(session['deed_token'])
+            session.clear()
+            return render_template('unabletoproceed.html', conveyancer=conveyancer)
 
         deed_data["deed"]["property_address"] = format_address_string(deed_data["deed"]["property_address"])
 
