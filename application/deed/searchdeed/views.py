@@ -237,7 +237,6 @@ def do_search_deed_search():
 
         # Akuma Check
         res = Akuma.do_check(deed_data, "borrower view", session['borrower_token'], session['deed_token'])
-        print(res)
 
         if res["result"] == "Z":
             conveyancer = get_conveyancer_for_deed(session['deed_token'])
