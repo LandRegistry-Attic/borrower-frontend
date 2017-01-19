@@ -236,7 +236,12 @@ def do_search_deed_search():
             deed_data["deed"]["effective_date"] = temp.strftime("%d/%m/%Y at %H:%M:%S")
 
         # Akuma Check
-        Akuma.do_check(deed_data, "borrower view", session['borrower_token'], session['deed_token'])
+        res = Akuma.do_check(deed_data, "borrower view", session['borrower_token'], session['deed_token'])
+        print(res)
+
+        if res["result"] == "Z":
+            return render_template('unabletoproceed.html')
+
         deed_data["deed"]["property_address"] = format_address_string(deed_data["deed"]["property_address"])
 
         session['no_of_borrowers'] = no_of_borrowers(deed_data)
