@@ -4,7 +4,7 @@ import json
 import logging
 from logger import logging_config
 
-from flask import Flask, request, render_template, Response, url_for, redirect
+from flask import Flask, request, render_template, Response, url_for
 from flask.ext.script import Manager
 
 from application.service.deed_api import make_deed_api_client
