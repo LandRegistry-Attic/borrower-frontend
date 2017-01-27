@@ -70,8 +70,8 @@ class TestErrorHandling(unittest.TestCase):
         mock_flask_redirect.side_effect = div_by_zero
         with app.app_context():
             with app.test_request_context():
-                response = self.client.get(render_template('503.html'))
-                expected = 'We are unable to process your request at this time'
+                response = self.client.get('/mortgage-deed')
+                expected = 'We are unable to process your request at this time.'
                 soup = BeautifulSoup(response.data)
                 for para in soup.find_all('p'):
                     if expected in para.text:
