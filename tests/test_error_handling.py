@@ -90,7 +90,7 @@ class TestErrorHandling(unittest.TestCase):
     def test_page_not_found_html(self):
         with app.app_context():
             with app.test_request_context():
-                response = self.client.get(render_template('finished.html'))
+                response = self.client.get('/foo')
                 expected = 'We could not find the page you requested'
                 soup = BeautifulSoup(response.data)
                 for para in soup.find_all('p'):
