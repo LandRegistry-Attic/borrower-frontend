@@ -7,9 +7,10 @@ import mock
 import unittest
 
 from bs4 import BeautifulSoup
-from flask import json
+from flask import json, render_template
 
 from application import manager
+
 
 
 app = manager.app
@@ -70,7 +71,7 @@ class TestErrorHandling(unittest.TestCase):
         with app.app_context():
             with app.test_request_context():
                 response = self.client.get('/mortgage-deed')
-                expected = 'You should be redirected automatically to target URL: /server-error.  If not click the link.'
+                expected = 'We are unable to process your request at this time.'
                 soup = BeautifulSoup(response.data)
                 for para in soup.find_all('p'):
                     if expected in para.text:
@@ -90,7 +91,7 @@ class TestErrorHandling(unittest.TestCase):
         with app.app_context():
             with app.test_request_context():
                 response = self.client.get('/foo')
-                expected = 'You should be redirected automatically to target URL: /page-not-found.  If not click the link.'
+                expected = 'We could not find the page you requested'
                 soup = BeautifulSoup(response.data)
                 for para in soup.find_all('p'):
                     if expected in para.text:
