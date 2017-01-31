@@ -7,10 +7,9 @@ import mock
 import unittest
 
 from bs4 import BeautifulSoup
-from flask import json, render_template
+from flask import json
 
 from application import manager
-
 
 
 app = manager.app
