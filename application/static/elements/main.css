@@ -1300,6 +1300,11 @@ ol {
   padding-left: 20px;
 }
 
+.list-no-number {
+  list-style-type: none;
+  padding-left: 20px;
+}
+
 .list-bullet,
 .list-number {
   margin-top: 5px;
@@ -1850,3 +1855,20 @@ details .arrow {
   background-image: none;
   margin-right: 0;
 }
+
+.iframe-feedback {
+    width: 750px;
+    height: 730px;
+    border: 0px;
+}
+
+.spacer-40 {
+    clear: both;
+    height: 40px;
+}
+
+.button-float-right{
+    float:right;
+}
+
+

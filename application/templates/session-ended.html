@@ -2,19 +2,19 @@
 {% block content %}
   <main id="content" role="main">
     {{ super() }}
-    <div id="content">
       <div class="inner-block">
         <h1 class="heading-xlarge">Your session has ended</h1>
         <p class="text">This is because:</p>
           <ul class="list list-bullet">
             <li>You have already successfully signed your mortgage deed</li>
           </ul>
-          <ol><p class="text">or</p></ol>
+          <ul>
+            <li class="list-no-number">or</li>
+          </ul>
           <ul class="list list-bullet">
             <li>There has been no activity for the past 20 minutes and you will need to <a href="{{ url_for('borrower_landing.home') }}">start
             again</a></li>
           </ul>
       </div>
-    </div>
   </main>
 {% endblock %}

@@ -122,9 +122,11 @@
         <div class="text">
           {% if signed %}
             <form method="post" action="{{ url_for('searchdeed.show_final_page') }}">
-              <p>If you are happy with the details shown on your mortgage deed above, please continue.</p>
-              <p>If something is wrong you should contact {{ conveyancer }}.</p>
-              <input class="button" type="submit" value="Continue">
+              <h2 class="heading-medium">Is this correct?</h2>
+              <p>You may need to contact {{ conveyancer }} if corrections to your mortgage deed need to be made.</p>
+              <div class="spacer-40"></div>
+              <input type="hidden" name="returning_borrower" value="True">
+              <input class="button button-float-right" type="submit" value="Finish">
             </form>
           {% else %}
             <p>If you’re ready to sign your mortgage, we’ll send you an authentication code which you’ll need to
@@ -140,6 +142,8 @@
           {% endif %}
         </div>
       </div>
+
+    <!-- End of inner-block -->
     </div>
   </main>
 

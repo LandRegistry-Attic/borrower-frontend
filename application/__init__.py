@@ -4,7 +4,7 @@ import json
 import logging
 from logger import logging_config
 
-from flask import Flask, request, render_template, Response, url_for, redirect
+from flask import Flask, request, render_template, Response, url_for
 from flask.ext.script import Manager
 
 from application.service.deed_api import make_deed_api_client
@@ -66,7 +66,7 @@ def unhandled_exception(e):
         error_redirect = {'error': True,
                           'redirect': url_for('render_server_error', error=True)}
         return Response(json.dumps(error_redirect), 500)
-    return redirect(url_for('render_server_error'))
+    return render_template('503.html'), 500
 
 
 @manager.app.errorhandler(404)
@@ -76,4 +76,4 @@ def page_not_found(e):
         error_redirect = {'error': True,
                           'redirect': url_for('render_page_not_found', error=True)}
         return Response(json.dumps(error_redirect), 404)
-    return redirect(url_for('render_page_not_found'))
+    return render_template('404.html'), 404

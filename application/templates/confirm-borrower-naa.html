@@ -4,22 +4,18 @@
   <main id="content" role="main">
     {{ super() }}
 
-    <h2 class="heading-large">Terms and Conditions</h2>
+    <h1 class="heading-large">Terms and Conditions</h1>
     <div class="text">
 
       <p>Before you can sign your mortgage deed, you will need to agree to Land Registry’s terms and conditions set out
         in our Signature Network Access Agreement. This document is shown below:</p>
 
-    <h2 class="heading-large">Signature Network Access Agreement</h2>
+      <h2 class="heading-large">Signature Network Access Agreement</h2>
 
+      <div class="heading-medium">This Signature Network Access Agreement is required in accordance with rule 5(3) of the Land Registration
+        (Network Access) rules 2008. </div>
+      <div class="heading-medium"> By accepting this agreement, you are confirming and accepting the following:</div>
 
-    <h3 class="heading-medium">This Signature Network Access Agreement is required in accordance with rule 5(3) of the Land Registration
-      (Network Access) rules 2008.
-      <br>
-      <br>
-      By accepting this agreement, you are confirming and accepting the following:</h3>
-    </div>
-    <div class="text">
       <p>1. About you</p>
 
       <p class="font-xsmall">You are at least 18 years of age.</p>
@@ -122,14 +118,10 @@
       <p class="font-xsmall">Your computer system - Your computer hardware and software and other computing resources
         and information technology infrastructure.</p>
 
+      <form action="/how-to-proceed" method="get">
+        <input class="button" type="submit" value="Back">
+      </form>
     </div>
-      <div class="text">
-        <p>
-          <a href="/how-to-proceed">
-          <input class="button" type="submit" value="Back">
-        </a>
-        </p>
-      </div>
   </main>
 
 {% endblock %}

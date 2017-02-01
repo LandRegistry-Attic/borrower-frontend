@@ -174,8 +174,12 @@ def show_final_page():
         deed_token = session['deed_token']
         deed_data = lookup_deed(deed_token)
         session.clear()
+
+        # If we have a returning borrower, add a variable to show logged out text on final page
+        # else show final page with bullet points showing "what happens next" information.
         return render_template('finished.html', all_signed=check_all_signed(deed_data),
-                               conveyancer=get_conveyancer_for_deed(deed_token))
+                               conveyancer=get_conveyancer_for_deed(deed_token),
+                               returning_borrower='returning_borrower' in request.form)
 
 
 @searchdeed.route('/session-ended', methods=['GET'])

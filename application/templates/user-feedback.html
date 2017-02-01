@@ -3,17 +3,14 @@
 {% block content %}
     <main id="content" role="main">
         {{ super() }}
-        <div id="content">
-            <div class="grid-row">
-                <div class="column-two-thirds">
-                    <h1 class="heading-xlarge">Thank You</h1>
-                    <p>
-                        <iframe src="https://docs.google.com/a/digital.landregistry.gov.uk/forms/d/1TTbJfTDpH0rfHyAVz7cQmckkLXqnN7vWceJi9rDlu58/viewform?embedded=true"
-                                width="750" height="720" frameborder="0" marginheight="0" marginwidth="0">Loading...
-                        </iframe>
-                    </p>
-
-                </div>
+        <div class="grid-row">
+            <div class="column-two-thirds">
+                <h1 class="heading-xlarge">Thank You</h1>
+                <p>
+                    <iframe src="https://docs.google.com/a/digital.landregistry.gov.uk/forms/d/1TTbJfTDpH0rfHyAVz7cQmckkLXqnN7vWceJi9rDlu58/viewform?embedded=true"
+                            class="iframe-feedback">
+                    </iframe>
+                </p>
             </div>
         </div>
     </main>
