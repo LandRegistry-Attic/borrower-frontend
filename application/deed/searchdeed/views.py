@@ -12,9 +12,7 @@ from application.deed.searchdeed.borrower_utils import no_of_borrowers
 
 LOGGER = logging.getLogger(__name__)
 
-searchdeed = Blueprint('searchdeed', __name__,
-                       template_folder='/templates',
-                       static_folder='static')
+searchdeed = Blueprint('searchdeed', __name__)
 
 
 def get_conveyancer_for_deed(deed_token):

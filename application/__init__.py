@@ -1,4 +1,3 @@
-
 from datetime import timedelta
 import json
 import logging
@@ -19,7 +18,12 @@ LOGGER.info("Starting the server")
 
 
 def create_manager(deed_api_client=make_deed_api_client()):
-    app = Flask(__name__)
+    app = Flask(__name__,
+                template_folder='templates',
+                static_folder='assets/.dist',
+                static_url_path='/static'
+                )
+
     app.config.from_pyfile('config.py')
 
     manager = Manager(app)

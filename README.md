@@ -70,3 +70,12 @@ See, the following link for information on how to run the acceptance tests:-
 [Acceptance Tests](https://192.168.249.38/digital-mortgage/acceptance-tests)
 
 ## Frontend
+
+A GOV frontend is comprised of three things:
+
+- `govuk_template_jinja` - Provides the header, footer and site wrapper
+- `govuk_frontend_toolkit` - Provides various reusable mixins and utilities
+- `govuk-elements-sass` - Applies the mixins from the toolkit to generate CSS
+
+These are pulled together by a [Gulp](http://gulpjs.com/) build process to generate the CSS output for this service.
+

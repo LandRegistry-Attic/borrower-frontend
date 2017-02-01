@@ -1,0 +1,7 @@
+// $path: '/static/';
+
+@function image-url($url){
+  @return url('/static/images/' + $url)
+}
+
+@import ".govuk-elements/_govuk-elements";

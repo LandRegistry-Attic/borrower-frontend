@@ -1,12 +1,13 @@
 {% set page_title = 'Sign your mortgage deed' %}
-{% set asset_path = '/static/govuk_template/assets/' %}
-{% set assets_main = '/static/elements/main.css' %}
+{% set asset_path = '/static/' %}
 
-
-{% extends "base/govuk_base_template.html" %}
+{% extends "base/govuk_template.html" %}
 
 
 {% block head %}
+
+  <link rel="stylesheet" type="text/css" href="/static/stylesheets/main.css">
+
   <link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
   <link href="{{assets_main}}" media="screen" rel="stylesheet" type="text/css">
 
@@ -42,9 +43,9 @@
 {% endblock %}
 
 {% block content %}
-<div class="beta-banner">
+<div class="phase-banner-beta">
   <p>
-      <strong class="beta-tag">BETA</strong>
+      <strong class="phase-tag">BETA</strong>
       <span>This is a new service – your
           <a href="/feedback" target="_blank">feedback</a>
           will help us to improve it.</span>

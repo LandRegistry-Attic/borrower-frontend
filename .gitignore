@@ -12,3 +12,7 @@ test-reports/
 htmlcov/
 *.iml
 TEST-*.xml
+
+# Nodejs
+npm-debug.log*
+node_modules
