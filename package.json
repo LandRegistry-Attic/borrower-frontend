@@ -1,0 +1,12 @@
+{
+  "name": "borrower-frontend",
+  "version": "1.0.0",
+  "description": "The Borrower Frontend provides a service for a Borrower to view and sign their mortgage deeds online.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@192.168.249.38:digital-mortgage/borrower-frontend.git"
+  }
+}
