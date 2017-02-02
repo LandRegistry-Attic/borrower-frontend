@@ -1,7 +1,12 @@
 var gulp = require('gulp')
 var path = require('path')
 
-gulp.task('watch', function () {
-  gulp.watch(path.join(assetsPath, sassPath), ['sass'])
-  gulp.watch(path.join(assetsPath, 'src/javascript/**/*.js'), ['js', 'standardjs'])
+var config = require('../config')
+
+gulp.task('watch', ['default'], function () {
+  gulp.watch(path.join(config.assetsPath, 'src/scss/**/*.scss'), ['sass'])
+  gulp.watch(path.join(config.assetsPath, 'src/javascripts/**/*.js'), ['js', 'standardjs'])
+  gulp.watch('gulp/**/*.js', ['standardjs'])
+
+  console.log('Watching...')
 })

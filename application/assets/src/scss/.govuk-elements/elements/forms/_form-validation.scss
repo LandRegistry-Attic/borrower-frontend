@@ -19,6 +19,10 @@
     border: 4px solid $error-colour;
   }
 
+  .form-hint {
+    margin-bottom: 0;
+  }
+
 }
 
 .error,
@@ -41,13 +45,7 @@
   clear: both;
 
   margin: 0;
-  padding: 2px 0;
-}
-
-.form-label .error-message,
-.form-label-bold .error-message {
-  padding-top: 4px;
-  padding-bottom: 0;
+  padding: 5px 0 7px 0;
 }
 
 // Summary of multiple error messages
@@ -67,7 +65,7 @@
     margin-top: $gutter;
     margin-bottom: $gutter;
 
-    padding: $gutter-two-thirds $gutter-half $gutter-half;
+    padding: 20px $gutter-half $gutter-half $gutter-half;
   }
 
   @include ie-lte(6) {

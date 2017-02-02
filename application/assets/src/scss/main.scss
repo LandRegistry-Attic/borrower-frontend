@@ -1,7 +1,15 @@
 // $path: '/static/';
 
-@function image-url($url){
-  @return url('/static/images/' + $url)
-}
+// @function image-url($url){
+//   @return url('/static/images/' + $url)
+// }
 
-@import ".govuk-elements/_govuk-elements";
+$path: '/static/images/';
+
+@import ".govuk-elements/govuk-elements";
+@import "landregistry/application";
+@import "font-awesome/scss/variables";
+@import "font-awesome/scss/mixins";
+@import "font-awesome/scss/path";
+@import "font-awesome/scss/core";
+@import "font-awesome/scss/icons";

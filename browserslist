@@ -1,0 +1,7 @@
+# Browsers that we support
+# Consumed by autoprefixer in the gulp task, but placed here as
+# https://github.com/ai/browserslist is becoming the standard way to define this
+
+> 95%
+Last 2 versions
+IE >= 8

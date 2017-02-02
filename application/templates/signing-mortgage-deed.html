@@ -8,7 +8,7 @@
 
           <h1 class="heading-xlarge">Signing...</h1>
 
-          <form>
+          <form data-confirming-deed>
             <input type="hidden" name="auth_code" value="{{auth_code}}">
           </form>
 
@@ -27,9 +27,4 @@
 
   </main>
 
-{% endblock %}
-
-{% block body_end %}
-  {{ super() }}
-  <script type=text/javascript src="{{ url_for('static', filename='landregistry/assets/javascript/confirming-deed.js') }}"> </script>
 {% endblock %}

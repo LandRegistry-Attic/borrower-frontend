@@ -1,29 +1,25 @@
-// Import GOV.UK elements, this will import the frontend toolkit and some base styles.
-// Take a look at elements.scss to see which files are imported.
-@import '../../../../../build/elements-toolkit/public/sass/main';
+// // Set up your main content area <main id="content">
+// // This will give you a full width content block
+// // See elements _layout.scss line 7.
 
-// Set up your main content area <main id="content">
-// This will give you a full width content block
-// See elements _layout.scss line 7.
+// // If you need it, set up your grid layout - refer to the grid layout usage example
+// // See elements _layout.scss line 28.
 
-// If you need it, set up your grid layout - refer to the grid layout usage example
-// See elements _layout.scss line 28.
+// // If you need a phase banner, put this inside the main content area
+// // See elements _layout.scss line 22.
+// .alpha-banner  {
+//   @include phase-banner(alpha); // Change this to (beta) for a beta banner
+// }
+// .alpha-tag {
+//   @include phase-tag(alpha); // Change this to (beta) for a beta tag
+// }
 
-// If you need a phase banner, put this inside the main content area
-// See elements _layout.scss line 22.
-.alpha-banner  {
-  @include phase-banner(alpha); // Change this to (beta) for a beta banner
-}
-.alpha-tag {
-  @include phase-tag(alpha); // Change this to (beta) for a beta tag
-}
-
-.beta-banner  {
-  @include phase-banner(beta); // Change this to (beta) for a beta banner
-}
-.beta-tag {
-  @include phase-tag(beta); // Change this to (beta) for a beta tag
-}
+// .beta-banner  {
+//   @include phase-banner(beta); // Change this to (beta) for a beta banner
+// }
+// .beta-tag {
+//   @include phase-tag(beta); // Change this to (beta) for a beta tag
+// }
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you,
 // either add and import new partial files, or modify those in GOV.UK elements to fit your user needs.
@@ -199,7 +195,7 @@ dl {
     line-height: 1.25;
     text-transform: none;
     font-weight: 700;
-    background-image: url("/static/landregistry/assets/images/icons/icon-pointer.png");
+    background-image: url("/static/images/icon-pointer.png");
     background-repeat: no-repeat;
     background-position: 100% 50%;
     padding: 0.36842em 2.15789em 0.21053em 0.84211em;
@@ -212,7 +208,7 @@ dl {
 }
 @media only screen and (-webkit-min-device-pixel-ratio:2), only screen and (min--moz-device-pixel-ratio:2), only screen and (-o-min-device-pixel-ratio:20 / 10), only screen and (min-device-pixel-ratio:2), only screen and (min-resolution:192dpi), only screen and (min-resolution:2dppx) {
     .button-get-started {
-        background-image: url("/static/landregistry/assets/images/icons/icon-pointer-2x.png");
+        background-image: url("/static/images/icon-pointer-2x.png");
         background-size: 30px 19px;
     }
 }
@@ -225,12 +221,12 @@ dl {
 .icon-important {
     width: 35px;
     height: 35px;
-    background-image: url("/static/landregistry/assets/images/icons/icon-important.png");
+    background-image: url("/static/images/icon-important.png");
     background-repeat: no-repeat;
 }
 @media only screen and (-webkit-min-device-pixel-ratio:2), only screen and (min--moz-device-pixel-ratio:2), only screen and (-o-min-device-pixel-ratio:20 / 10), only screen and (min-device-pixel-ratio:2), only screen and (min-resolution:192dpi), only screen and (min-resolution:2dppx) {
     .icon-important {
-        background-image: url("/static/landregistry/assets/images/icons/icon-important-2x.png");
+        background-image: url("/static/images/icons/icon-important-2x.png");
         background-size: 100%;
     }
 }

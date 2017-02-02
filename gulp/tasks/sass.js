@@ -1,5 +1,4 @@
 var path = require('path')
-var fs = require('fs')
 var gulp = require('gulp')
 var sourcemaps = require('gulp-sourcemaps')
 var sass = require('gulp-sass')
@@ -9,17 +8,14 @@ var autoprefixer = require('autoprefixer')
 
 var config = require('../config')
 
-gulp.task('sass', ['copyGov'], function () {
+gulp.task('sass', function () {
   var sassOptions = {
-    outputStyle: 'compressed',
-    includePaths: [
-      path.resolve(path.join(config.assetsPath, 'src/.govuk-elements'))
-    ]
+    outputStyle: 'compressed'
   }
 
   return gulp.src(path.join(config.assetsPath, config.sassPath))
     .pipe(sourcemaps.init())
-    .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+    .pipe(sass(sassOptions).on('error', sass.logError))
     .pipe(postcss([
       autoprefixer(),
       cssnano()

@@ -6,15 +6,7 @@
 
 {% block head %}
 
-  <link rel="stylesheet" type="text/css" href="/static/stylesheets/main.css">
-
-  <link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
-  <link href="{{assets_main}}" media="screen" rel="stylesheet" type="text/css">
-
-  <!--[if IE 7]>
-    <link rel="stylesheet" href="/static/font-awesome/css/font-awesome-ie7.min.css">
-  <![endif]-->
-  <link href="/static/landregistry/assets/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/main.css') }}">
 
 <!-- google analytics code -->
 <script>
@@ -39,7 +31,7 @@
 {% endblock %}
 
 {% block body_end %}
-  <script type=text/javascript src="{{ url_for('static', filename='landregistry/assets/javascript/jquery-1.12.2.min.js') }}"> </script>
+  <script type=text/javascript src="{{ url_for('static', filename='javascripts/main.js') }}"> </script>
 {% endblock %}
 
 {% block content %}
