@@ -22,7 +22,17 @@ gulp.task('js', ['copyGov'], function () {
     sourceMap: true,
     plugins: [
       nodeResolve(),
-      uglify()
+      uglify({
+        compress: {
+          screw_ie8: false
+        },
+        mangle:   {
+          screw_ie8: false
+        },
+        output:   {
+          screw_ie8: false
+        }
+      })
     ],
     format: 'es'
   })
