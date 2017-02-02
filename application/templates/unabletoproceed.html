@@ -1,0 +1,29 @@
+{% extends "base/lr_base_layout.html" %}
+
+{% block content %}
+<main id="content" role="main">
+  {{ super() }}
+  <div>
+
+      <div class="grid-row">
+        <div class="column-two-thirds">
+
+        <h1 class="heading-xlarge">Unable to use service</h1>
+
+        <p>
+            You are unable to use this service.  This might be because of either technical
+            difficulties or details on the register mean this is not suitable for digital applications.
+
+            <p>
+                Please contact {{ conveyancer }} who may complete your transaction in paper format.
+            </p>
+        </p>
+
+
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+{% endblock %}
