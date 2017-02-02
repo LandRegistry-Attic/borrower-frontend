@@ -21,7 +21,7 @@ gulp.task('js', ['copyGov'], function () {
     entry: entryPoint,
     sourceMap: true,
     plugins: [
-      nodeResolve(),
+      nodeResolve()
       uglify({
         compress: {
           screw_ie8: false

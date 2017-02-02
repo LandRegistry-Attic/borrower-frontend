@@ -74,11 +74,11 @@
 
       {% if signed %}
 
-      <input onload="disable" class="button" id="submit" type="submit" value="Continue">
+      <input class="button" id="submit" type="submit" value="Continue">
 
       {% else %}
 
-      <input onload="disable" class="button" id="submit" type="submit" value="Next">
+      <input class="button" id="submit" type="submit" value="Next">
 
       {% endif %}
 
@@ -146,7 +146,7 @@
             </div>
             <div class="text">
               <p>
-                <input onload="disable" class="button" id="submit" type="submit" value="Next">
+                <input class="button" id="submit" type="submit" value="Next">
               </p>
           </div>
 
@@ -160,8 +160,3 @@
 
 
           {% endblock %}
-
-{% block body_end %}
-  {{ super() }}
-  <script src="static/landregistry/assets/javascript/accept-naa.js"></script>
-{% endblock %}

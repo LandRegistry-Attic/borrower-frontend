@@ -11,7 +11,6 @@
   }
 
   $naa.on('change', updateButton)
-
   $(document).ready(function () {
     updateButton()
   })
