@@ -5,6 +5,8 @@
   "scripts": {
     "test": "gulp test"
   },
+  "license": "UNLICENSED",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git@192.168.249.38:digital-mortgage/borrower-frontend.git"
@@ -22,6 +24,7 @@
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.4.0",
     "gulp-standard": "^8.0.3",
+    "require-dir": "^0.3.1",
     "rollup-plugin-uglify": "^1.0.1",
     "rollup-stream": "^1.19.0",
     "vinyl-buffer": "^1.0.0",
