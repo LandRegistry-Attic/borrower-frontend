@@ -22,7 +22,16 @@ gulp.task('sass-lint', function () {
   ]
 
   return gulp.src(sassFiles)
-    .pipe(sassLint())
+    .pipe(sassLint({
+      rules: {
+        'property-sort-order': 0,
+        'force-element-nesting': 0,
+        'no-color-literals': 0,
+        'force-pseudo-nesting': 0,
+        'shorthand-values': 0,
+        'mixins-before-declarations': 0
+      }
+    }))
     .pipe(sassLint.format())
     .pipe(sassLint.failOnError())
 })
