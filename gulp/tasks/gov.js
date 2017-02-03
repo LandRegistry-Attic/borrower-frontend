@@ -24,12 +24,12 @@ gulp.task('copyGovElements', ['clean'], function () {
       'node_modules/govuk-elements/public/sass/**',
       'node_modules/govuk_frontend_toolkit/stylesheets/**'
     ])
-   .pipe(gulp.dest('application/assets/src/scss/.govuk-elements'))
+   .pipe(gulp.dest('application/assets/src/scss/vendor/.govuk-elements'))
 })
 
 gulp.task('copyGov', [
   'copyGovTemplate',
   'copyGovTemplateAssets',
   'copyGovElements',
-  'copyGovToolkitImages',
+  'copyGovToolkitImages'
 ])

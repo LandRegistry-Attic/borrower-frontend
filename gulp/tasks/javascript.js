@@ -26,10 +26,10 @@ gulp.task('js', ['copyGov'], function () {
         compress: {
           screw_ie8: false
         },
-        mangle:   {
+        mangle: {
           screw_ie8: false
         },
-        output:   {
+        output: {
           screw_ie8: false
         }
       })
