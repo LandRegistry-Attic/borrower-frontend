@@ -1,6 +1,7 @@
 from datetime import timedelta
 import json
 import logging
+import os
 from logger import logging_config
 
 from flask import Flask, request, render_template, Response, url_for
@@ -81,3 +82,23 @@ def page_not_found(e):
                           'redirect': url_for('render_page_not_found', error=True)}
         return Response(json.dumps(error_redirect), 404)
     return render_template('404.html'), 404
+
+
+@manager.app.context_processor
+def override_url_for():
+    return dict(url_for=dated_url_for)
+
+
+def dated_url_for(endpoint, **values):
+    """Cachebusting
+
+    Use the last updated timestamp from the file on disk to perform cachebusting duties.
+    This forces browsers to download new versions of files when they change.
+    """
+    if endpoint == 'static':
+        filename = values.get('filename', None)
+
+        if filename:
+            file_path = os.path.join(manager.app.root_path, manager.app.static_folder, filename)
+            values['cache'] = int(os.stat(file_path).st_mtime)
+    return url_for(endpoint, **values)
