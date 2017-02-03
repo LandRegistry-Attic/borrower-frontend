@@ -1,9 +1,10 @@
 $path: '/static/images/';
 
+@import ".govuk-elements/govuk-elements";
 @import "font-awesome/scss/variables";
 @import "font-awesome/scss/mixins";
 @import "font-awesome/scss/path";
+@import "font-awesome/scss/extras";
 @import "font-awesome/scss/core";
 @import "font-awesome/scss/icons";
-@import ".govuk-elements/govuk-elements";
 @import "landregistry/application";
