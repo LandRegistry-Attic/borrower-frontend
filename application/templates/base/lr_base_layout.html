@@ -1,32 +1,31 @@
 {% set page_title = 'Sign your mortgage deed' %}
-{% set asset_path = '/static/' %}
+{% set asset_path = url_for('static', filename='') %}
 
 {% extends "base/govuk_template.html" %}
-
 
 {% block head %}
 
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/main.css') }}">
 
-<!-- google analytics code -->
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-                    (i[r].q = i[r].q || []).push(arguments)
-                }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+  <!-- google analytics code -->
+  <script>
+      (function (i, s, o, g, r, a, m) {
+          i['GoogleAnalyticsObject'] = r;
+          i[r] = i[r] || function () {
+                      (i[r].q = i[r].q || []).push(arguments)
+                  }, i[r].l = 1 * new Date();
+          a = s.createElement(o),
+                  m = s.getElementsByTagName(o)[0];
+          a.async = 1;
+          a.src = g;
+          m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-    ga('create','{{ config["GOOGLE_ANALYTICS_CODE"] }}', 'auto');
-    ga('send', 'pageview');
-    ga('set', 'anonymizeIp', true);
+      ga('create','{{ config["GOOGLE_ANALYTICS_CODE"] }}', 'auto');
+      ga('send', 'pageview');
+      ga('set', 'anonymizeIp', true);
 
-</script>
+  </script>
 
 {% endblock %}
 
@@ -35,9 +34,9 @@
 {% endblock %}
 
 {% block content %}
-<div class="phase-banner-beta">
+<div class="beta-banner">
   <p>
-      <strong class="phase-tag">BETA</strong>
+      <strong class="beta-tag">BETA</strong>
       <span>This is a new service – your
           <a href="/feedback" target="_blank">feedback</a>
           will help us to improve it.</span>
