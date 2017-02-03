@@ -132,3 +132,22 @@
    font-size: 16px;
    line-height: 1.25; }
  }
+
+.list-no-number {
+  list-style-type: none;
+  padding-left: 20px;
+}
+
+.iframe-feedback {
+  width: 750px;
+  height: 730px;
+  border: 0px;
+}
+
+.spacer-40 {
+  clear: both;
+  height: 40px;
+}
+.button-float-right{
+  float:right;
+}
