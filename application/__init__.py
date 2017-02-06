@@ -4,13 +4,14 @@ import logging
 import os
 from logger import logging_config
 
-from flask import Flask, request, render_template, Response, url_for
+from flask import request, render_template, Response, url_for
 from flask.ext.script import Manager
 
 from application.service.deed_api import make_deed_api_client
 from .health.views import health
 from .deed.searchdeed.views import searchdeed
 from .borrower.views import borrower_landing
+from .digital_mortgage_flask import DigitalMortgageFlask
 
 
 logging_config.setup_logging()
@@ -19,7 +20,7 @@ LOGGER.info("Starting the server")
 
 
 def create_manager(deed_api_client=make_deed_api_client()):
-    app = Flask(__name__,
+    app = DigitalMortgageFlask(__name__,
                 template_folder='templates',
                 static_folder='assets/.dist',
                 static_url_path='/static'
