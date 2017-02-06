@@ -21,5 +21,5 @@ gulp.task('sass', function () {
       cssnano()
     ]))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(path.join(config.assetsPath, '.dist/stylesheets')))
+    .pipe(gulp.dest(path.join(config.assetsPath, 'dist/stylesheets')))
 })

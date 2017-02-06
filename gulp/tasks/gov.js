@@ -9,13 +9,13 @@ gulp.task('copyGovTemplate', ['clean'], function () {
 gulp.task('copyGovTemplateAssets', ['clean'], function () {
   return gulp
     .src('node_modules/govuk_template_jinja/assets/**')
-    .pipe(gulp.dest('application/assets/.dist'))
+    .pipe(gulp.dest('application/assets/dist'))
 })
 
 gulp.task('copyGovToolkitImages', ['clean'], function () {
   return gulp
     .src('node_modules/govuk_frontend_toolkit/images/**')
-    .pipe(gulp.dest('application/assets/.dist/images'))
+    .pipe(gulp.dest('application/assets/dist/images'))
 })
 
 gulp.task('copyGovElements', ['clean'], function () {
@@ -24,7 +24,7 @@ gulp.task('copyGovElements', ['clean'], function () {
       'node_modules/govuk-elements/public/sass/**',
       'node_modules/govuk_frontend_toolkit/stylesheets/**'
     ])
-   .pipe(gulp.dest('application/assets/src/scss/vendor/.govuk-elements'))
+   .pipe(gulp.dest('application/assets/src/scss/vendor/govuk-elements'))
 })
 
 gulp.task('copyGov', [

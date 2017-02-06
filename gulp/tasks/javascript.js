@@ -40,5 +40,5 @@ gulp.task('js', function () {
   .pipe(buffer())                           // buffer the output. most gulp plugins, including gulp-sourcemaps, don't support streams.
   .pipe(sourcemaps.init({loadMaps: true}))  // tell gulp-sourcemaps to load the inline sourcemap produced by rollup-stream.
   .pipe(sourcemaps.write('.'))
-  .pipe(gulp.dest(path.join(config.assetsPath, '.dist/javascripts')))
+  .pipe(gulp.dest(path.join(config.assetsPath, 'dist/javascripts')))
 })
