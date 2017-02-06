@@ -126,5 +126,10 @@ def dated_url_for(endpoint, **values):
 
         if filename:
             file_path = os.path.join(manager.app.root_path, manager.app.static_folder, filename)
-            values['cache'] = int(os.stat(file_path).st_mtime)
+
+            try:
+                values['cache'] = int(os.stat(file_path).st_mtime)
+            except FileNotFoundError as e:
+                LOGGER.error('Page not found: %s', (e,), exc_info=True)
+
     return url_for(endpoint, **values)
