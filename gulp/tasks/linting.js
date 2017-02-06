@@ -7,7 +7,7 @@ var config = require('../config')
 
 gulp.task('standardjs', function () {
   var jsFiles = [
-    path.join(config.assetsPath, '**/*.js'),
+    path.join(config.assetsPath, '**/src/*.js'),
     '!' + path.join(config.assetsPath, 'javascripts/vendor/**'),
     'gulp/**/*.js'
   ]

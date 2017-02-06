@@ -2,14 +2,13 @@ var gulp = require('gulp')
 
 gulp.task('copy', [
   'copyGov',
-  'copyFontAwesome',
+  'copyFontAwesome'
 ])
 
 gulp.task('build', [
   'sass',
   'js'
 ])
-
 
 gulp.task('default', [
   'build'
