@@ -12,7 +12,7 @@
     "url": "git@192.168.249.38:digital-mortgage/borrower-frontend.git"
   },
   "dependencies": {
-    "govuk-elements-sass": "alphagov/govuk_elements#9e44a8d74cbbab9d32fd006bfba05814c8b0dc83",
+    "govuk-elements": "alphagov/govuk_elements#9e44a8d74cbbab9d32fd006bfba05814c8b0dc83",
     "govuk_frontend_toolkit": "4.5.0",
     "govuk_template_jinja": "0.18.0",
     "jquery": "1.12.2"
