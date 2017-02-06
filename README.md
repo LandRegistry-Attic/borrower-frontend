@@ -95,7 +95,7 @@ You then have 2 options. You can
 
 At the time of writing, the build does not run in the pipeline and must be run on the developer's laptop. This means that the build artefacts need to be committed into the repository. The following files need to be committed in, but _should not be manually modified_
 
-- `application/assets/dist/**/*.*` (Note that this folder is intentionally hidden on disk)
+- `application/assets/dist/**/*.*`
 - `application/templates/govuk_template.html` (This file is copied from the `govuk_template_jinja` module in `node_modules`. It is checked into the repository, but should not be modified manually.)
 
 
