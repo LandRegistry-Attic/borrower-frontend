@@ -36,10 +36,9 @@ gulp.task('js', ['copyGov'], function () {
     ],
     format: 'es'
   })
-  .pipe(source('main.js', path.join(config.assetsPath, 'src/javascripts')))         // point to the entry file.
+  .pipe(source('main.js', path.join(config.assetsPath, 'src/javascripts')))
   .pipe(buffer())                           // buffer the output. most gulp plugins, including gulp-sourcemaps, don't support streams.
   .pipe(sourcemaps.init({loadMaps: true}))  // tell gulp-sourcemaps to load the inline sourcemap produced by rollup-stream.
-  // .pipe(rename('index.js'))                // if you want to output with a different name from the input file, use gulp-rename here.
   .pipe(sourcemaps.write('.'))
   .pipe(gulp.dest(path.join(config.assetsPath, '.dist/javascripts')))
 })

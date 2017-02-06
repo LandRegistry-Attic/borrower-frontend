@@ -6,7 +6,13 @@ var sassLint = require('gulp-sass-lint')
 var config = require('../config')
 
 gulp.task('standardjs', function () {
-  return gulp.src([path.join(config.assetsPath, '**/*.js'), 'gulp/**/*.js'])
+  var jsFiles = [
+    path.join(config.assetsPath, '**/*.js'),
+    '!' + path.join(config.assetsPath, 'javascripts/vendor/**'),
+    'gulp/**/*.js'
+  ]
+
+  return gulp.src(jsFiles)
     .pipe(standard())
     .pipe(standard.reporter('default', {
       breakOnError: false,
