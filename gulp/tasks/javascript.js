@@ -10,7 +10,7 @@ var nodeResolve = require('rollup-plugin-node-resolve')
 
 var config = require('../config')
 
-gulp.task('js', ['copyGov'], function () {
+gulp.task('js', function () {
   var entryPoint = path.join(config.assetsPath, 'src/javascripts/main.js')
 
   if (!fs.existsSync(entryPoint)) {
