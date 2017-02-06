@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "The Borrower Frontend provides a service for a Borrower to view and sign their mortgage deeds online.",
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "build": "gulp",
+    "dev": "gulp watch"
   },
   "license": "UNLICENSED",
   "private": true,
