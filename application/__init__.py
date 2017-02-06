@@ -41,7 +41,7 @@ def gzip_cache_key(response):
 def create_manager(deed_api_client=make_deed_api_client()):
     app = DigitalMortgageFlask(__name__,
                                template_folder='templates',
-                               static_folder='assets/.dist',
+                               static_folder='assets/dist',
                                static_url_path='/static'
                                )
 
