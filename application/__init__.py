@@ -21,10 +21,10 @@ LOGGER.info("Starting the server")
 
 def create_manager(deed_api_client=make_deed_api_client()):
     app = DigitalMortgageFlask(__name__,
-                template_folder='templates',
-                static_folder='assets/.dist',
-                static_url_path='/static'
-                )
+                               template_folder='templates',
+                               static_folder='assets/.dist',
+                               static_url_path='/static'
+                               )
 
     app.config.from_pyfile('config.py')
 
