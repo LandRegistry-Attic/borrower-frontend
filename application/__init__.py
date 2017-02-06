@@ -7,6 +7,9 @@ from logger import logging_config
 from flask import request, render_template, Response, url_for
 from flask.ext.script import Manager
 
+from flask_compress import Compress
+from werkzeug.contrib.cache import FileSystemCache
+
 from application.service.deed_api import make_deed_api_client
 from .health.views import health
 from .deed.searchdeed.views import searchdeed
@@ -19,6 +22,22 @@ LOGGER = logging.getLogger(__name__)
 LOGGER.info("Starting the server")
 
 
+def gzip_cache():
+    cache = FileSystemCache(cache_dir='.asset-cache')
+    cache.clear()
+    return cache
+
+
+def gzip_cache_key(response):
+    """Gzip cache key
+
+    Flask-Compress is used to gzip CSS and JS responses.
+    To avoid doing this on every request, the responses are cached in memory.
+    This method is used to define the key for this cache
+    """
+    return request.path + response.headers['ETag']
+
+
 def create_manager(deed_api_client=make_deed_api_client()):
     app = DigitalMortgageFlask(__name__,
                                template_folder='templates',
@@ -27,6 +46,12 @@ def create_manager(deed_api_client=make_deed_api_client()):
                                )
 
     app.config.from_pyfile('config.py')
+
+    # Gzip compression with Flask-Compress
+    app.config['COMPRESS_MIMETYPES'] = ['text/css', 'application/javascript']
+    app.config['COMPRESS_CACHE_BACKEND'] = gzip_cache
+    app.config['COMPRESS_CACHE_KEY'] = gzip_cache_key
+    Compress(app)
 
     manager = Manager(app)
     app.url_map.strict_slashes = False

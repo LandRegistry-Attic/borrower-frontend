@@ -12,6 +12,7 @@ test-reports/
 htmlcov/
 *.iml
 TEST-*.xml
+.asset-cache
 
 # Nodejs
 npm-debug.log*
