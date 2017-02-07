@@ -2,13 +2,14 @@
 
   var count = 0;
   var interval = 5000;
-  var maxTries = 36;
+  var maxTries = 12;
 
   // Call our main endpoint via ajax
   // This kicks off the call to deed api
   $.ajax({
     dataType: 'json',
     method: 'POST',
+    cache: false,
     data: {
       auth_code: $('input[name="auth_code"]').val()
     },
@@ -30,6 +31,7 @@
     $.ajax({
       dataType: 'json',
       method: 'GET',
+      cache: false,
       url: 'confirm-mortgage-is-signed',
       success: function(data) {
 
