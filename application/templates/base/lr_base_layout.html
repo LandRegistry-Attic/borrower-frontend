@@ -5,7 +5,7 @@
 
 {% block head %}
 
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/main.css') }}" />
+  <!--[if gt IE 8]><!--><link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/main.css') }}" /><!--<![endif]-->
   <!--[if IE 8]><link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/main-ie8.css') }}" /><![endif]-->
 
   <!-- google analytics code -->
