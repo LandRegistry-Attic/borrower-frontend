@@ -2,7 +2,7 @@
 
   var count = 0;
   var interval = 5000;
-  var maxTries = 36;
+  var maxTries = 37;
 
   // Call our main endpoint via ajax
   // This kicks off the call to deed api
