@@ -21,7 +21,7 @@ gulp.task('copyGovToolkitImages', ['clean'], function () {
 gulp.task('copyGovElements', ['clean'], function () {
   return gulp
     .src([
-      'node_modules/govuk-elements/public/sass/**',
+      'node_modules/govuk-elements-sass/public/sass/**',
       'node_modules/govuk_frontend_toolkit/stylesheets/**'
     ])
    .pipe(gulp.dest('application/assets/src/scss/vendor/govuk-elements'))
