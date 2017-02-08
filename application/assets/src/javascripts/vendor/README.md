@@ -1,0 +1,1 @@
+The `details.polyfill.js` in this directory is from `govuk_elements` but when this is `npm install`ed, it does not bring in this JS file. This is a known issue (See https://github.com/alphagov/govuk_elements/issues/400). When that ticket is resolved, this file can likely be removed.
