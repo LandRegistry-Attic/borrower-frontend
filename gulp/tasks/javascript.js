@@ -21,7 +21,7 @@ gulp.task('js', function () {
   // Commonly used for modules that expect "this" to resolve to the window object
   // In ES6 modules, using "this" at the top level always resolves to undefined
   // hence the need to override it here
-  moduleContext = {}
+  var moduleContext = {}
   moduleContext[path.relative(process.cwd(), require.resolve('jquery'))] = 'window'
 
   return rollup({

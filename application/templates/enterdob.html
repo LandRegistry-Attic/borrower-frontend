@@ -4,32 +4,41 @@
   <main id="content" role="main">
     {{ super() }}
 
-    <div>&nbsp;</div>
+    <h1 class="heading-medium spacing-top-single">What is your date of birth?</h1>
 
-    <form id="enter-dob-form" action="/date-of-birth" method="POST">
-      <div class="form-group">
+    {% if form.error %}
+      <div class="error-summary visuallyhidden" role="group" aria-labelledby="error-summary-heading" tabindex="-1">
 
-        <h1 class="form-label-bold">What is your date of birth?</h1>
+        <h1 class="heading-medium error-summary-heading" id="error-summary-heading">The following errors were found</h1>
 
-        <fieldset>
+        <ul class="error-summary-list">
+          <li><a href="#dob-day">{{form.error}}</a></li>
+        </ul>
 
-          <input id="borrower_token" type="hidden" name="borrower_token" class="form-control"
-                 value="{{ form.borrower_token }}">
+      </div>
+    {% endif %}
+
+    <form id="enter-dob-form" action="{{ url_for('searchdeed.enter_dob') }}" method="POST">
+
+      <fieldset>
+        <div class="form-group{% if form.error %} error{% endif %}">
+
+          <legend class="{% if not form.error %}visuallyhidden{% endif %}">
+            <span class="visuallyhidden">Date of birth</span>
+
+            {% if form.error %}
+              <span class="error-message">
+                {{ form.error }}
+              </span>
+            {% endif %}
+          </legend>
+
+          <input id="borrower_token" type="hidden" name="borrower_token" class="form-control" value="{{ form.borrower_token }}">
           <input id="validate" type="hidden" name="validate" class="form-control" value="True">
-          <label class="visuallyhidden">Date of birth</label>
-          <label id="example-dob" class="form-hint">For example, 31 3 1980</label>
+
+          <span class="form-hint">For example, 31 3 1980</span>
 
           <div class="form-date">
-            <label id="error-dob">
-              {% if form.error %}
-              <div class="{% if form.error %}error{% endif %}">
-                  <span class="error-message" id="error-message-dob">
-                    {{ form.error }}
-                  </span>
-              </div>
-              {% endif %}
-            </label>
-
             <div class="form-group form-group-day">
               <span class="visuallyhidden">Required</span>
               <label for="dob-day">Day</label>
@@ -50,8 +59,8 @@
                      max="{{ form.current_year }}">
             </div>
           </div>
-        </fieldset>
-      </div>
+        </div>
+      </fieldset>
 
       <div>&nbsp;</div>
       <div class="form-group">

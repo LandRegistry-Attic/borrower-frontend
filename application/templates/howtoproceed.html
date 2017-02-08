@@ -1,162 +1,100 @@
 {% extends "base/lr_base_layout.html" %}
 
 {% block content %}
-
-
-
 <main id="content" role="main">
 
   {{ super() }}
 
-
   {% if session['agreement_naa']== 'declined' %}
-  <div class="error-summary" role="group" aria-labelledby="error-summary-heading-example-1" >
-    <h1 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
-    Please agree to Land Registry's terms and conditions for this service </h1>
-    <p> By using the checkbox below.</p>
-  </div>
+    <div class="error-summary" role="group" aria-labelledby="error-summary-heading" >
+      <h1 class="heading-medium error-summary-heading" id="error-summary-heading">The following errors were found</h1>
 
-  <h2 class="heading-xlarge">
-    Sign your mortgage deed
-  </h2>
+      <ul class="error-summary-list">
+        <li><a href="#accept-naa">Please agree to Land Registry's terms and conditions for this service</a></li>
+      </ul>
+    </div>
 
+    <h2 class="heading-xlarge">Sign your mortgage deed</h2>
   {% else %}
 
     {% if signed %}
-
-      <h1 class="heading-xlarge">
-        View your mortgage deed
-      </h1>
-
+      <h1 class="heading-xlarge">View your mortgage deed</h1>
     {% else %}
-
-      <h1 class="heading-xlarge">
-        Sign your mortgage deed
-      </h1>
-
+      <h1 class="heading-xlarge">Sign your mortgage deed</h1>
     {% endif %}
 
   {% endif %}
 
-  <div class="text verified-container">
-    <p class="lede">
-
-      {% if signed %}
-
-      View your mortgage deed by agreeing Land Registry's terms and conditions for this service.
-
-      {% else %}
-
-      Now that you've confirmed your identity you can sign your mortgage deed. You should:
-
-      {% endif %}
-
-    </p>
-  </div>
-    <form action="/confirm-naa" method="POST">
-  <div class="text verified-container" id="verified-container">
-
+  <div class="text">
     {% if signed %}
-
-    <input id="validate" type="hidden" name="validate" class="form-control" value="True">
-    <div class="text" id="naa-box" >
-      <p>
-        <label class="block-label" for="accept-naa">
-          <input id="accept-naa" name="accept-naa" class="accept-naa" type="checkbox" value="Accept">
-          I agree to the terms and conditions set out in the <a href="borrow-naa">Network Access Agreement</a>
-        </label>
-        <br>
-      </p>
-    </div>
-    <br>
-
-    <p>
-
-      {% if signed %}
-
-      <input class="button" id="submit" type="submit" value="Continue">
-
-      {% else %}
-
-      <input class="button" id="submit" type="submit" value="Next">
-
-      {% endif %}
-
-    </p>
-
-  </div>
-
+      <p class="lede">View your mortgage deed by agreeing Land Registry's terms and conditions for this service.</p>
     {% else %}
-
-    <ol class="list-plain">
-      <li>
-
-        <div class="icon-stack verified-bullets-fa">
-          <i class="icon-circle icon-stack-base"></i>
-          <span class="icon-stack verfied-bullet-numbers-fa">1</span>
-        </div>
-        <div class="verified-bullets">
-          <h2 class="heading-small">Agree to the Land Registry's terms and conditions for this service</h2>
-          <input id="validate" type="hidden" name="validate" class="form-control" value="True">
-          <div class="text" id="naa-box" >
-            <p>
-                <label class="block-label" for="accept-naa">
-                  <input id="accept-naa" name="accept-naa" class="accept-naa" type="checkbox" value="Accept">
-                    I agree to the terms and conditions set out in the <a href="borrow-naa">Network Access Agreement</a>
-                </label>
-                <br>
-              </p>
-            </div>
-            <br>
-          </div>
-          <li>
-            <div class="icon-stack verified-bullets-fa">
-              <i class="icon-circle icon-stack-base"></i>
-              <span class="icon-stack verfied-bullet-numbers-fa">2</span>
-            </div>
-            <div class="verified-bullets">
-              <h2 class="heading-small">Read your mortgage deed carefully</h2>
-              <p>You’ll need to check the details of your mortgage deed and read through the legal clauses.
-                If you spot any mistakes you should let {{ conveyancer }} know.</p>
-              </div>
-            </li>
-            <li>
-              <div class="icon-stack verified-bullets-fa">
-                <i class="icon-circle icon-stack-base"></i>
-                <span class="icon-stack verfied-bullet-numbers-fa">3</span>
-              </div>
-              <div class="verified-bullets">
-                <h2 class="heading-small">Confirm your mortgage deed is correct</h2>
-                <p>If you are happy there are no mistakes, then you will need to request an authentication code to be sent
-                  to your mobile phone in order to sign the deed.</p>
-                </div>
-              </li>
-              <li>
-                <div class="icon-stack verified-bullets-fa">
-                  <i class="icon-circle icon-stack-base"></i>
-                  <span class="icon-stack verfied-bullet-numbers-fa">4</span>
-                </div>
-                <div class="verified-bullets">
-                  <h2 class="heading-small">Sign your mortgage deed</h2>
-                  <p>Enter your authentication code to sign the deed. Doing so means that you don't need to sign a paper document,
-                    or get your signature witnessed.</p>
-                  </div>
-                </li>
-              </ol>
-            </div>
-            <div class="text">
-              <p>
-                <input class="button" id="submit" type="submit" value="Next">
-              </p>
-          </div>
-
+      <p class="lede">Now that you've confirmed your identity you can sign your mortgage deed. You should:</p>
     {% endif %}
 
-        </form>
-      </main>
+    <form action="{{ url_for('borrower_landing.confirm_network_agreement') }}" method="POST">
 
+      {% if signed %}
 
+        <input id="validate" type="hidden" name="validate" class="form-control" value="True">
+        <div class="text" id="naa-box">
+          <label class="block-label selection-button-checkbox" for="accept-naa">
+            <input id="accept-naa" name="accept-naa" class="accept-naa" type="checkbox" value="Accept">
+            I agree to the terms and conditions set out in the <a href="borrow-naa">Network Access Agreement</a>
+          </label>
+        </div>
 
+        <input class="button" id="submit" type="submit" value="Continue">
 
+      {% else %}
 
-          {% endblock %}
+        <ol>
+          <li class="media spacing-bottom-single">
+            <span class="circle circle-step-large media-item">1</span>
+
+            <div class="media-body">
+              <h2 class="heading-small spacing-top-flush">Agree to the Land Registry's terms and conditions for this service</h2>
+              <input id="validate" type="hidden" name="validate" class="form-control" value="True">
+              <div class="text" id="naa-box">
+                <label class="block-label" for="accept-naa">
+                  <input id="accept-naa" name="accept-naa" class="accept-naa" type="checkbox" value="Accept">
+                  I agree to the terms and conditions set out in the <a href="borrow-naa">Network Access Agreement</a>
+                </label>
+              </div>
+            </div>
+          </li>
+          <li class="media spacing-bottom-single">
+            <span class="circle circle-step-large media-item">2</span>
+
+            <div class="media-body">
+              <h2 class="heading-small spacing-top-flush">Read your mortgage deed carefully</h2>
+              <p>You’ll need to check the details of your mortgage deed and read through the legal clauses. If you spot any mistakes you should let {{ conveyancer }} know.</p>
+            </div>
+          </li>
+          <li class="media spacing-bottom-single">
+            <span class="circle circle-step-large media-item">3</span>
+
+            <div class="media-body">
+              <h2 class="heading-small spacing-top-flush">Confirm your mortgage deed is correct</h2>
+              <p>If you are happy there are no mistakes, then you will need to request an authentication code to be sent to your mobile phone in order to sign the deed.</p>
+            </div>
+          </li>
+          <li class="media spacing-bottom-single">
+            <span class="circle circle-step-large media-item">4</span>
+
+            <div class="media-body">
+              <h2 class="heading-small spacing-top-flush">Sign your mortgage deed</h2>
+              <p>Enter your authentication code to sign the deed. Doing so means that you don't need to sign a paper document, or get your signature witnessed.</p>
+            </div>
+          </li>
+        </ol>
+
+        <input class="button" id="submit" type="submit" value="Next">
+
+      {% endif %}
+
+    </form>
+  </div>
+</main>
+
+{% endblock %}

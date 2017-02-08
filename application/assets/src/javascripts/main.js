@@ -1,5 +1,5 @@
 import 'jquery'
-// import 'govuk_frontend_toolkit/javascripts/govuk/selection-buttons.js'
 import './vendor/details.polyfill.js'
 import './modules/accept-naa'
 import './modules/confirming-deed'
+import './modules/selection-buttons'

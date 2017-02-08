@@ -1,29 +1,5 @@
 @import 'landregistry';
 
-.verified-container {
-  margin-top: 30px;
-  width: $two-thirds;
-}
-
-.verified-bullets {
-  padding-left: 60px;
-  margin-bottom: 30px;
-}
-
-.verified-bullets-img {
-  float: left;
-}
-
-.verified-bullets-fa {
-  float: left;
-  font-size: 27px;
-}
-
-.verfied-bullet-numbers-fa {
-  font-family: 'nta';
-  color: #fff;
-}
-
 .awaiting-information {
   color: #6f777b;
 }
@@ -37,22 +13,8 @@
   padding-bottom: 20px;
 }
 
-.list-no-number {
-  list-style-type: none;
-  padding-left: 20px;
-}
-
 .iframe-feedback {
   width: 750px;
   height: 730px;
   border: 0;
-}
-
-.spacer-40 {
-  clear: both;
-  height: 40px;
-}
-
-.button-float-right {
-  float: right;
 }

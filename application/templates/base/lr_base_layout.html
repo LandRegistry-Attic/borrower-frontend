@@ -30,6 +30,18 @@
 
 {% endblock %}
 
+{% block header_class %}with-proposition{% endblock %}
+
+{% block proposition_header %}
+  <div class="header-proposition">
+    <div class="content">
+      <div id="proposition-menu">
+        <span id="proposition-name">Sign your mortgage deed</span>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
 {% block body_end %}
   <script type=text/javascript src="{{ url_for('static', filename='javascripts/main.js') }}"> </script>
 {% endblock %}
@@ -37,8 +49,8 @@
 {% block content %}
 <div class="phase-banner">
   <p>
-      <strong class="phase-tag">BETA</strong>
-      <span>This is a new service – your <a href="/feedback" target="_blank">feedback</a> will help us to improve it.</span>
+    <strong class="phase-tag">BETA</strong>
+    <span>This is a new service – your <a href="/feedback" target="_blank">feedback</a> will help us to improve it.</span>
   </p>
 </div>
 {% endblock %}

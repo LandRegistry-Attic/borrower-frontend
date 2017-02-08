@@ -7,4 +7,7 @@ $path: '/static/images/';
 @import 'vendor/font-awesome/scss/core';
 @import 'vendor/font-awesome/scss/extras';
 @import 'vendor/font-awesome/scss/icons';
-@import 'landregistry/application';
+@import 'partials/utils/spacing';
+@import 'partials/utils/media';
+@import 'partials/deed';
+@import 'partials/definition-lists';
