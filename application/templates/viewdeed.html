@@ -2,7 +2,6 @@
 
 {% block content %}
 
-
   <main id="content" role="main">
     {{ super() }}
 
@@ -28,7 +27,7 @@
           <h2 class="heading-large">Example Mortgage Deed</h2>
           <h3 class="heading-medium">Property</h3>
 
-          <ul class="list spacing-bottom-single">
+          <ul class="list spacing-bottom-double">
             {% for address_line in deed_data.deed.property_address %}
               <li>{{ address_line }}</li>
             {% endfor %}
@@ -49,7 +48,7 @@
               </span>
           </p>
 
-         <p>{{ deed_data.deed.lender.registration }}</p>
+          <p>{{ deed_data.deed.lender.registration }}</p>
 
              {% if session['no_of_borrowers'] ==1 %}
           <h3 class="heading-medium">Borrower</h3>
@@ -57,9 +56,9 @@
           <h3 class="heading-medium">Borrowers</h3>
           {% endif %}
 
-          <ul>
+          <ul class="list">
             {% for borrower in deed_data.deed.borrowers %}
-              <li class="bold-text">
+              <li class="bold">
                 {{ borrower.forename }}
                 {{ borrower.middle_name }}{% if borrower.middle_name %} {% endif %}{{ borrower.surname }}
               </li>
@@ -69,7 +68,7 @@
           <p>{{ deed_data.deed.charge_clause.description }}</p>
 
           <h3 class="heading-medium">Additional provisions</h3>
-          <ol class="list-number">
+          <ol class="list list-number">
             {% for provision in deed_data.deed.additional_provisions %}
               <li>
                 {{ provision.description|safe }}
@@ -104,7 +103,7 @@
             {% endif %}
           {% endfor %}
 
-          <div class="deed-form-ref">
+          <div class="spacing-top-double">
             <h3 class="visuallyhidden">Form of digital mortgage deed filed at HM Land Registry under reference</h3>
             {% if deed_data.deed.society_ref %}
               <p>{{ deed_data.deed.society_ref }}</p>
