@@ -4,68 +4,48 @@
 
 <main id="content" role="main">
 
-    {{ super() }}
+  {{ super() }}
 
+  <div class="text">
     <h1 class="heading-xlarge">Identity verified</h1>
+      <p class="lede">Now you've verified your identity, you can view and digitally sign your mortgage deed. The steps below explain what happens next.</p>
 
-    <div class="text verified-container">
-        <p class="lede">
-            Now you've verified your identity, you can view and digitally sign your mortgage deed. The steps below
-            explain what happens next.
-        </p>
-    </div>
-   <div class="text verified-container">
-      <ol class="list-plain">
-        <li>
-          <div class="icon-stack verified-bullets-fa">
-            <i class="icon-circle icon-stack-base"></i>
-            <span class="icon-stack verfied-bullet-numbers-fa">1</span>
-          </div>
-          <div class="verified-bullets">
-            <h2 class="heading-small">Agree to the Terms and Conditions</h2>
-            <p>You will need to agree to Land Registry’s terms and conditions set out in our
-              Signature Network Access Agreement.</p>
+      <ol>
+        <li class="media spacing-bottom-single">
+          <span class="circle circle-step-large media-item">1</span>
+
+          <div class="media-body">
+            <h2 class="heading-small spacing-top-flush">Agree to the Terms and Conditions</h2>
+            <p>You will need to agree to Land Registry’s terms and conditions set out in our Signature Network Access Agreement.</p>
           </div>
         </li>
-        <li>
-          <div class="icon-stack verified-bullets-fa">
-            <i class="icon-circle icon-stack-base"></i>
-            <span class="icon-stack verfied-bullet-numbers-fa">2</span>
-          </div>
-          <div class="verified-bullets">
-            <h2 class="heading-small">Read your mortgage deed carefully</h2>
-            <p>Compare the online version of the deed with the paper version you have received from your conveyancer.
-              If you spot any mistakes you should let your conveyancer know.</p>
+        <li class="media spacing-bottom-single">
+          <span class="circle circle-step-large media-item">2</span>
+
+          <div class="media-body">
+            <h2 class="heading-small spacing-top-flush">Read your mortgage deed carefully</h2>
+            <p>Compare the online version of the deed with the paper version you have received from your conveyancer. If you spot any mistakes you should let your conveyancer know.</p>
           </div>
         </li>
-        <li>
-          <div class="icon-stack verified-bullets-fa">
-            <i class="icon-circle icon-stack-base"></i>
-            <span class="icon-stack verfied-bullet-numbers-fa">3</span>
-          </div>
-          <div class="verified-bullets">
-            <h2 class="heading-small">Confirm your mortgage deed is correct</h2>
-            <p>If you are happy there are no mistakes, then you will need to request an authentication code to be sent
-              to your mobile phone in order to confirm the deed is correct.</p>
+        <li class="media spacing-bottom-single">
+          <span class="circle circle-step-large media-item">3</span>
+
+          <div class="media-body">
+            <h2 class="heading-small spacing-top-flush">Confirm your mortgage deed is correct</h2>
+            <p>If you are happy there are no mistakes, then you will need to request an authentication code to be sent to your mobile phone in order to confirm the deed is correct.</p>
           </div>
         </li>
-        <li>
-          <div class="icon-stack verified-bullets-fa">
-            <i class="icon-circle icon-stack-base"></i>
-            <span class="icon-stack verfied-bullet-numbers-fa">4</span>
-          </div>
-          <div class="verified-bullets">
-            <h2 class="heading-small">Sign your paper mortgage deed</h2>
-            <p>The online deed is not the legal mortgage. You should still sign and return your paper mortgage deed
-              following the instructions you have from your conveyancer.</p>
+        <li class="media spacing-bottom-single">
+          <span class="circle circle-step-large media-item">4</span>
+
+          <div class="media-body">
+            <h2 class="heading-small spacing-top-flush">Sign your paper mortgage deed</h2>
+            <p>The online deed is not the legal mortgage. You should still sign and return your paper mortgage deed following the instructions you have from your conveyancer.</p>
           </div>
         </li>
       </ol>
-    </div>
-    <div class="text">
-        <p>
-            <a href="{{ url_for('borrower_landing.confirm_network_agreement') }}" class="button">Continue</a>
-        </p>
+
+      <p><a href="{{ url_for('borrower_landing.confirm_network_agreement') }}" class="button">Continue</a></p>
     </div>
 </main>
 {% endblock %}
