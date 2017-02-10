@@ -23,6 +23,7 @@
     "autoprefixer": "^6.7.2",
     "cssnano": "^3.10.0",
     "eslint": "^3.15.0",
+    "glob": "https://registry.npmjs.org/glob/-/glob-7.1.1.tgz",
     "gulp": "^3.9.1",
     "gulp-postcss": "^6.3.0",
     "gulp-sass": "^3.1.0",

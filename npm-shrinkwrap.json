@@ -1138,7 +1138,7 @@
     },
     "glob": {
       "version": "7.1.1",
-      "from": "glob@>=7.0.3 <8.0.0",
+      "from": "https://registry.npmjs.org/glob/-/glob-7.1.1.tgz",
       "resolved": "https://registry.npmjs.org/glob/-/glob-7.1.1.tgz",
       "dev": true
     },
