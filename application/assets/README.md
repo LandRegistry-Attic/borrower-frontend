@@ -59,4 +59,19 @@ SCSS is linted with [sass-lint](https://github.com/sasstools/sass-lint) but is c
 
 ## Updating gov.uk elements
 
-Instructions to follow, once follow-on task has been completed.
+The Gov.uk kit versions are maintained as NodeJS dependencies. The versions are tracked in `package.json` but also in `npm-shrinkwrap.json`. To update these, you need to explicitly install the new versions, for example:
+
+- `npm install govuk-elements-sass@2.2.1`
+- `npm install govuk_frontend_toolkit@5.0.3`
+- `npm install govuk_template_jinja@0.19.2`
+
+This will update `package.json` as well as `npm-shrinkwrap.json`. You should commit these into Git.
+
+Once the packages are updated, run `npm run build`. If nothing significant has changed, then you are done. But there may be errors if they have changed things upstream in an incompatible way. To resolve this, you should read the release notes to see if this helps. If errors occur beyond that, it is a case of traditional debugging.
+
+It is worth noting that new releases often include small markup changes, and sometimes new JavaScript files etc. Reading the release notes thoroughly will reveal anything like this that might be necessary.
+
+### Gov.uk release notes:
+- https://github.com/alphagov/govuk_elements/releases
+- https://github.com/alphagov/govuk_template/releases
+
