@@ -7,6 +7,7 @@ var cssnano = require('cssnano')
 var autoprefixer = require('autoprefixer')
 
 var config = require('../config')
+var browserSync = require('../modules/browsersync')
 
 gulp.task('sass', function () {
   var sassOptions = {
@@ -22,4 +23,5 @@ gulp.task('sass', function () {
     ]))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(path.join(config.assetsPath, 'dist/stylesheets')))
+    .pipe(browserSync.stream())
 })

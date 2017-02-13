@@ -1,4 +1,3 @@
-var fs = require('fs')
 var glob = require('glob')
 var path = require('path')
 var gulp = require('gulp')
@@ -24,14 +23,14 @@ gulp.task('js', function () {
   // Loop over all our entrypoints
   var entrypoints = glob.sync(path.join(config.assetsPath, 'src/javascripts/*.js'))
 
-  if(!entrypoints) {
+  if (!entrypoints) {
     return
   }
 
-  entrypoints.forEach(function(entrypoint) {
+  entrypoints.forEach(function (entrypoint) {
     var name = path.basename(entrypoint)
 
-    promises.push(new Promise(function(resolve, reject) {
+    promises.push(new Promise(function (resolve, reject) {
       rollup({
         entry: entrypoint,
         sourceMap: true,
