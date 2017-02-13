@@ -2,8 +2,7 @@ var gulp = require('gulp')
 
 gulp.task('copy', [
   'clean',
-  'copyGov',
-  'copyFontAwesome'
+  'copyGov'
 ])
 
 gulp.task('build', [
