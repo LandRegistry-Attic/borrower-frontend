@@ -9,7 +9,7 @@ mortgage deeds online.
 - [Run The App](#run-the-app)
 - [Run The Unit Tests](#run-the-unit-tests)
 - [Acceptance Tests](#acceptance-tests)
-- [Frontend] (#frontend)
+- [Frontend](#frontend)
 
 ## Usage
 ```
@@ -23,14 +23,7 @@ POST    /searchdeed/search              -- POST search for deed (deed reference 
 
 1. Clone the repo
 
-2. Initialise the submodules
-
-```
-git submodule init
-git submodule update
-```
-
-3. Install the requirements
+2. Install the requirements
 ```
 pip install -r requirements.txt
 ```
@@ -71,4 +64,4 @@ See, the following link for information on how to run the acceptance tests:-
 
 ## Frontend
 
-[Frontend build readme](https://192.168.249.38/digital-mortgage/borrower-frontend/build/readme.md)
+See [application/assets](application/assets)

@@ -1,8 +1,4 @@
 __pycache__
-/application/static/elements
-/application/static/govuk_template
-/build/zip
-.webassets-cache
 *.pyc
 .DS_Store
 .coverage
@@ -14,10 +10,10 @@ test-reports/
 .tmp
 .idea/
 htmlcov/
-*.css.map
-.sass-cache/
-/build/elements-toolkit/govuk_modules
-/build/govuk_modules/
-/build/node_modules/
 *.iml
 TEST-*.xml
+.asset-cache
+
+# Nodejs
+npm-debug.log*
+node_modules

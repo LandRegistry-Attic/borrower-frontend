@@ -5,9 +5,7 @@ from application.service.deed_api import make_deed_api_client
 LOGGER = logging.getLogger(__name__)
 
 
-health = Blueprint('health', __name__,
-                   template_folder='/templates',
-                   static_folder='static')
+health = Blueprint('health', __name__)
 
 
 @health.route('/')

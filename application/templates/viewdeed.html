@@ -2,148 +2,138 @@
 
 {% block content %}
 
-
   <main id="content" role="main">
     {{ super() }}
 
-    <div class="inner-block">
+    <div class="grid-row">
 
-      <h1 class="heading-xlarge">Example Mortgage Deed for Test Purposes Only</h1>
+      <div class="column-two-thirds">
+        <h1 class="heading-xlarge">Example Mortgage Deed for Test Purposes Only</h1>
 
-      <div class="text">
         <div class="notice">
           <i class="icon icon-important">
             <span class="visuallyhidden">Warning</span>
           </i>
           <strong class="bold-small">
-            This is an important legal document.
-            YOUR HOME MAY BE REPOSSESSED IF YOU DO NOT KEEP UP REPAYMENTS ON YOUR MORTGAGE.
+            This is an important legal document.<br>
+            YOUR HOME MAY BE REPOSSESSED IF YOU DO NOT KEEP UP REPAYMENTS ON YOUR MORTGAGE.<br>
             You should consider taking independent legal advice from a conveyancer or other legal advisor before you
             sign this mortgage deed.
           </strong>
         </div>
-      </div>
-      <br>
-      <article class="text deed-document-bounds">
-        <h2 class="heading-large">Example Mortgage Deed</h2>
-        <h3 class="heading-medium">Property</h3>
-        <div class="deed-address-list ">
-          <ul>
-          {% for address_line in deed_data.deed.property_address %}
+
+
+        <article class="deed-document-bounds spacing-top-single">
+          <h2 class="heading-large">Example Mortgage Deed</h2>
+          <h3 class="heading-medium">Property</h3>
+
+          <ul class="list spacing-bottom-double">
+            {% for address_line in deed_data.deed.property_address %}
               <li>{{ address_line }}</li>
-          {% endfor %}
+            {% endfor %}
           </ul>
-        </div>
 
-        <dl class="definition-inline">
-          <dt class="bold-text">Title number</dt>
-          <dd>{{ deed_data.deed.title_number }}</dd>
-        </dl>
+          <dl class="definition-inline">
+            <dt class="bold">Title number</dt>
+            <dd>{{ deed_data.deed.title_number }}</dd>
+          </dl>
 
-        <h3 class="heading-medium">Lender</h3>
+          <h3 class="heading-medium">Lender</h3>
 
-        <p itemscope itemtype="http://schema.org/Corporation">
-          <span itemprop="name">{{ deed_data.deed.lender.name }}</span>
-          <br>
-          <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress" class="address-inline">
-            <span itemprop="streetAddress">{{ deed_data.deed.lender.address }}</span>
+          <p itemscope itemtype="http://schema.org/Corporation">
+            <span itemprop="name">{{ deed_data.deed.lender.name }}</span>
+            <br>
+            <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress" class="address-inline">
+              <span itemprop="streetAddress">{{ deed_data.deed.lender.address }}</span>
             </span>
-        </p>
+          </p>
 
-       <p>{{ deed_data.deed.lender.registration }}</p>
+          <p>{{ deed_data.deed.lender.registration }}</p>
 
+             {% if session['no_of_borrowers'] ==1 %}
+          <h3 class="heading-medium">Borrower</h3>
+          {% else %}
+          <h3 class="heading-medium">Borrowers</h3>
+          {% endif %}
+
+          <ul class="list">
+            {% for borrower in deed_data.deed.borrowers %}
+              <li class="bold">
+                {{ borrower.forename }}
+                {{ borrower.middle_name }}{% if borrower.middle_name %} {% endif %}{{ borrower.surname }}
+              </li>
+            {% endfor %}
+          </ul>
+          <h3 class="heading-medium">Charging clause</h3>
+          <p>{{ deed_data.deed.charge_clause.description }}</p>
+
+          <h3 class="heading-medium">Additional provisions</h3>
+          <ol class="list list-number">
+            {% for provision in deed_data.deed.additional_provisions %}
+              <li>
+                {{ provision.description|safe }}
+              </li>
+            {% endfor %}
+          </ol>
+
+          <h3 class="heading-medium">Effective date and time</h3>
+          <p>{{ deed_data.deed.effective_clause|safe }}</p>
+
+          {% if deed_data.deed.effective_date %}
+          Made effective on:  <b class="bold-small"> {{ deed_data.deed.effective_date }}</b>
+          {% else %}
+            <p class="awaiting-information">[Effective date and time will be shown here]</p>
+          {% endif %}
            {% if session['no_of_borrowers'] ==1 %}
-        <h3 class="heading-medium">Borrower</h3>
-        {% else %}
-        <h3 class="heading-medium">Borrowers</h3>
-        {% endif %}
-
-        <ul>
+          <h3 class="heading-medium">Borrower's digital signature</h3>
+          {% else %}
+          <h3 class="heading-medium">Borrowers' digital signatures</h3>
+          {% endif %}
           {% for borrower in deed_data.deed.borrowers %}
-            <li class="bold-text">
-              {{ borrower.forename }}
-              {{ borrower.middle_name }}{% if borrower.middle_name %} {% endif %}{{ borrower.surname }}
-            </li>
+            {% if borrower.signature %}
+              <p id="signature{{ loop.index }}">Signed by
+                <b class="bold-small"> {{ borrower.forename }}
+                  {{ borrower.middle_name }}{% if borrower.middle_name %} {% endif %}{{ borrower.surname }} </b>
+              </p>
+            {% else %}
+              <p class="awaiting-information" id="signature{{ loop.index }}">[Awaiting signature
+                from {{ borrower.forename }}
+                {{ borrower.middle_name }}{% if borrower.middle_name %} {% endif %}{{ borrower.surname }}]
+              </p>
+            {% endif %}
           {% endfor %}
-        </ul>
-        <h3 class="heading-medium">Charging clause</h3>
-        <p>{{ deed_data.deed.charge_clause.description }}</p>
 
-        <h3 class="heading-medium">Additional provisions</h3>
-        <ol class="list-number">
-          {% for provision in deed_data.deed.additional_provisions %}
-            <li>
-              {{ provision.description|safe }}
-            </li>
-          {% endfor %}
-        </ol>
+          <div class="spacing-top-double">
+            <h3 class="visuallyhidden">Form of digital mortgage deed filed at HM Land Registry under reference</h3>
+            {% if deed_data.deed.society_ref %}
+              <p>{{ deed_data.deed.society_ref }}</p>
+            {% endif %}
+            {% if deed_data.deed.reference_details %}
+              <p>{{ deed_data.deed.reference_details.lender_reference_name }}: {{ deed_data.deed.reference_details.lender_reference_value }}</p>
+            {% endif %}
+            <p>{{ deed_data.deed.md_ref }}</p>
+          </div>
 
-        <h3 class="heading-medium">Effective date and time</h3>
-        <p>{{ deed_data.deed.effective_clause|safe }}</p>
+        </article>
 
-        {% if deed_data.deed.effective_date %}
-        Made effective on:  <b class="bold-small"> {{ deed_data.deed.effective_date }}</b>
+        {% if signed %}
+          <form method="post" action="{{ url_for('searchdeed.show_final_page') }}">
+            <h2 class="heading-medium">Is this correct?</h2>
+            <p>You may need to contact {{ conveyancer }} if corrections to your mortgage deed need to be made.</p>
+
+            <input type="hidden" name="returning_borrower" value="True">
+            <input class="button button-float-right" type="submit" value="Finish">
+          </form>
         {% else %}
-          <p class="awaiting-information">[Effective date and time will be shown here]</p>
+          <p>If you’re ready to sign your mortgage, we’ll send you an authentication code which you’ll need to enter on the next screen.</p>
+          <p>If you do not wish to sign the mortgage deed (for instance if you think there is a mistake or you want further explanation) you should contact {{ conveyancer }}, or take independent legal advice.</p>
+
+          <h2 class="heading-medium">Receiving your authentication code</h2>
+          <p>We will be sending your authentication code by text message to your mobile number ending <b class="bold-small">{{ session.phone_number }}</b>.</p>
+
+          <a href="{{ url_for('searchdeed.show_authentication_code_page') }}" class="button">Send my code</a>
         {% endif %}
-         {% if session['no_of_borrowers'] ==1 %}
-        <h3 class="heading-medium">Borrower's digital signature</h3>
-        {% else %}
-        <h3 class="heading-medium">Borrowers' digital signatures</h3>
-        {% endif %}
-        {% for borrower in deed_data.deed.borrowers %}
-          {% if borrower.signature %}
-            <p id="signature{{ loop.index }}">Signed by
-              <b class="bold-small"> {{ borrower.forename }}
-                {{ borrower.middle_name }}{% if borrower.middle_name %} {% endif %}{{ borrower.surname }} </b>
-            </p>
-          {% else %}
-            <p class="awaiting-information" id="signature{{ loop.index }}">[Awaiting signature
-              from {{ borrower.forename }}
-              {{ borrower.middle_name }}{% if borrower.middle_name %} {% endif %}{{ borrower.surname }}]
-            </p>
-          {% endif %}
-        {% endfor %}
-
-        <div class="deed-form-ref">
-          <h3 class="visuallyhidden">Form of digital mortgage deed filed at HM Land Registry under reference</h3>
-          {% if deed_data.deed.society_ref %}
-            <p>{{ deed_data.deed.society_ref }}</p>
-          {% endif %}
-          {% if deed_data.deed.reference_details %}
-            <p>{{ deed_data.deed.reference_details.lender_reference_name }}: {{ deed_data.deed.reference_details.lender_reference_value }}</p>
-          {% endif %}
-          <p>{{ deed_data.deed.md_ref }}</p>
-        </div>
-
-      </article>
-
-      <div class="inner-block">
-        <div class="text">
-          {% if signed %}
-            <form method="post" action="{{ url_for('searchdeed.show_final_page') }}">
-              <h2 class="heading-medium">Is this correct?</h2>
-              <p>You may need to contact {{ conveyancer }} if corrections to your mortgage deed need to be made.</p>
-              <div class="spacer-40"></div>
-              <input type="hidden" name="returning_borrower" value="True">
-              <input class="button button-float-right" type="submit" value="Finish">
-            </form>
-          {% else %}
-            <p>If you’re ready to sign your mortgage, we’ll send you an authentication code which you’ll need to
-              enter on the next screen.</p>
-            <p>If you do not wish to sign the mortgage deed (for instance if you think there is a mistake or you
-              want further explanation) you should contact {{ conveyancer }}, or take independent legal advice.</p>
-            <h2 class="heading-medium">Receiving your authentication code</h2>
-            <p>
-              We will be sending your authentication code by text message to your mobile number ending
-              <b class="bold-small">{{ session.phone_number }}</b>.
-            </p>
-            <a href="{{ url_for('searchdeed.show_authentication_code_page') }}" class="button">Send my code</a>
-          {% endif %}
-        </div>
       </div>
-
-    <!-- End of inner-block -->
     </div>
   </main>
 

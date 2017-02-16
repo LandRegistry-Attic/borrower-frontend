@@ -3,33 +3,16 @@
 {% block content %}
 <main id="content" role="main">
   {{ super() }}
-  <div>
 
-      <div class="grid-row">
-        <div class="column-two-thirds">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h1 class="heading-xlarge">Technical issues with service</h1>
 
-        <h1 class="heading-xlarge">Technical issues with service</h1>
-
-        <p>
-          We are unable to process your request at this time. This was not due
-          to any mistake on your part, but because the service encountered
-          technical issues.
-        </p>
-
-        <p>
-          Please wait a few minutes and then
-          <a href="/">try again</a>
-        </p>
-
-        <p>
-          If you continue to experience this error please
-          <a href="mailto:team@emailaddress">contact us via email</a>
-        </p>
-
-        </div>
-      </div>
-
+      <p>We are unable to process your request at this time. This was not due to any mistake on your part, but because the service encountered technical issues.</p>
+      <p>Please wait a few minutes and then <a href="{{ url_for('borrower_landing.home') }}">try again</a></p>
+      <p>If you continue to experience this error please <a href="mailto:team@emailaddress">contact us via email</a></p>
     </div>
+  </div>
 
-  </main>
+</main>
 {% endblock %}

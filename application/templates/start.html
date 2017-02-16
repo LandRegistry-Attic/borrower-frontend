@@ -2,7 +2,6 @@
 
 {% block content %}
 
-
   <main id="content" role="main">
 
     {{ super() }}
@@ -11,62 +10,37 @@
 
     <div class="text">
 
-      <p>
-        Use this service to view and check your mortgage deed is correct,
-        and sign your mortgage deed.
-      </p>
+      <p>Use this service to view and check your mortgage deed is correct, and sign your mortgage deed.</p>
 
       {% if verify==True %}
 
-        <div>
-          <h2 class="heading-medium">You need to confirm who you are</h2>
-          <p>In order to use the service you will need to confirm your identity. You will need to do this using the service GOV.UK Verify.</p>
-          <p>If you haven't used GOV.UK Verify before, it will take you about 10 minutes to get set up.</p>
-        </div>
+        <h2 class="heading-medium">You need to confirm who you are</h2>
+        <p>In order to use the service you will need to confirm your identity. You will need to do this using the service GOV.UK Verify.</p>
+        <p>If you haven't used GOV.UK Verify before, it will take you about 10 minutes to get set up.</p>
 
       {% endif %}
 
-      <p>
-        Once all borrowers have signed the mortgage deed the
-        conveyancer who prepared it will be informed.
-      </p>
+      <p>Once all borrowers have signed the mortgage deed the conveyancer who prepared it will be informed.</p>
 
-      <p>
-        To do this you will need:
-      </p>
+      <p>To do this you will need:</p>
 
-      <ul class="list-bullet">
+      <ul class="list list-bullet">
         <li>to have the mobile phone you registered with the conveyancer ready</li>
         <li>to have the borrower reference supplied to you by the conveyancer</li>
       </ul>
-      <div class="font-xsmall panel-indent">
-        <p>
-          By using this service you consent to Land Registry retaining your personal details for fraud
-          prevention and detection purposes. You also consent to Land Registry carrying out third party
-          checks in relation to the information supplied.
-        </p>
-        <p>
-          For further information please view our
-          <a rel="external"
-             href="https://www.gov.uk/government/organisations/land-registry/about/personal-information-charter">
-            Personal Information Charter.
-          </a>
-        </p>
+
+      <div class="font-xsmall panel panel-border-narrow">
+        <p>By using this service you consent to Land Registry retaining your personal details for fraud prevention and detection purposes. You also consent to Land Registry carrying out third party checks in relation to the information supplied.</p>
+        <p>For further information please view our <a href="https://www.gov.uk/government/organisations/land-registry/about/personal-information-charter">Personal Information Charter.</a></p>
       </div>
-      <p>
-        <a href="/start" class="button button-get-started">Start now</a>
-      </p>
 
-      <details>
-        <summary>
-          Why is the government involved in this?
-        </summary>
+      <a href="{{ url_for('borrower_landing.start') }}" class="button button-start">Start now</a>
 
-        <div class="panel">
-          <p>The Land Registry registers any interests affecting registered land,
-            such as a change of mortgage. Find out more
-            <a rel="external" href="https://www.gov.uk/government/organisations/land-registry/about">here</a>.
-          </p>
+      <details class="spacing-top-single">
+        <summary>Why is the government involved in this?</summary>
+
+        <div class="panel panel-border-narrow">
+          <p>The Land Registry registers any interests affecting registered land, such as a change of mortgage. Find out more <a href="https://www.gov.uk/government/organisations/land-registry/about">here</a>.</p>
         </div>
       </details>
 

@@ -1,17 +1,13 @@
 {% extends "base/lr_base_layout.html" %}
 
 {% block content %}
-    <main id="content" role="main">
-        {{ super() }}
-        <div class="grid-row">
-            <div class="column-two-thirds">
-                <h1 class="heading-xlarge">Thank You</h1>
-                <p>
-                    <iframe src="https://docs.google.com/a/digital.landregistry.gov.uk/forms/d/1TTbJfTDpH0rfHyAVz7cQmckkLXqnN7vWceJi9rDlu58/viewform?embedded=true"
-                            class="iframe-feedback">
-                    </iframe>
-                </p>
-            </div>
-        </div>
-    </main>
+<main id="content" role="main">
+  {{ super() }}
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h1 class="heading-xlarge">Thank You</h1>
+      <iframe src="https://docs.google.com/a/digital.landregistry.gov.uk/forms/d/1TTbJfTDpH0rfHyAVz7cQmckkLXqnN7vWceJi9rDlu58/viewform?embedded=true" class="iframe-feedback"></iframe>
+    </div>
+  </div>
+</main>
 {% endblock %}

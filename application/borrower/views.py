@@ -6,9 +6,7 @@ import logging
 
 LOGGER = logging.getLogger(__name__)
 
-borrower_landing = Blueprint('borrower_landing', __name__,
-                             template_folder='/templates',
-                             static_folder='static')
+borrower_landing = Blueprint('borrower_landing', __name__)
 
 
 def get_conveyancer_for_deed():

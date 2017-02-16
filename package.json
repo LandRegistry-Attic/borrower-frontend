@@ -1,0 +1,42 @@
+{
+  "name": "borrower-frontend",
+  "version": "1.0.0",
+  "description": "The Borrower Frontend provides a service for a Borrower to view and sign their mortgage deeds online.",
+  "scripts": {
+    "test": "gulp test",
+    "build": "gulp copy && gulp build",
+    "dev": "npm run build && gulp watch"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git@192.168.249.38:digital-mortgage/borrower-frontend.git"
+  },
+  "dependencies": {
+    "govuk-elements-sass": "2.2.1",
+    "govuk_frontend_toolkit": "5.0.3",
+    "govuk_template_jinja": "0.19.2",
+    "jquery": "1.12.4"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.7.2",
+    "browser-sync": "^2.18.7",
+    "cssnano": "^3.10.0",
+    "eslint": "^3.15.0",
+    "glob": "https://registry.npmjs.org/glob/-/glob-7.1.1.tgz",
+    "gulp": "^3.9.1",
+    "gulp-postcss": "^6.3.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sass-lint": "^1.3.2",
+    "gulp-sourcemaps": "^2.4.0",
+    "gulp-standard": "^8.0.3",
+    "require-dir": "^0.3.1",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-uglify": "^1.0.1",
+    "rollup-stream": "^1.19.0",
+    "run-sequence": "^1.2.2",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}

@@ -2,19 +2,15 @@
 {% block content %}
   <main id="content" role="main">
     {{ super() }}
-    <div id="content">
-      <div class="inner-block">
-        <h1 class="heading-large">There has been a problem verifying your identity</h1>
-        <div class="text">
-            <h2 class="heading-medium">What do I have to do next?</h2>
-             <ul class="list list-bullet">
-                <li>Try another certified company</li>
-                <li>You can still sign a paper mortgage deed. To do this, contact the conveyancer who is dealing with your mortgage application. Let them know that you’re unable to use the online service. They will be able to provide you with a paper mortgage deed that you can sign</li>
-                <li>If other people are borrowing money with you, they will also need to sign a paper mortgage deed. They won’t need to use this online service</li>
-            </ul>
-            <br/>
-        </div>
-      </div>
+    <h1 class="heading-large">There has been a problem verifying your identity</h1>
+
+    <div class="text">
+      <h2 class="heading-medium">What do I have to do next?</h2>
+      <ul class="list list-bullet">
+        <li>Try another certified company</li>
+        <li>You can still sign a paper mortgage deed. To do this, contact the conveyancer who is dealing with your mortgage application. Let them know that you’re unable to use the online service. They will be able to provide you with a paper mortgage deed that you can sign</li>
+        <li>If other people are borrowing money with you, they will also need to sign a paper mortgage deed. They won’t need to use this online service</li>
+      </ul>
     </div>
   </main>
 {% endblock %}

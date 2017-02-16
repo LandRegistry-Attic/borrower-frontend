@@ -1,0 +1,9 @@
+.media-item {
+  float: left;
+}
+
+.media-body {
+  overflow: hidden;
+  padding-left: $gutter-two-thirds;
+  display: block;
+}
