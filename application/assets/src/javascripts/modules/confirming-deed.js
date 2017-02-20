@@ -13,6 +13,7 @@
   $.ajax({
     dataType: 'json',
     method: 'POST',
+    cache: false,
     data: {
       auth_code: $('input[name="auth_code"]').val()
     },
@@ -33,6 +34,7 @@
     $.ajax({
       dataType: 'json',
       method: 'GET',
+      cache: false,
       url: 'confirm-mortgage-is-signed',
       success: function (data) {
         // If it's ready, redirect, otherwise go round again
