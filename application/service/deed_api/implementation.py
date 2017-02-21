@@ -2,6 +2,7 @@ import requests
 from application import config
 from flask.ext.api import status
 import copy
+from flask import make_response
 
 webseal_headers = {
     "Content-Type": "application/json",
@@ -12,7 +13,7 @@ webseal_headers = {
 
 
 
-def get_deed(deed_reference, type="application/json"):  # pragma: no cover
+def get_deed(deed_reference, type):  # pragma: no cover
     data = None
     new_header = copy.deepcopy(webseal_headers)
     new_header["Accept"] = type
@@ -21,7 +22,11 @@ def get_deed(deed_reference, type="application/json"):  # pragma: no cover
                         headers=new_header)
 
     if resp.status_code == status.HTTP_200_OK:
-        data = resp.json()
+        if type=="application/pdf":
+            data = make_response(resp.content)
+            data.headers['Content-Type'] = 'application/pdf'
+        else:
+            data = resp.json()
 
     return data
 
