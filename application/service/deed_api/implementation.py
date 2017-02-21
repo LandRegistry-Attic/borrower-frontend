@@ -1,18 +1,24 @@
 import requests
 from application import config
 from flask.ext.api import status
+import copy
 
 webseal_headers = {
     "Content-Type": "application/json",
-    "Iv-User-L": "CN=DigitalMortgage%20DigitalMortgage,OU=devices,O=Land%20Registry%20Internal,O=*,C=gb"
+    "Iv-User-L": "CN=DigitalMortgage%20DigitalMortgage,OU=devices,O=Land%20Registry%20Internal,O=*,C=gb",
+    "Accept": ""
 }
 
 
-def get_deed(deed_reference):  # pragma: no cover
+
+
+def get_deed(deed_reference, type="application/json"):  # pragma: no cover
     data = None
+    new_header = copy.deepcopy(webseal_headers)
+    new_header["Accept"] = type
     resp = requests.get(config.DEED_API_BASE_HOST + '/deed/' +
                         str(deed_reference),
-                        headers=webseal_headers)
+                        headers=new_header)
 
     if resp.status_code == status.HTTP_200_OK:
         data = resp.json()
