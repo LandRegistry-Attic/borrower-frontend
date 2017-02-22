@@ -48,9 +48,12 @@
             <a href="/get-pdf/{{  deed_token }}" target="_blank" class="thumbnail">
                 <img src="/static/images/app/pdf-icon.png" class="deed-icon-border" alt=""/>
             </a>
-            <p>
+            <div class="attachment-details">
             <a href="/get-pdf/{{  deed_token }}" target="_blank">Your mortgage deed</a>
-            </p>
+            <span class="type">
+                <p><abbr title="Portable Document Format">PDF</abbr></p>
+            </span>
+            </div>
           <p class="spacing-top-single">
             <a href="{{ url_for('borrower_landing.user_feedback') }}" target="_blank">How could we improve this service?</a>
           </p>
