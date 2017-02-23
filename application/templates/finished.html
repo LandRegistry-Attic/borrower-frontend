@@ -17,9 +17,13 @@
 
         {% if returning_borrower %}
 
-          <a href="{{ url_for('borrower_landing.home') }}">Didn't want to sign out? Sign in here</a>
+          <p class="spacing-top-double">
+            <a href="{{ url_for('borrower_landing.home') }}">Didn't want to sign out? Sign in here</a>
+          </p>
 
-          <a href="http://www.gov.uk">Return to GOV.UK</a>
+          <p class="spacing-top-single">
+            <a href="https://www.gov.uk">Return to GOV.UK</a>
+          </p>
 
         {% else %}
 
