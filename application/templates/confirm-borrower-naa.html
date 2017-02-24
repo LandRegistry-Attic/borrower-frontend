@@ -3,94 +3,102 @@
 {% block content %}
   <main id="content" role="main">
     {{ super() }}
+      <a href="{{ url_for('borrower_landing.verified') }}" class="link-back">Back</a>
+      <h1 class="heading-xlarge">Network Access Agreement</h1>
 
-    <h1 class="heading-large">Terms and Conditions</h1>
+      <h2 class="heading-large">Terms of use</h2>
 
+      <p class="lede">
+          This service can only be used to view and sign a deed, using an electronic signature supplied by the Chief
+          Land Registrar ('Land Registry').
+      </p>
+      <p>To use this service, you must:</p>
+      <ul class="list list-bullet">
+        <li>be at least 18 years old</li>
+        <li>
+            agree to keep your password and other security details
+            safe and not share them with anyone else
+        </li>
+        <li>
+            have effective security and virus protection on the
+            computer or device you're using to access the service
+        </li>
+      </ul>
+      <p>Tell Land Registry (by calling 0300 006 0411) if you think someone else has your security details.</p>
+      <p>
+          This agreement only exists between you and Land Registry while you use this service to view and sign
+          a deed. It stops automatically if you die or become bankrupt during this time.
+      </p>
+      <p>Land Registry can stop providing this service at any time if it believes this action is necessary.</p>
+      <p>
+          Land Registry may change the terms of this agreement but they will not change whilst you are
+          viewing or signing your deed.
+      </p>
 
-    <div class="text">
-      <p>Before you can sign your mortgage deed, you will need to agree to Land Registry’s terms and conditions set out in our Signature Network Access Agreement. This document is shown below:</p>
+      <h2 class="heading-large">Your liability</h2>
 
-      <h2 class="heading-large">Signature Network Access Agreement</h2>
+      <p>You will have to compensate Land Registry for any loss and damage it suffers as a direct result of you:</p>
+      <ul class="list list-bullet">
+          <li>misusing this service, either intentionally, recklessly or through negligencee</li>
+          <li>otherwise acting negligently</li>
+          <li>using the service without meeting the conditions in this agreement</li>
+          <li>misrepresenting your identity</li>
+      </ul>
+      <p>
+          You will also have to compensate Land Registry if someone else makes
+          a claim against it for loss or damage they suffer as a direct result of
+          these actions, but that compensation will be reduced if Land Registry
+          has caused any of the loss.
+      </p>
 
-      <p class="heading-medium">This Signature Network Access Agreement is required in accordance with rule 5(3) of the Land Registration (Network Access) rules 2008.</p>
-      <p class="heading-medium"> By accepting this agreement, you are confirming and accepting the following:</p>
+      <h2 class="heading-large">Land Registry's liability</h2>
+      <p>
+          When you use this service, this agreement does not give Land Registry a duty of care
+          or contractual obligation to anyone else.
+      </p>
+      <p>
+          Where it is at fault, Land Registry's standard legal requirement to pay compensation
+          for losses or damages doesn't change.
+      </p>
+      <p>There is no limit on compensation for:</p>
+      <ul class="list list-bullet">
+          <li>death or personal injury resulting from Land Registry's negligence, or</li>
+          <li>acts or omissions it makes in bad faith</li>
+      </ul>
 
-      <div class="font-xsmall">
-        <h3 class="font-small spacing-bottom-half">1. About you</h3>
+      <p>
+          Additionally, Land Registry will compensate you for costs and expenses you incur
+          as a direct result if it acts wrongly under the law, provided these
+          total more than £120 but less than £250.
+      </p>
+      <p>It doesn't have to pay compensation for losses or damages caused by:</p>
 
-        <p>You are at least 18 years of age.</p>
-
-        <h3 class="font-small spacing-bottom-half">2. Security and System</h3>
-
-        <p>2.1 You are responsible for maintaining the confidentiality of your security details supplied by the registrar and the identity verification service used in the electronic signing process. You must not share them with anyone, or allow them access intentionally, negligently or recklessly.</p>
-        <p>2.2 You agree to notify the registrar immediately of any unauthorised use of your security details or any other breach of security of which you become aware.</p>
-        <p>2.3 You maintain effective security and anti-virus measures on your Computer System.</p>
-
-        <h3 class="font-small spacing-bottom-half">3. Signatures</h3>
-
-        <p>You will apply only an electronic signature supplied by the registrar.</p>
-
-        <h3 class="font-small spacing-bottom-half">4. Suspension of service</h3>
-
-        <p>The registrar can suspend the network if satisfied that this may be necessary.</p>
-
-        <h3 class="font-small spacing-bottom-half">5. Different terms</h3>
-
-        <p>The registrar may from time to time change the terms of a signature network access agreement in accordance with the Rules, but this will not change the terms during a current viewing and signing session.</p>
-
-        <h3 class="font-small spacing-bottom-half">6. Your liability</h3>
-
-        <p>If you, in connection with the network or this agreement—</p>
-        <p>(i) intentionally, recklessly or negligently misuse the network,</p>
-        <p>(ii) breach this agreement,</p>
-        <p>(iii) make any misrepresentation as to your identity,</p>
-        <p>(iv) do any negligent act, error or omission,</p>
-        <p>you will be liable for loss and damage suffered by the registrar, and liable to indemnify the registrar in respect of any liability to a third party incurred by the registrar arising as a direct result (except to the extent that the registrar has contributed to his own or the third party’s loss).</p>
-
-        <h3 class="font-small spacing-bottom-half">7. The registrar’s liability</h3>
-
-        <p>7.1. The registrar has not, by entering into this agreement and making the network available, assumed any duty of care or contractual obligation to any third party.</p>
-        <p>7.2 The registrar’s liability to pay indemnity under Schedule 8 to the Act is unaffected.</p>
-        <p>7.3 No liability is created which is excluded by paragraph 4 of Schedule 7 to the Act.</p>
-        <p>7.4 The registrar is not liable for inaccurate information supplied through the network, except to the extent provided by Schedule 8 to the Act</p>
-
-        <p>7.5 The registrar is excluded from liability for any loss resulting from—</p>
-        <p>(i) the exercise of any right, remedy or discretion which the registrar is entitled to exercise under statutory authority, the general law or the terms of this agreement,</p>
-        <p>(ii) any failure by you to comply with this agreement or with any legal or professional obligation except to the extent that the failure is itself caused by a breach of this agreement or breach of duty by the registrar,</p>
-        <p>(iii) loss or corruption of data or records held on your computer system,</p>
-        <p>(iv) any damage caused to your computer system by any failure on your part to provide and maintain effective up-to-date measures against computer viruses, or to use the most up-to-date software and components of the network issued by the registrar, and</p>
-        <p>(v) the unauthorised alteration or modification of the whole or any part of the network or the unauthorised combination of the network with any other material or software by you or any third party, including in particular but without limitation, any loss or damage of whatsoever nature caused by the introduction of a computer virus, worm or software to similar effect into the network.</p>
-
-        <p>7.6 The registrar is liable only—</p>
-        <p>(i) for any costs or expenses arising directly from any tortious act or breach of this agreement by the registrar,</p>
-        <p>(ii) provided the total of these costs or expenses arising directly from a particular act or breach exceeds a minimum sum of £120, and</p>
-        <p>(iii) in so far as that total does not exceed a maximum sum of £250.</p>
-
-        <h3 class="font-small spacing-bottom-half">8. The liability of persons other than the registrar and you</h3>
-
-        <p>All agents of the registrar and all members of the Land Registry other than the registrar are excluded from liability to you and third parties for loss or damage arising out of, or in connection with, this agreement and the use of the network.</p>
-
-        <h3 class="font-small spacing-bottom-half">9. Limit on exclusions</h3>
-
-        <p>Clauses 7.5, 7.6 and 8 do not exclude or limit liability for–</p>
-        <p>(i) death or personal injury resulting from negligence, or</p>
-        <p>(ii) acts or omissions done in bad faith.</p>
-
-        <h3 class="font-small spacing-bottom-half">10. Duration of Agreement</h3>
-
-        <p>This agreement exists for the duration of your viewing and signing session (but will terminate automatically if you die or are made bankrupt during that time).</p>
-
-        <h3 class="font-small spacing-bottom-half">11. Definitions</h3>
-
-        <p>Act - Land Registration Act 2002.</p>
-        <p>Network - The electronic communications network provided in accordance with section 92 of the Act.</p>
-        <p>Security details - Any codes, pins, passwords, logon names, private keys or other data supplied to you for security or signing purposes connected with the use of the network.</p>
-        <p>The registrar - The Chief Land Registrar.</p>
-        <p>Your computer system - Your computer hardware and software and other computing resources and information technology infrastructure.</p>
-      </div>
-
-      <a href="{{ url_for('borrower_landing.verified') }}" class="button">Back</a>
-    </div>
+      <ul class="list list-bullet">
+          <li>
+              any action it is entitled to take as the registrar by law or
+              according to this agreement</li>
+          <li>
+              you breaking the terms of this agreement or the law,
+              unless that happened because Land Registry broke this
+              agreement or failed in its duties
+          </li>
+          <li>loss or corruption of information on your computer or device</li>
+          <li>
+              any damage caused to your computer or device as a result of you
+              failing to provide up-to-date anti-virus measures or software
+          </li>
+          <li>
+              any damage caused by you or anyone else deliberately altering the service
+              or introducing a virus, worm or other malignant software
+          </li>
+      </ul>
+      <p>Land Registry's employees and agents are not personally liable for any loss or
+         damage you or anyone else suffers, unless they have acted in bad faith.</p>
+      <p>
+          Land Registry is not liable for inaccurate information supplied by the service
+          except where compensation is required by law.
+      </p>
+      <a href="{{ url_for('borrower_landing.verified') }}" class="link-back">Back</a>
   </main>
 
 {% endblock %}
