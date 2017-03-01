@@ -35,20 +35,27 @@
         <h1 class="heading-xlarge">Sign your mortgage deed</h1>
       {% endif %}
 
-      <p>This is a test service. Signing this example mortgage deed is for research purposes only. You will still need to sign the paper mortgage deed sent to you by {{ conveyancer }}.</p>
-      <p>We have just sent your authentication code by text message to your mobile number ending <strong class="bold">{{ session.phone_number }}</strong>.</p>
+      <div class="grid-row">
 
-      <p class="panel panel-border-narrow">This may take a few minutes to arrive depending on the mobile signal in your area.</p>
 
-      <div class="notice">
-        <i class="icon icon-important">
-          <span class="visuallyhidden">Warning</span>
-        </i>
-        <p>
-          <strong class="bold-small">Warning: By entering your authentication code and clicking Sign mortgage you will be applying your digital signature to the mortgage.</strong>
-        </p>
+          <p style="background-color:#F8F8F8;
+              border: 1px solid #0b0c0c;
+              padding: 18px 30px 15px 54px;
+              margin-bottom: 10px;" 	class="notice">
+                 <i class="icon icon-information" style="left:10px;">
+                <span class="visuallyhidden">Warning</span>
+                </i>
+              <span class="bold-small">We have sent your authentication code by text message</span> to your mobile
+            number ending <span class="bold-small">{{ session.phone_number }}</span>.This may take a few minutes to arrive depending on the mobile signal in
+            your area.
+          </p>
+        </br>
+
       </div>
 
+        <span class="bold-small">Warning:  </span> <span class="text">By entering your authentication code and clicking 'Sign mortgage deed', you will be applying your digital signature</span>.
+
+<br>
       <form id="confirming-deed-form" class="form" method="post" action="{{url_for('searchdeed.verify_auth_code_no_js') }}">
 
         <script>
@@ -62,9 +69,12 @@
 
         <div class="form-group {% if error %}error{% endif %}">
           <label class="heading-medium" for="auth_code">
+            <br>
             Enter your authentication code
-            <span class="form-hint spacing-top-third">For example, c6e78a</span>
-          </label>
+
+    															<span class="form-hint" >Complete the signing of your mortgage deed by entering
+    															the authentication code for example 'C6E78A'</span>
+</br>
           {% if error %}
             <span class="error-message">Re-enter your authentication code</span>
           {% endif %}
@@ -79,6 +89,35 @@
         <p><a href="{{ url_for('searchdeed.show_authentication_code_page') }}">Request a new authentication code</a></p>
       </div>
     </div>
+
+<div class="column-one-third">
+                  <!-- Help container for site not mobile friendly yet -->
+
+  <!-- Help container for site not mobile friendly yet -->
+</br>
+                <div class="related-container">
+                    <div class="related" id="related">
+                        <div class="inner group">
+                        <h2 id="parent-section">Help</h2>
+
+                          <nav role="navigation" aria-labelledby="parent-section">
+                        <p>Need technical help with this service? Call Land Registry on 0300 006 0411
+                            or <a href="http://landregistry.custhelp.com/app/contactus_general/"> report a problem.</a></p>
+
+
+
+
+
+
+                            </nav>
+
+
+
+                        </div>
+                    </div>
+                 </div>
+            </div>
+
   </div>
 </main>
 {% endblock %}
