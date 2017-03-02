@@ -45,7 +45,13 @@
                  <i class="icon icon-information" style="left:10px;">
                 <span class="visuallyhidden">Warning</span>
                 </i>
-              <span class="bold-small">We have sent your authentication code by text message</span> to your mobile
+              <span class="bold-small">
+                {% if authentication_code == 'first' %}
+                We have sent your authentication code by text message
+                {% elif authentication_code == 'new' %}
+                A new authentication code has been sent
+                {% endif %}
+              </span> to your mobile
             number ending <span class="bold-small">{{ session.phone_number }}</span>.This may take a few minutes to arrive depending on the mobile signal in
             your area.
           </p>
@@ -86,7 +92,18 @@
       </form>
 
       <div class="form-group">
-        <p><a href="{{ url_for('searchdeed.show_authentication_code_page') }}">Request a new authentication code</a></p>
+        <fieldset>
+                    <div class="form-group">
+                      <p><strong class="text bold-small">
+                          Authentication Code not arrived?
+
+                      </strong></p>
+              <form class="form" method="post" action="{{ url_for('searchdeed.show_authentication_code_page') }}">
+
+                    <input class="button" type="submit" value="Send new code">
+                  </form>
+                  </div>
+                  </fieldset>
       </div>
     </div>
 
@@ -97,8 +114,9 @@
 </br>
                 <div class="related-container">
                     <div class="related" id="related">
+                      <div id="global-header-bar"></div></br>
                         <div class="inner group">
-                        <h2 id="parent-section">Help</h2>
+                        <h2><b>Help</b></h2>
 
                           <nav role="navigation" aria-labelledby="parent-section">
                         <p>Need technical help with this service? Call Land Registry on 0300 006 0411
