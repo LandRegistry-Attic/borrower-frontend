@@ -20,11 +20,6 @@ def get_conveyancer_for_deed(deed_token):
     conveyancer = deed_api_client.get_conveyancer_for_deed(deed_token)
     return conveyancer
 
-def get_borrower_For_deed(deed_token):
-    deed_api_client = getattr(searchdeed, 'deed_api_client')
-    borrower = deed_api_client.get_deed(deed_token)
-    return borrower
-
 
 
 @searchdeed.route('/borrower-reference', methods=['GET', 'POST'])
@@ -183,7 +178,7 @@ def show_final_page():
         # else show final page with bullet points showing "what happens next" information.
         return render_template('finished.html', all_signed=check_all_signed(deed_data),
                                conveyancer=get_conveyancer_for_deed(deed_token),
-                               borrower=get_borrower_For_deed(deed_token),
+                               borrower=lookup_deed(deed_token),
                                returning_borrower='returning_borrower' in request.form)
 
 
