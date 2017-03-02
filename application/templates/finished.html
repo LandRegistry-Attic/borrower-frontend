@@ -12,7 +12,7 @@
             <h1 class="bold-large">Thank you for viewing your mortgage deed, you have successfully signed out.</h1>
           {% else %}
             <h1 class="bold-large">Thank you for signing your<br> mortgage deed
-            {{borrower['deed']['borrowers']['forename']}} {borrower['deed']['borrowers']['surname']}}
+            {{borrower['deed']['borrowers'][0]['forename']}} {{borrower['deed']['borrowers'][0]['surname']}}
           {% endif %}
         </div>
 
