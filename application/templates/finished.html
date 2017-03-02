@@ -11,7 +11,8 @@
           {% if returning_borrower %}
             <h1 class="bold-large">Thank you for viewing your mortgage deed, you have successfully signed out.</h1>
           {% else %}
-            <h1 class="bold-large">Thank you for signing your<br> mortgage deed</h1>
+            <h1 class="bold-large">Thank you for signing your<br> mortgage deed
+            {{borrower['deed']['borrowers']['forename']}} {borrower['deed']['borrowers']['surname']}}
           {% endif %}
         </div>
 
