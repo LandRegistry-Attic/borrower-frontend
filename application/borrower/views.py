@@ -1,7 +1,8 @@
 from flask import Blueprint, render_template, Response, request, session, redirect, url_for
 from application import config
 from application.service.deed_api import make_deed_api_client
-from application.deed.searchdeed.views import deed_signed
+from application.deed.searchdeed.views import deed_signed, lookup_deed
+from application.deed.searchdeed.borrower_utils import get_borrower_information
 import logging
 
 LOGGER = logging.getLogger(__name__)
@@ -18,7 +19,10 @@ def get_conveyancer_for_deed():
 def verified():
     conveyancer = get_conveyancer_for_deed()
     signed = deed_signed()
-    return render_template('howtoproceed.html', conveyancer=conveyancer, signed=signed)
+    deed_data = lookup_deed(session['deed_token'])
+    borrower_data = get_borrower_information(deed_data)
+
+    return render_template('howtoproceed.html', borrower_data=borrower_data, conveyancer=conveyancer, signed=signed)
 
 
 @borrower_landing.route('/borrow-naa', methods=['POST', 'GET'])

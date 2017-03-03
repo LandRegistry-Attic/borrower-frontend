@@ -23,22 +23,41 @@
 
   <div class="text">
 
+      {% for item in borrower_data['borrowers'] %}
+      <div class="spacing-bottom-single">
+            <span class="font-small">{% if item.order == 'First' %} Your Name: {% else %} {{ item.order }} Borrower: {% endif %}</span>
+            <span class="information-name-bold">{{ item.name }}</span>
+
+            {% if not item.signed %}
+            <span class="font-small information-signature-blue">Awaiting signature</span>
+            {% endif %}
+
+      </div>
+      {% endfor %}
+
+      <div class="spacing-bottom-double">
+          <span class="font-small">Arranged by: </span>
+          <span class="information-name-bold"> {{ conveyancer }}</span>
+      </div>
+
     <form action="{{ url_for('borrower_landing.confirm_network_agreement') }}" method="POST">
 
         <ol>
           <li class="media">
-              <h2 class="heading-small spacing-top-flush">Sign your mortgage deed by agreeing Land Registry's terms of use for this service</h2>
+              <h2 class="heading-small spacing-top-flush"> {{ deed_data }} Sign your mortgage deed by agreeing Land Registry's terms of use for this service</h2>
               <input id="validate" type="hidden" name="validate" class="form-control" value="True">
-              <div class="form-group error" id="naa-box">
-                <label class="block-label" for="accept-naa">
+              <div class="form-group{% if session['agreement_naa']== 'declined' %} error{% endif %}" id="naa-box">
+                <label class="block-label spacing-bottom-third" for="accept-naa" id="agree-naa">
                   <input id="accept-naa" name="accept-naa" class="accept-naa" type="checkbox" value="Accept">
                   I agree to the terms and conditions set out in the <a href="borrow-naa">Network Access Agreement</a>
                 </label>
+
+                  {% if session['agreement_naa']== 'declined' %}
+                    <p class="error-message">Please indicate that you agree to the terms of use set out in the Network Access Agreement</p>
+                  {% endif %}
               </div>
           </li>
         </ol>
-
-        <p class="form-group error">Please indicate that you agree to the terms of use set out in the Network Access Agreement</p>
 
         <input class="button" id="submit" type="submit" value="Continue">
 
