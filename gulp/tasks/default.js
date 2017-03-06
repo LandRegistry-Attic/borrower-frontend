@@ -7,7 +7,8 @@ gulp.task('copy', [
 
 gulp.task('build', [
   'sass',
-  'js'
+  'js',
+  'images'
 ])
 
 gulp.task('default', [

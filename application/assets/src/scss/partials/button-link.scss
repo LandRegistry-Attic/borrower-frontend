@@ -1,0 +1,31 @@
+.button-link {
+  background: transparent none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  appearance: none;
+  color: $link-colour;
+  text-decoration: underline;
+  text-align: left;
+
+  &:visited {
+    color: $link-visited-colour;
+  }
+
+  &:hover {
+    color: $link-hover-colour;
+  }
+
+  &:active {
+    color: $link-colour;
+  }
+
+  &:focus {
+    background-color: $focus-colour;
+  }
+
+  img {
+    display: block;
+  }
+}
