@@ -28,9 +28,9 @@ class TestBorrowerUtils(unittest.TestCase):
 
         # If deed_data is not empty
         fake_deed_data = {'deed': {'borrowers': [
-                {'forename': 'Adam', 'middle_name': 'Chnages', 'surname': 'Smith', 'token': 'ABB00001'},
-                {'forename': 'Chloe', 'surname': 'Bob', 'token': 'ABB00000', 'signature': 'A fake date'},
-                {'forename': 'Ann', 'surname': 'Smith', 'token': 'ABC12345'}]}}
+            {'forename': 'Adam', 'middle_name': 'Chnages', 'surname': 'Smith', 'token': 'ABB00001'},
+            {'forename': 'Chloe', 'surname': 'Bob', 'token': 'ABB00000', 'signature': 'A fake date'},
+            {'forename': 'Ann', 'surname': 'Smith', 'token': 'ABC12345'}]}}
 
         response = get_ordered_borrowers(fake_deed_data, session_borrower_token)
 
