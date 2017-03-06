@@ -1,70 +1,79 @@
 {% extends "base/lr_base_layout.html" %}
-
 {% block content %}
-  <main id="content" role="main">
-    {{ super() }}
-
-    <div class="grid-row">
+<main id="content" role="main">
+   {{ super() }}
+   <div class="grid-row">
       <div class="column-two-thirds">
-
-        <div class="govuk-box-highlight">
-          {% if returning_borrower %}
-            <h1 class="bold-large">Thank you for viewing your mortgage deed, you have successfully signed out.</h1>
-          {% else %}
-            <h1 class="bold-large">Thank you for signing your<br> mortgage deed</h1>
-          {% endif %}
-        </div>
-
-        {% if returning_borrower %}
-
-          <p class="spacing-top-double">
-            <a href="{{ url_for('borrower_landing.home') }}">Didn't want to sign out? Sign in here</a>
-          </p>
-
-          <p class="spacing-top-single">
-            <a href="https://www.gov.uk">Return to GOV.UK</a>
-          </p>
-
-        {% else %}
-
-          <h2 class="heading-medium">What happens next?</h2>
-          <ul class="list list-bullet">
-            {% if all_signed %}
-              <li>{{ conveyancer }} will be notified so that they can continue to do the legal work needed for your mortgage</li>
+         <div class="govuk-box-highlight">
+            {% if returning_borrower %}
+            <h1 class="bold-large">Thank you for viewing your mortgage deed, you have successfully signed
+               out.
+            </h1>
             {% else %}
-              <li>As you are borrowing money with other people, they will also need to sign the mortgage deed</li>
-              <li>Once all borrowers have signed the mortgage deed, {{ conveyancer }} will be notified so that they can continue to do the legal work needed for your mortgage</li>
+            <h1 class="bold-large">Thank you for signing your<br> mortgage deed</h1>
             {% endif %}
-
+         </div>
+         {% if returning_borrower %}
+         <p class="spacing-top-double">
+            <a href="{{ url_for('borrower_landing.home') }}">Didn't want to sign out? Sign in here</a>
+         </p>
+         <p class="spacing-top-single">
+            <a href="https://www.gov.uk">Return to GOV.UK</a>
+         </p>
+         {% else %}
+         <h2 class="heading-medium">What happens next?</h2>
+         <ul class="list list-bullet">
+            {% if all_signed %}
+            <li>{{ conveyancer }} will be notified so that they can continue to do the legal work needed
+               for your mortgage
+            </li>
+            {% else %}
+            <li>As you are borrowing money with other people, they will also need to sign the mortgage
+               deed
+            </li>
+            <li>Once all borrowers have signed the mortgage deed, {{ conveyancer }} will be notified so
+               that they can continue to do the legal work needed for your mortgage
+            </li>
+            {% endif %}
             {% if session['signed'] == False %}
-            <li>Once all borrowers have signed the mortgage deed, {{ conveyancer }} will be notified so that they can continue to do the legal work needed for your mortgage</li>
+            <li>Once all borrowers have signed the mortgage deed, {{ conveyancer }} will be notified so
+               that they can continue to do the legal work needed for your mortgage
+            </li>
             {% endif %}
-            <li>Land Registry will update your title register to include the new mortgage when requested by {{ conveyancer }}</li>
-          </ul>
-          <p>If you have any further queries, please contact {{ conveyancer }}.</p>
-
-          <h2 class="heading-medium">Your Mortgage Deed</h2>
-
-            <a href="/get-pdf/{{  deed_token }}" target="_blank" class="thumbnail">
-                <img src="/static/images/app/pdf-icon.png" class="deed-icon-border" alt=""/>
-            </a>
+            <li>Land Registry will update your title register to include the new mortgage when requested
+               by {{ conveyancer }}
+            </li>
+         </ul>
+         <p>If you have any further queries, please contact {{ conveyancer }}.</p>
+         <form id="enter-dob-form" action="/get-pdf" method="POST" target="_blank">
+            <fieldset>
+               <div class="form-group">
+                  <input id="deed_id" type="hidden" name="deed_id" class="form-control"
+                     value="{{ deed_token }}">
+               </div>
+            </fieldset>
+            <h2 class="heading-medium">Your Mortgage Deed</h2>
             <div class="attachment-details">
-            <a href="/get-pdf/{{  deed_token }}" target="_blank">Your mortgage deed</a>
-            <span class="type">
-                <p><abbr title="Portable Document Format">PDF</abbr>, Estimated size:50KB, 2 Pages </p>
-            </span>
+               <button class="button-link">
+               <img src="/static/images/app/pdf-icon.png" class="deed-icon-border spacing-bottom-third">
+               Your mortgage deed
+               </button>
+               <span class="type">
+                  <p><abbr title="Portable Document Format">PDF</abbr>, Estimated size: 50KB, 2 pages </p>
+               </span>
             </div>
-          <p class="spacing-top-single">
-            <a href="{{ url_for('borrower_landing.user_feedback') }}" target="_blank">How could we improve this service?</a>
-          </p>
-          <p class="spacing-top-single">
-            <a href="https://www.gov.uk/government/organisations/land-registry">More about the Land Registry</a>
-          </p>
-
-        {% endif %}
-
+         </form>
+         </span>
+         <p class="spacing-top-single">
+            <a href="{{ url_for('borrower_landing.user_feedback') }}" target="_blank">How could we improve
+            this service?</a>
+         </p>
+         <p class="spacing-top-single">
+            <a href="https://www.gov.uk/government/organisations/land-registry">More about the Land
+            Registry</a>
+         </p>
+         {% endif %}
       </div>
-    </div>
-  </main>
-
+   </div>
+</main>
 {% endblock %}

@@ -136,10 +136,10 @@ def user_feedback():
     return render_template('user-feedback.html')
 
 
-@borrower_landing.route('/get-pdf/<deed_reference>', methods=['GET'])
-def get_pdf(deed_reference):
+@borrower_landing.route('/get-pdf', methods=['POST'])
+def get_pdf():
     deed_api_client = deed_api.make_deed_api_client()
-    deed_pdf = deed_api_client.get_deed(deed_reference, "application/pdf")
+    deed_pdf = deed_api_client.get_deed(request.form["deed_id"], "application/pdf")
 
     return deed_pdf
 
