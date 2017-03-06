@@ -6,9 +6,7 @@
       <div class="column-two-thirds">
          <div class="govuk-box-highlight">
             {% if returning_borrower %}
-            <h1 class="bold-large">Thank you for viewing your mortgage deed, you have successfully signed
-               out.
-            </h1>
+            <h1 class="bold-large">Thank you for viewing your mortgage deed, you have successfully signed out.</h1>
             {% else %}
             <h1 class="bold-large">Thank you for signing your<br> mortgage deed</h1>
             {% endif %}
@@ -24,21 +22,14 @@
          <h2 class="heading-medium">What happens next?</h2>
          <ul class="list list-bullet">
             {% if all_signed %}
-            <li>{{ conveyancer }} will be notified so that they can continue to do the legal work needed
-               for your mortgage
+            <li>{{ conveyancer }} will be notified so that they can continue to do the legal work needed for your mortgage
             </li>
             {% else %}
-            <li>As you are borrowing money with other people, they will also need to sign the mortgage
-               deed
-            </li>
-            <li>Once all borrowers have signed the mortgage deed, {{ conveyancer }} will be notified so
-               that they can continue to do the legal work needed for your mortgage
-            </li>
+            <li>As you are borrowing money with other people, they will also need to sign the mortgage deed</li>
+            <li>Once all borrowers have signed the mortgage deed, {{ conveyancer }} will be notified so that they can continue to do the legal work needed for your mortgage</li>
             {% endif %}
             {% if session['signed'] == False %}
-            <li>Once all borrowers have signed the mortgage deed, {{ conveyancer }} will be notified so
-               that they can continue to do the legal work needed for your mortgage
-            </li>
+            <li>Once all borrowers have signed the mortgage deed, {{ conveyancer }} will be notified so that they can continue to do the legal work needed for your mortgage</li>
             {% endif %}
             <li>Land Registry will update your title register to include the new mortgage when requested
                by {{ conveyancer }}
