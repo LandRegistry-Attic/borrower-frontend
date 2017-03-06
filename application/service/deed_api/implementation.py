@@ -11,8 +11,6 @@ webseal_headers = {
 }
 
 
-
-
 def get_deed(deed_reference, type):  # pragma: no cover
     data = None
     new_header = copy.deepcopy(webseal_headers)
@@ -22,7 +20,7 @@ def get_deed(deed_reference, type):  # pragma: no cover
                         headers=new_header)
 
     if resp.status_code == status.HTTP_200_OK:
-        if type=="application/pdf":
+        if type == "application/pdf":
             data = make_response(resp.content)
             data.headers['Content-Type'] = 'application/pdf'
         else:
