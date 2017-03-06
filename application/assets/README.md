@@ -13,9 +13,11 @@ These dependencies are managed using `npm` and are tracked in `package.json`. Th
 You will need to install Node.JS on your local machine (Not in the vagrant environment). It is highly recommended that you do this using `nvm`. Follow the steps below:
 
 1. Install `nvm` from https://github.com/creationix/nvm
-2. Navigate to the application directory (Where the package.json lives)
-3. Type `nvm use`. This will look at the `.nvmrc` file in the application directory and install the specified version.
-4. Type `npm install`
+2. Type `nvm -v`. If it cannot find nvm, you will need to re-source your shell's .zshrc or .bashrc file. To do this, type something like `source ~/.zshrc`
+3. Check that `nvm -v` runs
+4. Navigate to the application directory (Where the package.json lives)
+5. Type `nvm install`. This will look at the `.nvmrc` file in the application directory and install the specified version. If you already had this version installed, you could switch to it with `nvm use`.
+6. Type `npm install` (Note the _p_ in the middle, not _v_ this time!)
 
 You then have 2 options. You can
 

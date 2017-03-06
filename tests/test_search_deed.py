@@ -153,9 +153,11 @@ class TestSearchDeed(unittest.TestCase):
     @with_context
     @with_client
     @patch('application.borrower.views.get_conveyancer_for_deed', autospec=False)
-    def test_how_to_proceed_page(self, client, mock_conveyancer):
+    @patch('application.borrower.views.get_inflected_borrower_data')
+    def test_how_to_proceed_page(self, client, mock_conveyancer, mock_inflected_borrower_data):
         with client.session_transaction() as sess:
             sess['deed_token'] = '063604'
+            sess['borrower_token'] = 'XYZ12345'
 
         res = client.post('/how-to-proceed')
         self.assertEqual(res.status_code, 200)
