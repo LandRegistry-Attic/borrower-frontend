@@ -1,6 +1,8 @@
 import unittest
 from application.deed.searchdeed.views import check_all_signed, no_of_borrowers
 from application.borrower.views import get_ordered_borrowers, inflect_ordered_borrowers
+from application.deed.searchdeed.borrower_utils import get_signed_in_borrower
+
 
 
 class TestBorrowerUtils(unittest.TestCase):
@@ -68,3 +70,14 @@ class TestBorrowerUtils(unittest.TestCase):
         self.assertEqual(response[0]['order'], 'First')
         self.assertEqual(response[1]['order'], 'Second')
         self.assertEqual(response[2]['order'], 'Third')
+
+    def test_get_signed_in_borrower(self):
+        deed_data = {'deed': {'borrowers': [
+            {'forename': 'Anthony', 'middle_name': 'Stewart', 'surname': 'Head', 'token': 'ABB00002'},
+            {'forename': 'Charisma', 'surname': 'Carpenter', 'token': 'ABB00003', 'signature': 'A fake date'},
+            {'forename': 'Alyson', 'surname': 'Hannigan', 'token': 'ABB00004'}]}}
+
+        self.assertEqual(get_signed_in_borrower(deed_data, 'ABB00002'), 'Anthony Stewart Head')
+        self.assertEqual(get_signed_in_borrower(deed_data, 'ABB00003'), 'Charisma Carpenter')
+        self.assertEqual(get_signed_in_borrower(deed_data, 'ABB00004'), 'Alyson Hannigan')
+
