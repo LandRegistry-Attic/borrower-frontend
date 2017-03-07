@@ -40,7 +40,7 @@
          <p>If you have any further queries, please contact {{ conveyancer }}.</p>
          <form id="enter-dob-form" action="/get-pdf" method="POST" target="_blank">
             <fieldset>
-               <div class="form-group">
+               <div>
                   <input id="deed_id" type="hidden" name="deed_id" class="form-control"
                      value="{{ deed_token }}">
                </div>
@@ -54,6 +54,11 @@
                <p class="type">
                   <abbr title="Portable Document Format">PDF</abbr>, Estimated size: 50KB, 2 pages
                </p>
+            </div>
+            <div class="spacing-top-double">
+                <p>
+                    <a href="https://www.gov.uk">Return to GOV.UK</a>
+                </p>
             </div>
          </form>
          {% endif %}
