@@ -35,7 +35,7 @@
         <h1 class="heading-xlarge">Sign your mortgage deed</h1>
       {% endif %}
 
-      <div class="grid-row">
+      <div class="grid-row" style="margin-bottom: 1em;">
 
 
           <p style="background-color:#F8F8F8;
@@ -55,13 +55,11 @@
             number ending <span class="bold-small">{{ session.phone_number }}</span>.This may take a few minutes to arrive depending on the mobile signal in
             your area.
           </p>
-        </br>
 
       </div>
 
         <span class="bold-small">Warning:  </span> <span class="text">By entering your authentication code and clicking 'Sign mortgage deed', you will be applying your digital signature</span>.
 
-<br>
       <form id="confirming-deed-form" class="form" method="post" action="{{url_for('searchdeed.verify_auth_code_no_js') }}">
 
         <script>
@@ -73,14 +71,12 @@
           })();
         </script>
 
-        <div class="form-group {% if error %}error{% endif %}">
+        <div class="form-group {% if error %}error{% endif %}" style="margin-top:1em;">
           <label class="heading-medium" for="auth_code">
-            <br>
             Enter your authentication code
-
+</label>
     															<span class="form-hint" >Complete the signing of your mortgage deed by entering
     															the authentication code for example 'C6E78A'</span>
-</br>
           {% if error %}
             <span class="error-message">Re-enter your authentication code</span>
           {% endif %}
@@ -111,10 +107,9 @@
                   <!-- Help container for site not mobile friendly yet -->
 
   <!-- Help container for site not mobile friendly yet -->
-</br>
-                <div class="related-container">
+                <div class="related-container" style="margin-top: 1em;">
                     <div class="related" id="related">
-                      <div id="global-header-bar"></div></br>
+                      <div id="global-header-bar"></div>
                         <div class="inner group">
                         <h2><b>Help</b></h2>
 
