@@ -1,3 +1,7 @@
+import inflect
+import string
+
+
 # True if all borrowers have signed.
 def check_all_signed(deed_data):
     borrowers = no_of_borrowers(deed_data)
@@ -16,3 +20,41 @@ def no_of_borrowers(deed_data):
         for borrower in deed_data['deed']['borrowers']:
             borrower_count += 1
     return borrower_count
+
+
+def get_ordered_borrowers(deed_data, signed_in_token):
+
+    borrowers = []
+
+    if deed_data:
+        for idx, borrower in enumerate(deed_data['deed']['borrowers']):
+            forename = borrower['forename'] + ' '
+            middle_name = borrower['middle_name'] + ' ' if 'middle_name' in borrower else ''
+            surname = borrower['surname']
+
+            # Ensure logged in  borrower's index is 0 - at the top of the below created OrderedDict; so it appears
+            # at the top of the 'How to proceed page'. The index + 1 for other borrowers insures that two borrowers
+            # are not assigned the same index (As the minimum for not signed in borrowers is 1) - Adam
+            borrowers.append({'borrower_name': forename + middle_name + surname,
+                              'order': 0 if borrower['token'] == signed_in_token else idx + 1,
+                              'signed': True if 'signature' in borrower else False})
+
+    # Order the dict, so that the logged in borrower is at the top
+    ordered_borrowers = sorted(borrowers, key=lambda k: k['order'])
+
+    return ordered_borrowers
+
+
+def inflect_ordered_borrowers(ordered_borrowers):
+
+    p = inflect.engine()
+
+    if ordered_borrowers:
+        for idx, borrower in enumerate(ordered_borrowers):
+
+            # Assuming we have four borrowers, this will use the ordered dict from the get_ordered_borrowers function
+            # to create an order of: First, Second, Third, Fourth, with the signed in borrower being assigned
+            # to the first index (First); i.e at the top of the list - Adam
+            borrower['order'] = string.capwords(p.ordinal(p.number_to_words(idx + 1)))
+
+    return ordered_borrowers

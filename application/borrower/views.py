@@ -1,7 +1,8 @@
 from flask import Blueprint, render_template, Response, request, session, redirect, url_for
 from application import config
 from application.service.deed_api import make_deed_api_client
-from application.deed.searchdeed.views import deed_signed
+from application.deed.searchdeed.views import deed_signed, lookup_deed
+from application.deed.searchdeed.borrower_utils import get_ordered_borrowers, inflect_ordered_borrowers
 import logging
 
 LOGGER = logging.getLogger(__name__)
@@ -14,11 +15,19 @@ def get_conveyancer_for_deed():
     return interface.get_conveyancer_for_deed(session['deed_token'])
 
 
+def get_inflected_borrower_data(deed_data):
+    ordered_borrower_data = get_ordered_borrowers(deed_data, session['borrower_token'])
+    return inflect_ordered_borrowers(ordered_borrower_data)
+
+
 @borrower_landing.route('/how-to-proceed', methods=['POST', 'GET'])
 def verified():
     conveyancer = get_conveyancer_for_deed()
     signed = deed_signed()
-    return render_template('howtoproceed.html', conveyancer=conveyancer, signed=signed)
+    deed_data = lookup_deed(session['deed_token'])
+    inflected_borrower_data = get_inflected_borrower_data(deed_data)
+
+    return render_template('howtoproceed.html', borrower_data=inflected_borrower_data, conveyancer=conveyancer, signed=signed)
 
 
 @borrower_landing.route('/borrow-naa', methods=['POST', 'GET'])
@@ -125,6 +134,14 @@ def verify_no_match():
 @borrower_landing.route('/feedback', methods=['GET'])
 def user_feedback():
     return render_template('user-feedback.html')
+
+
+@borrower_landing.route('/get-pdf', methods=['POST'])
+def get_pdf():
+    deed_api_client = make_deed_api_client()
+    deed_pdf = deed_api_client.get_deed(request.form["deed_id"], "application/pdf")
+
+    return deed_pdf
 
 
 def get_borrower_details(verify_pid):
