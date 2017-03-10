@@ -85,16 +85,14 @@
         </div>
       </form>
       <form class="form" method="post" action="{{ url_for('searchdeed.show_authentication_code_page') }}">
-        <div class="form-group">
-          <fieldset>
-            <div class="form-group">
-              <p><strong class="text bold-small">
-                Authentication Code not arrived?
-              </strong></p>
-              <input class="button" type="submit" value="Send new code">
-            </div>
-          </fieldset>
-        </div>
+        <fieldset>
+          <div class="form-group">
+            <p><strong class="text bold-small">
+              Authentication Code not arrived?
+            </strong></p>
+            <input class="button" type="submit" value="Send new code">
+          </div>
+        </fieldset>
       </form>
     </div>
 
