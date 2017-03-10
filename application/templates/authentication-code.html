@@ -56,7 +56,7 @@
 
       </div>
 
-        <span class="bold-small">Warning:  </span> <span class="text">By entering your authentication code and clicking 'Sign mortgage deed', you will be applying your digital signature</span>.
+      <p><span class="bold-small">Warning:  </span> <span class="text">By entering your authentication code and clicking 'Sign mortgage deed', you will be applying your digital signature</span>.</p>
 
       <form id="confirming-deed-form" class="form" method="post" action="{{url_for('searchdeed.verify_auth_code_no_js') }}">
 
@@ -72,63 +72,38 @@
         <div class="form-group {% if error %}error{% endif %}">
           <label class="heading-medium" for="auth_code">
             Enter your authentication code
-</label>
-    															<span class="form-hint" >Complete the signing of your mortgage deed by entering
-    															the authentication code for example 'C6E78A'</span>
-          {% if error %}
+          </label>
+          <span class="form-hint" >Complete the signing of your mortgage deed by entering
+            the authentication code for example 'C6E78A'</span>
+            {% if error %}
             <span class="error-message">Re-enter your authentication code</span>
-          {% endif %}
+            {% endif %}
           <input type="text" class="form-control" id="auth_code" name="auth_code">
         </div>
         <div class="form-group">
           <input class="button" type="submit" value="Sign mortgage deed">
         </div>
       </form>
-
-      <div class="form-group">
-        <fieldset>
-                    <div class="form-group">
-                      <p><strong class="text bold-small">
-                          Authentication Code not arrived?
-
-                      </strong></p>
-              <form class="form" method="post" action="{{ url_for('searchdeed.show_authentication_code_page') }}">
-
-                    <input class="button" type="submit" value="Send new code">
-                  </form>
-                  </div>
-                  </fieldset>
-      </div>
+      <form class="form" method="post" action="{{ url_for('searchdeed.show_authentication_code_page') }}">
+        <div class="form-group">
+          <fieldset>
+            <div class="form-group">
+              <p><strong class="text bold-small">
+                Authentication Code not arrived?
+              </strong></p>
+              <input class="button" type="submit" value="Send new code">
+            </div>
+          </fieldset>
+        </div>
+      </form>
     </div>
 
-<div class="column-one-third">
-                  <!-- Help container for site not mobile friendly yet -->
-
-  <!-- Help container for site not mobile friendly yet -->
-                <div class="related-container">
-                    <div class="related" id="related">
-                      <div id="global-header-bar"></div>
-                        <div class="inner group">
-                        <h2><b>Help</b></h2>
-
-                          <nav role="navigation" aria-labelledby="parent-section">
-                        <p>Need technical help with this service? Call Land Registry on 0300 006 0411
-                            or <a href="http://landregistry.custhelp.com/app/contactus_general/"> report a problem.</a></p>
-
-
-
-
-
-
-                            </nav>
-
-
-
-                        </div>
-                    </div>
-                 </div>
-            </div>
-
+    <div class="column-one-third">
+      <div class="supplementary-panel spacing-top-single">
+        <h2 class="heading-small">Help</h2>
+        <p>Need technical help with this service? Call Land Registry on 0300 006 0411 or <a href="http://landregistry.custhelp.com/app/contactus_general/"> report a problem.</a></p>
+      </div>
+    </div>
   </div>
 </main>
 {% endblock %}
