@@ -35,26 +35,22 @@
         <h1 class="heading-xlarge">Sign your mortgage deed</h1>
       {% endif %}
 
-      <div class="grid-row">
 
-
-        <p class="notice notice-hightlight">
-          <i class="icon icon-information" >
-            <span class="visuallyhidden">Warning</span>
-          </i>
-          <strong>
-            <span class="bold-small">
-              {% if authentication_code == 'first' %}
-              We have sent your authentication code by text message
-              {% elif authentication_code == 'new' %}
-              A new authentication code has been sent
-              {% endif %}
-            </span>
-            to your mobile number ending <span class="bold-small">{{ session.phone_number }}</span>.This may take a few minutes to arrive depending on the mobile signal in your area.
-          </strong>
-        </p>
-
-      </div>
+      <p class="notice notice-hightlight">
+        <i class="icon icon-information" >
+          <span class="visuallyhidden">Warning</span>
+        </i>
+        <strong>
+          <span class="bold-small">
+            {% if authentication_code == 'first' %}
+            We have sent your authentication code by text message
+            {% elif authentication_code == 'new' %}
+            A new authentication code has been sent
+            {% endif %}
+          </span>
+          to your mobile number ending <span class="bold-small">{{ session.phone_number }}</span>.This may take a few minutes to arrive depending on the mobile signal in your area.
+        </strong>
+      </p>
 
       <p><span class="bold-small">Warning:  </span> <span class="text">By entering your authentication code and clicking 'Sign mortgage deed', you will be applying your digital signature</span>.</p>
 
