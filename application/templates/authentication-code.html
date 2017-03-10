@@ -35,23 +35,24 @@
         <h1 class="heading-xlarge">Sign your mortgage deed</h1>
       {% endif %}
 
-      <div class="grid-row" style="margin-bottom: 1em;">
+      <div class="grid-row">
 
 
-          <p class="notice">
-                 <i class="icon icon-information" style="left:10px;">
-                <span class="visuallyhidden">Warning</span>
-                </i>
-              <span class="bold-small">
-                {% if authentication_code == 'first' %}
-                We have sent your authentication code by text message
-                {% elif authentication_code == 'new' %}
-                A new authentication code has been sent
-                {% endif %}
-              </span> to your mobile
-            number ending <span class="bold-small">{{ session.phone_number }}</span>.This may take a few minutes to arrive depending on the mobile signal in
-            your area.
-          </p>
+        <p class="notice notice-hightlight">
+          <i class="icon icon-information" >
+            <span class="visuallyhidden">Warning</span>
+          </i>
+          <strong>
+            <span class="bold-small">
+              {% if authentication_code == 'first' %}
+              We have sent your authentication code by text message
+              {% elif authentication_code == 'new' %}
+              A new authentication code has been sent
+              {% endif %}
+            </span>
+            to your mobile number ending <span class="bold-small">{{ session.phone_number }}</span>.This may take a few minutes to arrive depending on the mobile signal in your area.
+          </strong>
+        </p>
 
       </div>
 
@@ -68,7 +69,7 @@
           })();
         </script>
 
-        <div class="form-group {% if error %}error{% endif %}" style="margin-top:1em;">
+        <div class="form-group {% if error %}error{% endif %}">
           <label class="heading-medium" for="auth_code">
             Enter your authentication code
 </label>
@@ -104,7 +105,7 @@
                   <!-- Help container for site not mobile friendly yet -->
 
   <!-- Help container for site not mobile friendly yet -->
-                <div class="related-container" style="margin-top: 1em;">
+                <div class="related-container">
                     <div class="related" id="related">
                       <div id="global-header-bar"></div>
                         <div class="inner group">
