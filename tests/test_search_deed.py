@@ -142,10 +142,13 @@ class TestSearchDeed(unittest.TestCase):
 
     @with_context
     @with_client
-    def test_finish_page(self, client):
+    @patch('application.deed.searchdeed.views.get_signed_in_borrower')
+    @patch('application.deed.searchdeed.views.lookup_deed')
+    def test_finish_page(self, client, mock_lookup, mock_borrower):
+        mock_borrower.return_value = 'test guy'
         with client.session_transaction() as sess:
-            sess['deed_token'] = '063604'
-            sess['borrower_token'] = '38'
+            sess['deed_token'] = 'a deed token'
+            sess['borrower_token'] = 'a borrower token'
         res = client.post('/finished')
 
         self.assertEqual(res.status_code, 200)
