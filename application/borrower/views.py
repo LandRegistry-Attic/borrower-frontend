@@ -141,7 +141,10 @@ def get_pdf():
     deed_api_client = make_deed_api_client()
     deed_pdf = deed_api_client.get_deed(request.form["deed_id"], "application/pdf")
 
-    return deed_pdf
+    if deed_pdf.status_code == 200:
+        return deed_pdf
+    else:
+        return render_template('404.html')
 
 
 def get_borrower_details(verify_pid):
