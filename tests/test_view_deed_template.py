@@ -65,7 +65,7 @@ class TestViewDeedTemplate(unittest.TestCase):
 
     @with_context
     @with_client
-    def test_addressrendered(self, client):
+    def test_address_rendered(self, client):
         html_string = self.get_html_string('viewdeed.html', complete_deed_dict, True, 'Test Land Registry Devices')
         soup = BeautifulSoup(html_string, 'html.parser')
         html_text = soup.get_text()
