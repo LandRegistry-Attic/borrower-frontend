@@ -8,7 +8,8 @@
             {% if returning_borrower %}
             <h1 class="bold-large">Thank you for viewing your mortgage deed, you have successfully signed out.</h1>
             {% else %}
-            <h1 class="bold-large">Thank you for signing your<br> mortgage deed</h1>
+            <h1 class="bold-large">Thank you for signing your<br> mortgage deed
+            {{ signed_in_borrower }}</h1>
             {% endif %}
          </div>
          {% if returning_borrower %}
@@ -39,7 +40,7 @@
          <p>If you have any further queries, please contact {{ conveyancer }}.</p>
          <form id="enter-dob-form" action="/get-pdf" method="POST" target="_blank">
             <fieldset>
-               <div class="form-group">
+               <div>
                   <input id="deed_id" type="hidden" name="deed_id" class="form-control"
                      value="{{ deed_token }}">
                </div>
@@ -54,15 +55,12 @@
                   <abbr title="Portable Document Format">PDF</abbr>, Estimated size: 50KB, 2 pages
                </p>
             </div>
+            <div class="spacing-top-double">
+                <p>
+                    <a href="https://www.gov.uk">Return to GOV.UK</a>
+                </p>
+            </div>
          </form>
-         <p class="spacing-top-single">
-            <a href="{{ url_for('borrower_landing.user_feedback') }}" target="_blank">How could we improve
-            this service?</a>
-         </p>
-         <p class="spacing-top-single">
-            <a href="https://www.gov.uk/government/organisations/land-registry">More about the Land
-            Registry</a>
-         </p>
          {% endif %}
       </div>
    </div>
