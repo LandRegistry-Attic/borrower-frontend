@@ -4,3 +4,4 @@ lxml
 coverage
 flake8
 flask-api
+beautifulsoup4

@@ -58,3 +58,15 @@ def inflect_ordered_borrowers(ordered_borrowers):
             borrower['order'] = string.capwords(p.ordinal(p.number_to_words(idx + 1)))
 
     return ordered_borrowers
+
+
+def get_signed_in_borrower(deed_data, borrower_token):
+    result = ''
+    if deed_data:
+        for borrower in deed_data['deed']['borrowers']:
+            if borrower['token'] == borrower_token:
+                forename = borrower['forename'] + ' '
+                middle_name = borrower['middle_name'] + ' ' if 'middle_name' in borrower else ''
+                surname = borrower['surname']
+                result = forename + middle_name + surname
+    return result

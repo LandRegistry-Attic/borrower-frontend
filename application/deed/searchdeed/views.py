@@ -1,14 +1,14 @@
-import logging
 import datetime
+import logging
+from application.akuma.service import Akuma
 from flask import Blueprint, render_template, request, redirect, session, url_for, jsonify
 from flask.ext.api import status
 from werkzeug import exceptions
 
 from application.deed.searchdeed.address_utils import format_address_string
 from application.deed.searchdeed.borrower_utils import check_all_signed
-from application.akuma.service import Akuma
+from application.deed.searchdeed.borrower_utils import get_signed_in_borrower
 from application.deed.searchdeed.borrower_utils import no_of_borrowers
-
 
 LOGGER = logging.getLogger(__name__)
 
@@ -175,12 +175,14 @@ def show_final_page():
     else:
         deed_token = session['deed_token']
         deed_data = lookup_deed(deed_token)
+        signed_in_borrower = get_signed_in_borrower(deed_data, session['borrower_token'])
         session.clear()
 
         # If we have a returning borrower, add a variable to show logged out text on final page
         # else show final page with bullet points showing "what happens next" information.
         return render_template('finished.html', deed_token=deed_token, all_signed=check_all_signed(deed_data),
                                conveyancer=get_conveyancer_for_deed(deed_token),
+                               signed_in_borrower=signed_in_borrower,
                                returning_borrower='returning_borrower' in request.form)
 
 
