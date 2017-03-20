@@ -2,7 +2,7 @@
   var $submit = $('#submit')
   var $naa = $('#accept-naa')
   var $agreeNaa = $('#agree-naa')
-  var $errorMessageNaa = $('<p role="alert" class="error-message">Please indicate that you agree to the terms of use set out in the Network Access Agreement</p>')
+  var $errorMessageNaa = $('<p role="alert" class="error-message">Please read and accept the Land Registry\'s terms of use.</p>')
 
   var dirty = false
 
