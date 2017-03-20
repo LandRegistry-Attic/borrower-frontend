@@ -1,5 +1,6 @@
 import datetime
 import logging
+import hashlib
 from application.akuma.service import Akuma
 from flask import Blueprint, render_template, request, redirect, session, url_for, jsonify
 from flask.ext.api import status
@@ -19,6 +20,12 @@ def get_conveyancer_for_deed(deed_token):
     deed_api_client = getattr(searchdeed, 'deed_api_client')
     conveyancer = deed_api_client.get_conveyancer_for_deed(deed_token)
     return conveyancer
+
+
+def hash_for(data):
+    hash_id = hashlib.sha256()
+    hash_id.update(repr(data).encode('utf-8'))
+    return hash_id.hexdigest()
 
 
 @searchdeed.route('/borrower-reference', methods=['GET', 'POST'])
@@ -48,6 +55,7 @@ def enter_dob():
                 session['phone_number'] = result['phone_number']
                 session['borrower_token'] = borrower_token
                 session['borrower_id'] = result['borrower_id']
+                session['analytics_reference'] = hash_for(result['borrower_id'])
                 return redirect('/how-to-proceed', code=307)
             else:
                 session['error'] = "True"
