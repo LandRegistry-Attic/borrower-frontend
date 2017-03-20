@@ -1,7 +1,7 @@
 import unittest
 from application.deed.searchdeed.views import check_all_signed, no_of_borrowers
 from application.borrower.views import get_ordered_borrowers, inflect_ordered_borrowers
-from application.deed.searchdeed.borrower_utils import get_signed_in_borrower
+from application.deed.searchdeed.borrower_utils import get_signed_in_borrower, hash_for
 
 
 class TestBorrowerUtils(unittest.TestCase):
@@ -79,3 +79,11 @@ class TestBorrowerUtils(unittest.TestCase):
         self.assertEqual(get_signed_in_borrower(deed_data, 'ABB00002'), 'Anthony Stewart Head')
         self.assertEqual(get_signed_in_borrower(deed_data, 'ABB00003'), 'Charisma Carpenter')
         self.assertEqual(get_signed_in_borrower(deed_data, 'ABB00004'), 'Alyson Hannigan')
+
+    def test_hash_borrower_id_multiple(self):
+
+        # Assert that two identical strings are assigned the same hash value
+        self.assertEqual(hash_for('123'), hash_for('123'))
+
+        # Assert that two different strings are not assigned the same hash value
+        self.assertNotEquals(hash_for('123'), hash_for('456'))

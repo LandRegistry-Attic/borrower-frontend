@@ -1,6 +1,5 @@
 import datetime
 import logging
-import hashlib
 from application.akuma.service import Akuma
 from flask import Blueprint, render_template, request, redirect, session, url_for, jsonify
 from flask.ext.api import status
@@ -9,7 +8,7 @@ from werkzeug import exceptions
 from application.deed.searchdeed.address_utils import format_address_string
 from application.deed.searchdeed.borrower_utils import check_all_signed
 from application.deed.searchdeed.borrower_utils import get_signed_in_borrower
-from application.deed.searchdeed.borrower_utils import no_of_borrowers
+from application.deed.searchdeed.borrower_utils import no_of_borrowers, hash_for
 
 LOGGER = logging.getLogger(__name__)
 
@@ -20,12 +19,6 @@ def get_conveyancer_for_deed(deed_token):
     deed_api_client = getattr(searchdeed, 'deed_api_client')
     conveyancer = deed_api_client.get_conveyancer_for_deed(deed_token)
     return conveyancer
-
-
-def hash_for(data):
-    hash_id = hashlib.sha256()
-    hash_id.update(repr(data).encode('utf-8'))
-    return hash_id.hexdigest()
 
 
 @searchdeed.route('/borrower-reference', methods=['GET', 'POST'])
