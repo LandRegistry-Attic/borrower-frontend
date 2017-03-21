@@ -28,7 +28,7 @@
     {% if session['analytics_state'] %}
     {
       hitType: 'pageview',
-      page: '{{ session['analytics_state'] }}'
+      page: window.location.pathname + '/{{ session['analytics_state'] }}'
     }
     {% else %}
       'pageview'
