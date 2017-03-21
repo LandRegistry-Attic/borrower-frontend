@@ -77,9 +77,13 @@ def show_authentication_code_page():
         return render_template('authentication-code.html', error=True,
                                conveyancer=get_conveyancer_for_deed(session['deed_token']))
 
-    send_auth_code()
+    if request.method == "GET":
+        send_auth_code()
+        return render_template('authentication-code.html', conveyancer=get_conveyancer_for_deed(session['deed_token']), authentication_code='first')
 
-    return render_template('authentication-code.html', conveyancer=get_conveyancer_for_deed(session['deed_token']))
+    if request.method == "POST":
+        send_auth_code()
+        return render_template('authentication-code.html', conveyancer=get_conveyancer_for_deed(session['deed_token']),  authentication_code='new')
 
 
 @searchdeed.route('/signing-mortgage-deed', methods=['POST'])
