@@ -23,7 +23,19 @@
     })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
     ga('create','{{ config["GOOGLE_ANALYTICS_CODE"] }}', 'auto');
-    ga('send', 'pageview');
+    ga('send',
+
+    {% if session['analytics_state'] %}
+    {
+      hitType: 'pageview',
+      page: '{{ session['analytics_state'] }}'
+    }
+    {% else %}
+      'pageview'
+    {% endif %}
+
+    );
+
     ga('set', 'anonymizeIp', true);
   </script>
 
