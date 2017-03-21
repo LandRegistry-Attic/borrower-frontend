@@ -1,0 +1,10 @@
+.notice-hightlight {
+  background-color: $highlight-colour;
+  border: 1px solid $text-colour;
+  padding: $gutter (2 * $gutter) $gutter 0;
+  margin-bottom: $gutter;
+
+  .icon {
+    left: 10px;
+  }
+}
