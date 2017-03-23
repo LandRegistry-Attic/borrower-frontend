@@ -1,8 +1,8 @@
 # Set the base image to the base image
 FROM lr_base_python_flask
 
-# ---- Database stuff start
-# ---- Database stuff end
+# ---- Database start
+# ---- Database end
 
 # ----
 # Put your app-specific stuff here (extra yum installs etc).
