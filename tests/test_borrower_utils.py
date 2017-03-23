@@ -63,7 +63,6 @@ class TestBorrowerUtils(unittest.TestCase):
 
         # Check that the method inflects the ordered numbers in an ordinal way, so that the
         # How to proceed page can display the borrowers in the correct order
-        # Note that the function also capitalises the word - Adam
         response = inflect_ordered_borrowers(fake_ordered_borrower_data)
 
         self.assertEqual(response[0]['order'], 'First')
