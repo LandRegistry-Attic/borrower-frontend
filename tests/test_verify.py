@@ -24,7 +24,7 @@ class TestVerify(unittest.TestCase):
         with client.session_transaction() as sess:
             sess['deed_token'] = '063604'
         res = client.get(url_for('borrower_landing.identity_verified'))
-        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.status_code, 307)
 
     @with_context
     @with_client
