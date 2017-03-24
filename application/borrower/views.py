@@ -53,7 +53,7 @@ def identity_verified():
     if 'deed_token' not in session:
         return Response('Unauthenticated', 401, {'WWW-Authenticate': 'Basic realm="Authentication Required"'})
     else:
-        return render_template("howtoproceed.html")
+        return redirect(url_for('borrower_landing.verified'), code=307)
 
 
 @borrower_landing.route('/confirm-naa', methods=['GET', 'POST'])
