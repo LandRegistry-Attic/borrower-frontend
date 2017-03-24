@@ -31,7 +31,20 @@
     {% endif %}
 
     );
-    ga('send', 'pageview');
+
+    ga('send',
+
+    {% if session['analytics_state'] %}
+    {
+      hitType: 'pageview',
+      page: window.location.pathname + '/{{ session['analytics_state'] }}'
+    }
+    {% else %}
+      'pageview'
+    {% endif %}
+
+    );
+
     ga('set', 'anonymizeIp', true);
   </script>
 
