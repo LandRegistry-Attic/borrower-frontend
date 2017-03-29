@@ -81,3 +81,12 @@ def get_conveyancer_for_deed(deed_reference):  # pragma: no cover
         data = resp.json()
 
     return data
+
+
+def remove_verify_match(verify_pid):  # pragma: no cover
+    response = requests.delete(config.DEED_API_BASE_HOST +
+                               "/verify-match/delete/" + str(verify_pid), headers=webseal_headers)
+    if response.status_code == status.HTTP_200_OK:
+        return response.json()
+    else:
+        return None

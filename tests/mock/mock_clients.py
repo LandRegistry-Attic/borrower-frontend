@@ -71,3 +71,8 @@ class DeedApiMockClient:
             return {"deed_token": deed_token, "phone_number": phone_number, "borrower_token": borrower_token, "borrower_id": borrower_id}
         else:
             return None
+
+    @staticmethod
+    def remove_verify_match(verify_pid):
+
+        return status.HTTP_200_OK

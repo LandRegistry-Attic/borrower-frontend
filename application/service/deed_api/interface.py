@@ -25,3 +25,6 @@ class DeedApiInterface(object):  # pragma: no cover
 
     def get_conveyancer_for_deed(self, deed_token):
         return self.implementation.get_conveyancer_for_deed(deed_token)['result']
+
+    def remove_verify_match(self, verify_pid):
+        return self.implementation.remove_verify_match(verify_pid)
