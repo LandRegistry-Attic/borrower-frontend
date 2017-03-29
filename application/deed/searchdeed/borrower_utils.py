@@ -1,5 +1,6 @@
 import inflect
 import string
+import hashlib
 
 
 # True if all borrowers have signed.
@@ -67,3 +68,9 @@ def get_signed_in_borrower(deed_data, borrower_token):
                 surname = borrower['surname']
                 result = forename + middle_name + surname
     return result
+
+
+def hash_for(data):
+    hash_id = hashlib.sha256()
+    hash_id.update(repr(data).encode('utf-8'))
+    return hash_id.hexdigest()

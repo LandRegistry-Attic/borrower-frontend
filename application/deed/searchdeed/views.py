@@ -8,7 +8,7 @@ from werkzeug import exceptions
 from application.deed.searchdeed.address_utils import format_address_string
 from application.deed.searchdeed.borrower_utils import check_all_signed
 from application.deed.searchdeed.borrower_utils import get_signed_in_borrower
-from application.deed.searchdeed.borrower_utils import no_of_borrowers
+from application.deed.searchdeed.borrower_utils import no_of_borrowers, hash_for
 
 LOGGER = logging.getLogger(__name__)
 
@@ -44,10 +44,8 @@ def enter_dob():
             dob = form["dob-day"] + "/" + form["dob-month"] + "/" + form["dob-year"]
             result = validate_borrower(borrower_token, dob)
             if result is not None:
-                session['deed_token'] = result['deed_token']
-                session['phone_number'] = result['phone_number']
                 session['borrower_token'] = borrower_token
-                session['borrower_id'] = result['borrower_id']
+                set_session_variables(result)
                 return redirect('/how-to-proceed', code=307)
             else:
                 session['error'] = "True"
@@ -279,3 +277,11 @@ def deed_signed():
         for borrower in deed_data['deed']['borrowers']:
             if 'signature' in borrower and borrower['token'] == session.get('borrower_token'):
                 return True
+
+
+def set_session_variables(result):
+    session['deed_token'] = result['deed_token']
+    session['phone_number'] = result['phone_number']
+    session['borrower_id'] = result['borrower_id']
+    session['analytics_state'] = 'viewing' if deed_signed() else 'signing'
+    session['analytics_reference'] = hash_for(result['borrower_id'])

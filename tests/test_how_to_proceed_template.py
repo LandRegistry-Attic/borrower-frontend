@@ -19,7 +19,7 @@ class TestHowToProceedTemplate(unittest.TestCase):
         required_string_1 = "Your information"
         self.assertIn(required_string_1, html_string)
 
-        required_string_2 = "Sign your mortgage deed by agreeing Land Registry's terms of use for this service"
+        required_string_2 = "You must read and accept the terms of use to continue."
         self.assertIn(required_string_2, html_string)
 
         required_string_3 = "Continue"

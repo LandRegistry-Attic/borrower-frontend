@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, Response, request, session, redirect, url_for
 from application import config
 from application.service.deed_api import make_deed_api_client
-from application.deed.searchdeed.views import deed_signed, lookup_deed
+from application.deed.searchdeed.views import deed_signed, lookup_deed, set_session_variables
 from application.deed.searchdeed.borrower_utils import get_ordered_borrowers, inflect_ordered_borrowers
 import logging
 
@@ -53,7 +53,7 @@ def identity_verified():
     if 'deed_token' not in session:
         return Response('Unauthenticated', 401, {'WWW-Authenticate': 'Basic realm="Authentication Required"'})
     else:
-        return render_template("howtoproceed.html")
+        return redirect(url_for('borrower_landing.verified'), code=307)
 
 
 @borrower_landing.route('/confirm-naa', methods=['GET', 'POST'])
@@ -83,10 +83,10 @@ def verify_identity():
         verify_pid = request.headers.get('Pid')
         result = get_borrower_details(verify_pid)
         if result is not None:
-            session['deed_token'] = result['deed_token']
-            session['phone_number'] = result['phone_number']
             session['borrower_token'] = result['borrower_token']
-            session['borrower_id'] = result['borrower_id']
+            set_session_variables(result)
+            print("in /verify route. Calling removing_verify_match row")
+            remove_verify_match(verify_pid)
         else:
             # Verify has worked, a match was made, but PID cannot now be found. Application fault.
             LOGGER.error("verify-PID-not-found")
@@ -150,3 +150,10 @@ def get_pdf():
 def get_borrower_details(verify_pid):
     deed_api_client = getattr(borrower_landing, 'deed_api_client')
     return deed_api_client.get_borrower_details_by_verify_pid(verify_pid)
+
+
+def remove_verify_match(verify_pid):
+    print("in remove_verify_match method. PID = " + verify_pid)
+
+    deed_api_client = getattr(borrower_landing, 'deed_api_client')
+    return deed_api_client.remove_verify_match(verify_pid)

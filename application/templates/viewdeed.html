@@ -6,7 +6,6 @@
     {{ super() }}
 
     <div class="grid-row">
-
       <div class="column-two-thirds">
         <h1 class="heading-xlarge">Your mortgage deed</h1>
 
@@ -129,7 +128,15 @@
           <a href="{{ url_for('searchdeed.show_authentication_code_page') }}" class="button">Send my code</a>
         {% endif %}
       </div>
+  <div class="column-one-third">
+    <div class="supplementary-panel spacing-top-single">
+      <h2 class="heading-small">Help with this service</h2>
+      <p>Call 0300 006 0411 if you're stuck and need help. </p>
+      <p>Monday to Friday 8:30am - 5pm </p>
+    <p><a href="https://www.gov.uk/call-charges">Find out about call charges</a></p>
     </div>
-  </main>
+  </div>
+</div>
+</main>
 
 {% endblock %}
