@@ -85,6 +85,7 @@ def verify_identity():
         if result is not None:
             session['borrower_token'] = result['borrower_token']
             set_session_variables(result)
+            print("in /verify route. Calling removing_verify_match row")
             remove_verify_match(verify_pid)
         else:
             # Verify has worked, a match was made, but PID cannot now be found. Application fault.
@@ -152,5 +153,7 @@ def get_borrower_details(verify_pid):
 
 
 def remove_verify_match(verify_pid):
+    print("in remove_verify_match method. PID = " + verify_pid)
+
     deed_api_client = getattr(borrower_landing, 'deed_api_client')
     return deed_api_client.remove_verify_match(verify_pid)
