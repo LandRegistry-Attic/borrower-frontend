@@ -150,6 +150,7 @@ def get_borrower_details(verify_pid):
     deed_api_client = getattr(borrower_landing, 'deed_api_client')
     return deed_api_client.get_borrower_details_by_verify_pid(verify_pid)
 
+
 def remove_verify_match(verify_pid):
     deed_api_client = getattr(borrower_landing, 'deed_api_client')
     return deed_api_client.remove_verify_match(verify_pid)

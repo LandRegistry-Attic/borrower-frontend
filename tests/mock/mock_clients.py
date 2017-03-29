@@ -76,4 +76,3 @@ class DeedApiMockClient:
     def remove_verify_match(verify_pid):
 
         return status.HTTP_200_OK
-
