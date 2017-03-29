@@ -77,7 +77,7 @@ class TestViewDeedTemplate(unittest.TestCase):
         html_string = self.get_html_string('viewdeed.html', complete_deed_dict, True, 'Test Land Registry Devices')
         soup = BeautifulSoup(html_string, 'html.parser')
         html_text = soup.get_text()
-        self.assertIn('COVENTRYBUILDINGSOCIETYEconomicHousePOBox9,HighStreetCoventryCV15QN', html_text)
+        self.assertIn('THEBUILDINGSOCIETYAnaddress,aStreetCoventryCV99ZZ', html_text)
 
     @with_context
     @with_client
