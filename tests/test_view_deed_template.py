@@ -61,7 +61,7 @@ class TestViewDeedTemplate(unittest.TestCase):
     def test_borrower_names_rendered(self, client):
         html_string = self.get_html_string('viewdeed.html', complete_deed_dict, True, 'Test Land Registry Devices')
         self.assertIn('JuliaHannahNorthin', html_string)
-        self.assertIn('MrMontyBurns', html_string)
+        self.assertIn('MrMontyAlanBurns', html_string)
 
     @with_context
     @with_client
