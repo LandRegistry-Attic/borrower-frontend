@@ -86,7 +86,8 @@ def verify_identity():
             session['borrower_token'] = result['borrower_token']
             set_session_variables(result)
             print("in /verify route. Calling removing_verify_match row")
-            remove_verify_match(verify_pid)
+            # comment out verify-match removal
+            # remove_verify_match(verify_pid)
         else:
             # Verify has worked, a match was made, but PID cannot now be found. Application fault.
             LOGGER.error("verify-PID-not-found")
