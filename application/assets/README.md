@@ -29,6 +29,12 @@ At the time of writing, the build does not run in the pipeline and must be run o
 - `application/assets/dist/**/*.*`
 - `application/templates/govuk_template.html` (This file is copied from the `govuk_template_jinja` module in `node_modules`. It is checked into the repository, but should not be modified manually.)
 
+## Environment Variables
+
+Please note that sensitive environment variables are inherited from the environment-store service and you
+would need to bring it into your devenv config for these to be set.
+
+
 ## Editing CSS and JS
 
 Application specific frontend code is held in `application/assets/src` - this is the only place you should be manually editing files.
@@ -76,4 +82,3 @@ It is worth noting that new releases often include small markup changes, and som
 ### Gov.uk release notes:
 - https://github.com/alphagov/govuk_elements/releases
 - https://github.com/alphagov/govuk_template/releases
-
