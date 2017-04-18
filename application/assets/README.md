@@ -34,7 +34,6 @@ At the time of writing, the build does not run in the pipeline and must be run o
 Please note that sensitive environment variables are inherited from the environment-store service and you
 would need to bring it into your devenv config for these to be set.
 
-
 ## Editing CSS and JS
 
 Application specific frontend code is held in `application/assets/src` - this is the only place you should be manually editing files.
