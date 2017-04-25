@@ -1,8 +1,8 @@
 # Set the base image to the base image
 FROM lr_base_python_flask
 
-# ---- Database stuff start
-# ---- Database stuff end
+# ---- Database start
+# ---- Database end
 
 # ----
 # Put your app-specific stuff here (extra yum installs etc).
@@ -12,10 +12,12 @@ RUN yum -y install libxslt-devel libxml2-devel
 
 ENV DEBUG True
 ENV DEED_API_ADDRESS http://deed-api:8080
-ENV GOOGLE_ANALYTICS_CODE UA-59849906-6
 ENV APP_SECRET_KEY dm-session-key
 ENV AKUMA_ADDRESS 'http://cf-api-stub:8080'
 ENV VERIFY False
+ENV GOOGLE_ANALYTICS_CODE UA-59849906-6
+
+# WEBSEAL_HEADER_KEY, WEBSEAL_HEADER_VALUE are set by the devenv-config.
 
 RUN mkdir /logs
 

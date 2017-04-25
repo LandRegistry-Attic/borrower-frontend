@@ -38,7 +38,7 @@ class TestErrorHandling(unittest.TestCase):
         with app.app_context():
             with app.test_request_context():
                 response = self.client.get('/page-not-found')
-                expected = 'We could not find the page you requested. This could be because the address was mistyped, ' \
+                expected = 'We could not find the page you requested. This could be because the address was mistyped, '\
                            'or a link you followed was pointing at a page that no longer exists.'
                 soup = BeautifulSoup(response.data)
                 for para in soup.find_all('p'):

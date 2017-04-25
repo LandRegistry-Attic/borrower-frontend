@@ -63,7 +63,6 @@ class TestBorrowerUtils(unittest.TestCase):
 
         # Check that the method inflects the ordered numbers in an ordinal way, so that the
         # How to proceed page can display the borrowers in the correct order
-        # Note that the function also capitalises the word - Adam
         response = inflect_ordered_borrowers(fake_ordered_borrower_data)
 
         self.assertEqual(response[0]['order'], 'First')
@@ -72,13 +71,13 @@ class TestBorrowerUtils(unittest.TestCase):
 
     def test_get_signed_in_borrower(self):
         deed_data = {'deed': {'borrowers': [
-            {'forename': 'Anthony', 'middle_name': 'Stewart', 'surname': 'Head', 'token': 'ABB00002'},
-            {'forename': 'Charisma', 'surname': 'Carpenter', 'token': 'ABB00003', 'signature': 'A fake date'},
-            {'forename': 'Alyson', 'surname': 'Hannigan', 'token': 'ABB00004'}]}}
+            {'forename': 'Rupert', 'middle_name': 'Stewart', 'surname': 'Giles', 'token': 'ABB00002'},
+            {'forename': 'Cordelia', 'surname': 'Chase', 'token': 'ABB00003', 'signature': 'A fake date'},
+            {'forename': 'Willow', 'surname': 'Rosenberg', 'token': 'ABB00004'}]}}
 
-        self.assertEqual(get_signed_in_borrower(deed_data, 'ABB00002'), 'Anthony Stewart Head')
-        self.assertEqual(get_signed_in_borrower(deed_data, 'ABB00003'), 'Charisma Carpenter')
-        self.assertEqual(get_signed_in_borrower(deed_data, 'ABB00004'), 'Alyson Hannigan')
+        self.assertEqual(get_signed_in_borrower(deed_data, 'ABB00002'), 'Rupert Stewart Giles')
+        self.assertEqual(get_signed_in_borrower(deed_data, 'ABB00003'), 'Cordelia Chase')
+        self.assertEqual(get_signed_in_borrower(deed_data, 'ABB00004'), 'Willow Rosenberg')
 
     def test_hash_borrower_id_multiple(self):
 

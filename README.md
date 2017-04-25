@@ -7,16 +7,13 @@ mortgage deeds online.
 - [Usage](#usage)
 - [Install The Requirements](#install-the-requirements)
 - [Run The App](#run-the-app)
-- [Run The Unit Tests](#run-the-unit-tests)
-- [Acceptance Tests](#acceptance-tests)
+- [Run The Tests](#run-the-tests)
 - [Frontend](#frontend)
 
 ## Usage
 ```
 GET     /                               -- renders borrower landing page
 GET     /health                         -- renders standard Gov UK template
-GET     /searchdeed                     -- borrower views deed landing page
-POST    /searchdeed/search              -- POST search for deed (deed reference is in the request body)
 ```
 
 ## Install the requirements
@@ -43,7 +40,7 @@ python run.py runserver --host 0.0.0.0
 > optional ```--port 9000``` where 9000 is the number of a port you can supply to start the server on.
 
 
-## Run the Unit Tests
+## Run the Tests
 
 Install the requirements
 ```
@@ -56,11 +53,12 @@ Run unit tests and provide coverage report
 source unit_test.sh
 ```
 
-## Acceptance tests
+and
 
-See, the following link for information on how to run the acceptance tests:-
+```
+source integration_test.sh
+```
 
-[Acceptance Tests](https://192.168.249.38/digital-mortgage/acceptance-tests)
 
 ## Frontend
 

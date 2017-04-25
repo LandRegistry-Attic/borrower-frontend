@@ -1,3 +1,4 @@
+import os
 import requests
 from application import config
 from flask.ext.api import status
@@ -6,7 +7,7 @@ from flask import make_response
 
 webseal_headers = {
     "Content-Type": "application/json",
-    "Iv-User-L": "CN=DigitalMortgage%20DigitalMortgage,OU=devices,O=Land%20Registry%20Internal,O=*,C=gb",
+    os.getenv("WEBSEAL_HEADER_KEY"): os.getenv('WEBSEAL_HEADER_VALUE'),
     "Accept": ""
 }
 
